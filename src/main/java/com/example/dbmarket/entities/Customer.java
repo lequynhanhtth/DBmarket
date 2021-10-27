@@ -4,25 +4,23 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Supplier")
-public class Supplier {
+@Table(name = "Customer")
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int supplierId;
-    @Column(name = "Username")
+    private int customerId;
+    @Column(name="Username")
     private String username;
     @Column(name = "Password")
     private String password;
     @Column(name = "Fullname")
     private String fullname;
-    @Column(name = "Phone")
+    @Column(name ="Phone")
     private String phone;
     @Column(name = "Email")
     private String email;
-    @Column(name = "Address")
-    private String address;
-    @OneToMany(mappedBy = "supplier")
-    private List<Product> products;
-
-
+    @OneToMany(mappedBy = "customer")
+    private List<Cart> cart;
+    @OneToMany(mappedBy = "customer")
+    private List<BillInfo> billInfos;
 }

@@ -18,7 +18,7 @@ public class Product {
     @Column(name = "Price")
     private Long price;
     @Column(name = "Weight")
-    private Integer weight;
+    private Double weight;
     @Column(name = "InStock")
     private Long inStock;
     @Column(name = "Discount")
@@ -31,5 +31,8 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "SupplierId")
     private Supplier supplier;
-
+    @OneToMany(mappedBy = "product")
+    private List<CartDetail> cartDetails;
+    @OneToMany(mappedBy = "product")
+    private List<OrderDetail> orderDetails;
 }

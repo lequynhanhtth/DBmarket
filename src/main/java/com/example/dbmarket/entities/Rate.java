@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Rate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer rateId;
+    private int rateId;
     @Column(name = "Star")
     private Integer star;
     @Column(name = "Date")
