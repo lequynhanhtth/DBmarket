@@ -1,5 +1,7 @@
 package com.example.dbmarket.entities;
 
+import org.apache.tomcat.jni.Mmap;
+
 import javax.persistence.*;
 import java.util.List;
 
