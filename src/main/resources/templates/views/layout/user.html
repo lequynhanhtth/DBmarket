@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+>
+<head>
+    <title>Bigdeal - Multi-purpopse E-commerce Html Template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="big-deal">
+    <meta name="keywords" content="big-deal">
+    <meta name="author" content="big-deal">
+    <link rel="icon" href="/assets/images/favicon/favicon.png"
+          type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.png"
+          type="image/x-icon">
+
+    <!--Google font-->
+    <link
+            href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap"
+            rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
+          rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap"
+            rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Days+One&display=swap"
+            rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+
+    <!--icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="/assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/themify.css">
+    <!--Slick slider css-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css"
+          href="/assets/css/slick-theme.css">
+
+    <!--Animate css-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/color11.css"
+          media="screen" id="color">
+</head>
+<body class="bg-light">
+<!-- loader start-->
+<div class="loader-wrapper">
+    <div>
+        <img src="/assets/images/loader.gif" alt="loader">
+    </div>
+</div>
+<header th:replace="~{views/fragment/header :: header}"></header>
+<th:block layout:fragment="content">
+</th:block>
+<!-- footer start -->
+<footer  th:replace="~{views/fragment/footer :: footer}"></footer>
+<!-- footer end -->
+<!--Newsletter modal popup start-->
+<div th:replace="~{views/fragment/newletter :: newletter}"></div>
+<!--Newsletter Modal popup end-->
+<!-- Quick-view modal popup start-->
+<!--<div th:replace="~{views/fragment/quickView :: quickView}"></div>-->
+<!-- Quick-view modal popup end-->
+<!-- edit product modal start-->
+<div th:replace="~{views/fragment/editProduct :: editProduct}"></div>
+<!-- edit product modal end-->
+<!-- Add to cart bar -->
+<div th:replace="~{views/fragment/cartBar :: cartBar}"></div>
+<!-- Add to cart bar end-->
+<!-- Add to wishlist bar -->
+<div th:replace="~{views/fragment/wishlist :: wishlist}"></div>
+<!-- Add to wishlist bar end-->
+<!-- My account bar start-->
+<div th:replace="~{views/fragment/myAccountBar :: myAccountBar}"></div>
+<!-- Add to account bar end-->
+<!-- add to  setting bar  start-->
+<div th:replace="~{views/fragment/settingBar :: settingBar}"></div>
+<!-- add to  setting bar  end-->
+<!-- notification product -->
+<div th:replace="~{views/fragment/notification :: notification}"></div>
+<!-- notification product -->
+<!-- latest jquery-->
+<script
+        src="/assets/js/jquery-3.3.1.min.js"></script>
+<!-- slick js-->
+<script
+        src="/assets/js/slick.js"></script>
+<!-- tool tip js -->
+<script
+        src="/assets/js/tippy-popper.min.js"></script>
+<script
+        src="/assets/js/tippy-bundle.iife.min.js"></script>
+<!-- popper js-->
+<script
+        src="/assets/js/popper.min.js"></script>
+<!-- ajax search js -->
+<script
+        src="/assets/js/typeahead.bundle.min.js"></script>
+<script
+        src="/assets/js/typeahead.jquery.min.js"></script>
+<script
+        src="/assets/js/ajax-custom.js"></script>
+<!-- Timer js-->
+<script
+        src="/assets/js/menu.js"></script>
+<!-- Bootstrap js-->
+<script
+        src="/assets/js/bootstrap.js"></script>
+<!-- father icon -->
+<script
+        src="/assets/js/feather.min.js"></script>
+<script
+        src="/assets/js/feather-icon.js"></script>
+<!-- Bootstrap js-->
+<script
+        src="/assets/js/bootstrap-notify.min.js"></script>
+<!-- Theme js-->
+<script
+        src="/assets/js/script.js"></script>
+<script
+        src="/assets/js/timer1.js"></script>
+<script
+        src="/assets/js/timer2.js"></script>
+<script
+        src="/assets/js/modal.js"></script>
+</body>
+</html>
