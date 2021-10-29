@@ -40,4 +40,11 @@ public class ProductServiceImpl implements ProductService {
     public boolean existById(int id) {
         return productRepository.existsById(id);
     }
+
+    @Override
+    public List<Product> findTop10OrderByDate() {
+        return productRepository.findTop10OrderByDate();
+    }
+
+
 }

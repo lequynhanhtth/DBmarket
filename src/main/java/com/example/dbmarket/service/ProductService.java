@@ -15,4 +15,6 @@ public interface ProductService {
     public Optional<Product> findById(int id);
 
     public boolean existById(int id);
+
+    public List<Product> findTop10OrderByDate();
 }
