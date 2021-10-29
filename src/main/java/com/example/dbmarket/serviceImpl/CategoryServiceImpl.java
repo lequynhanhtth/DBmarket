@@ -5,10 +5,11 @@ import com.example.dbmarket.entities.Customer;
 import com.example.dbmarket.repository.CategoryRepository;
 import com.example.dbmarket.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
