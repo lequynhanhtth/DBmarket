@@ -7,6 +7,8 @@ import com.example.dbmarket.repository.ProductRepository;
 import com.example.dbmarket.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,5 +48,8 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findTop10OrderByDate();
     }
 
-
+    @Override
+    public Page<Product> findByCategoryOrderByRate(String keyword, Pageable pageable) {
+        return productRepository.findByCategoryOrderByRate(keyword, pageable);
+    }
 }

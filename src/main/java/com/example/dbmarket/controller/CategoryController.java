@@ -11,4 +11,5 @@ public class CategoryController {
     public String showCategory(){
         return "views/content/category";
     }
+
 }
