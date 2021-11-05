@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -39,7 +40,7 @@ public class ProductDetailController {
     }
 
 //    @GetMapping("/user/cart/add")
-//    public String addCart(@RequestParam("id") long id, @RequestParam("soluong") int quantity, @RequestParam("size") String size) {
+//    public String addCart(@RequestMapping stParam("id") int id, @RequestParam("soluong") int quantity, @RequestParam("size") String size) {
 //        Product product = productService.findById(id).get();
 //        CartDAO.addCart(id,quantity,product,size);
 //        return "redirect:/home/productdetail/" + id;

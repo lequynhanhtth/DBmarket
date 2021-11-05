@@ -18,4 +18,45 @@ public class Cart {
     @ManyToOne
     @JoinColumn(name = "CustomerId")
     private Customer customer;
+
+
+    public int getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
+    }
+
+    public Integer getNumberOfProduct() {
+        return numberOfProduct;
+    }
+
+    public void setNumberOfProduct(Integer numberOfProduct) {
+        this.numberOfProduct = numberOfProduct;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public List<CartDetail> getCartDetails() {
+        return cartDetails;
+    }
+
+    public void setCartDetails(List<CartDetail> cartDetails) {
+        this.cartDetails = cartDetails;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

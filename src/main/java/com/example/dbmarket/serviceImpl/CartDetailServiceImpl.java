@@ -1,11 +1,8 @@
 package com.example.dbmarket.serviceImpl;
 
 import com.example.dbmarket.entities.CartDetail;
-import com.example.dbmarket.entities.Customer;
 import com.example.dbmarket.repository.CartDetailRepository;
-import com.example.dbmarket.repository.CustomerRepository;
 import com.example.dbmarket.service.CartDetailService;
-import com.example.dbmarket.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +35,10 @@ public class CartDetailServiceImpl implements CartDetailService {
     @Override
     public boolean existById(int id) {
         return cartDetailRepository.existsById(id);
+    }
+
+    @Override
+    public Optional<CartDetail> findByProductId(int productId, int cartId) {
+        return cartDetailRepository.findByProductId(productId,cartId);
     }
 }
