@@ -41,6 +41,26 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Photo> photos;
 
+    public Product(int productId, String productName, String description, Long price, Double weight, Long inStock, Double discount, LocalDate date, List<Rate> rates, Category category, Supplier supplier, List<CartDetail> cartDetails, List<OrderDetail> orderDetails, List<Photo> photos) {
+        this.productId = productId;
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.weight = weight;
+        this.inStock = inStock;
+        this.discount = discount;
+        this.date = date;
+        this.rates = rates;
+        this.category = category;
+        this.supplier = supplier;
+        this.cartDetails = cartDetails;
+        this.orderDetails = orderDetails;
+        this.photos = photos;
+    }
+
+    public Product() {
+    }
+
     public List<Photo> getPhotos() {
         return photos;
     }
