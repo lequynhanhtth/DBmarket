@@ -15,4 +15,6 @@ public interface CartDetailService {
     Optional<CartDetail> findById(int id);
 
     boolean existById(int id);
+
+    Optional<CartDetail> findByProductId(int productId , int cartId);
 }

@@ -22,6 +22,7 @@ public class Cart {
 
 
 
+
     public Cart(int cartId, Integer numberOfProduct, Double totalPrice, List<CartDetail> cartDetails, Customer customer) {
         this.cartId = cartId;
         this.numberOfProduct = numberOfProduct;
@@ -33,6 +34,7 @@ public class Cart {
     public Cart() {
 
     }
+
 
     public int getCartId() {
         return cartId;
