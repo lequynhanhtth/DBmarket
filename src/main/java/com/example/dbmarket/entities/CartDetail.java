@@ -16,4 +16,36 @@ public class CartDetail {
     @ManyToOne
     @JoinColumn(name = "CartId")
     public Cart cart;
+
+    public int getCartDetailId() {
+        return cartDetailId;
+    }
+
+    public void setCartDetailId(int cartDetailId) {
+        this.cartDetailId = cartDetailId;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 }
