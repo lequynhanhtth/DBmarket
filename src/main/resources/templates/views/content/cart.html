@@ -56,7 +56,6 @@
                         <tbody>
                         <tr th:if="${cartDetails != null}" th:each="carts : ${cartDetails}">
 
-
                             <td>
                                 <img th:src="@{'/assets/images/product/'+${carts.product.productId}+'/'+${carts.product.photos[0].photoName}}"
                                      class="img-fluid"
@@ -66,7 +65,6 @@
 
                                 <a
                                         href="javascript:void(0)" th:text="${carts.product.productName}">
-
                                 </a>
                             </td>
                             <td>
