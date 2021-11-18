@@ -36,9 +36,14 @@
                                     <a href="javascript:void(0)"><i class="fa
                                        fa-heart"></i> wishlist</a>
                                 </li>
-                                <li onclick="openAccount()"><a
+
+                                <li th:if="${customer == null}" onclick="openAccount()"><a
                                         href="javascript:void(0)"><i class="fa
                                        fa-user"></i> my profile</a>
+                                </li>
+                                <li th:if = "${customer != null}">
+                                    <a href="#"><i class="fa
+                                       fa-user"></i> [[${customer.email}]]</a>
                                 </li>
                             </ul>
                         </div>
