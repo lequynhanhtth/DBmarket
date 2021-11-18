@@ -5,6 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Cart")
+
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,21 @@ public class Cart {
     @ManyToOne
     @JoinColumn(name = "CustomerId")
     private Customer customer;
+
+
+
+
+    public Cart(int cartId, Integer numberOfProduct, Double totalPrice, List<CartDetail> cartDetails, Customer customer) {
+        this.cartId = cartId;
+        this.numberOfProduct = numberOfProduct;
+        this.totalPrice = totalPrice;
+        this.cartDetails = cartDetails;
+        this.customer = customer;
+    }
+
+    public Cart() {
+
+    }
 
 
     public int getCartId() {

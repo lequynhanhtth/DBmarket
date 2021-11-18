@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/DBmarket")
 public class CategoryController {
     @GetMapping("/Category")
-    public String showCategory(){
+    public String showCategory() {
         return "views/content/category";
     }
 

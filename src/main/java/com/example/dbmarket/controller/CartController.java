@@ -50,6 +50,7 @@ public class CartController {
     @RequestMapping("user/cart/{id}")
     public String addCart(int id){
 
+
         Customer customer =(Customer)session.getAttribute("customer");
         Cart cart = customer.getCart().get(customer.getCart().size()-1);
         CartDetail cartDetail = cartDetailService.findByProductId(id, cart.getCartId()).orElse(null);
