@@ -15,4 +15,5 @@ public interface SupplierService {
     public Optional<Supplier> findById(int id);
 
     public boolean existById(int id);
+    public Optional<Supplier> findByEmail(String email);
 }

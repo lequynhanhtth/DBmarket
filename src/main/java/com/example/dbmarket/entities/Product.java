@@ -38,7 +38,7 @@ public class Product {
     private List<CartDetail> cartDetails;
     @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetails;
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Photo> photos;
 
     public List<Photo> getPhotos() {

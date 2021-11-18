@@ -10,9 +10,9 @@ public interface CategoryService {
 
     void save(Category category);
 
-    void delete(int id);
+    void delete(String id);
 
-    Optional<Category> findById(int id);
+    Optional<Category> findById(String id);
 
-    boolean existById(int id);
+    boolean existById(String id);
 }

@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepository customerRepository;
+
     @Override
     public List<Customer> findAll() {
         return customerRepository.findAll();
@@ -35,5 +37,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public boolean existById(int id) {
         return customerRepository.existsById(id);
+    }
+
+    @Override
+    public Optional<Customer> findByEmail(String email) {
+        return customerRepository.findByEmail(email);
     }
 }

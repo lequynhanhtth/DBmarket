@@ -25,17 +25,17 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(String id) {
         categoryRepository.deleteById(id);
     }
 
     @Override
-    public Optional<Category> findById(int id) {
+    public Optional<Category> findById(String id) {
         return categoryRepository.findById(id);
     }
 
     @Override
-    public boolean existById(int id) {
+    public boolean existById(String id) {
         return categoryRepository.existsById(id);
     }
 }

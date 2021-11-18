@@ -7,10 +7,11 @@ import com.example.dbmarket.repository.SupplierRepository;
 import com.example.dbmarket.service.ShipperService;
 import com.example.dbmarket.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class SupplierServiceImpl implements SupplierService {
     @Autowired
     SupplierRepository supplierRepository;
@@ -38,5 +39,10 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public boolean existById(int id) {
         return supplierRepository.existsById(id);
+    }
+
+    @Override
+    public Optional<Supplier> findByEmail(String email){
+        return supplierRepository.findByEmail(email);
     }
 }
