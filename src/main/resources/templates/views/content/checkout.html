@@ -174,15 +174,14 @@
                                             class="title-box">
                                         <div>Product <span>Total</span></div>
                                     </div>
-                                    <ul class="qty">
-                                        <li>Pink Slim Shirt
-                                            × 1 <span>$25.10</span></li>
-                                        <li>SLim Fit Jeans ×
-                                            1 <span>$555.00</span></li>
+                                    <ul class="qty"  th:if="${cartDetails !=null}" th:each="carts : ${cartDetails}">
+
+                                        <li th:text="${carts.product.productName}+'/'+${carts.product.price}" >
+                                             <span th:text="${carts.product.price} * ${carts.quantity}"></span></li>
                                     </ul>
                                     <ul class="sub-total">
                                         <li>Subtotal <span
-                                                class="count">$380.10</span></li>
+                                                class="count" th:if="${cart != null}" th:text="${cart.totalPrice}"></span></li>
                                         <li>Shipping
                                             <div
                                                     class="shipping">
