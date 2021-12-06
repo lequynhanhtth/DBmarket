@@ -16,4 +16,6 @@ public interface PhotoService {
     public Optional<Photo> findById(int id);
 
     public boolean existById(int id);
+
+    public List<Photo> findByProductId(int id);
 }

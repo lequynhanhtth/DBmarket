@@ -78,7 +78,7 @@
                                                 th:text="${product.productId}"></td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">
                                                 <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
-                                                    style="height: 50px; width: 50px;">
+                                                     style="height: 50px; width: 50px;">
                                             </td>
                                             <td class="jsgrid-cell" style="width: 100px;"
                                                 th:text="${product.productName}"></td>
@@ -87,9 +87,13 @@
                                             <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;"
                                                 th:text="${product.inStock}"></td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
-                                                style="width: 50px;"><input class="jsgrid-button jsgrid-edit-button"
-                                                                            type="button" title="Edit">
-                                                <a class="jsgrid-button jsgrid-delete-button" type="button" th:href="@{'/supplier/listProduct/delete/'+${product.productId}}"></a></td>
+                                                style="width: 50px;">
+                                                <a class="jsgrid-button jsgrid-edit-button"
+                                                   th:href="@{'/supplier/product/edit?id='+${product.productId}}"
+                                                   type="button" title="Edit"></a>
+                                                <a class="jsgrid-button jsgrid-delete-button" type="button"
+                                                   th:href="@{'/supplier/listProduct/delete/'+${product.productId}}"></a>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>

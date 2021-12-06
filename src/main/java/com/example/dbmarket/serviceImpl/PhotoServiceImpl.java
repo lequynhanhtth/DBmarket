@@ -34,6 +34,11 @@ public class PhotoServiceImpl implements PhotoService {
 
     @Override
     public boolean existById(int id) {
-        return false;
+        return photoRepository.existsById(id);
+    }
+
+    @Override
+    public List<Photo> findByProductId(int id) {
+        return photoRepository.findByProductid(id);
     }
 }

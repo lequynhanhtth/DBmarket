@@ -3,11 +3,12 @@ package com.example.dbmarket.entities;
 import org.apache.tomcat.jni.Mmap;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "Category")
-public class Category {
+public class Category implements Serializable {
     @Id
     private String categoryId;
     @Column(name = "Name")
@@ -16,6 +17,8 @@ public class Category {
     private String description;
     @Column(name = "Photo")
     private String photo;
+    @Column(name = "PhotoSmall")
+    private String photoSmall;
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
@@ -58,4 +61,14 @@ public class Category {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+
+    public String getPhotoSmall() {
+        return photoSmall;
+    }
+
+    public void setPhotoSmall(String photoSmall) {
+        this.photoSmall = photoSmall;
+    }
+
+
 }

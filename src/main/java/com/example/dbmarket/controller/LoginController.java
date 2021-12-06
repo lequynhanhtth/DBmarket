@@ -7,6 +7,7 @@ import com.example.dbmarket.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
@@ -30,6 +31,7 @@ public class LoginController {
             if (customer != null) {
                 if (password.equals(customer.getPassword())) {
                     session.setAttribute("customer",customer);
+                    return "redirect:/DBmarket/Home";
                 }
             }
         }else{
@@ -43,4 +45,10 @@ public class LoginController {
         }
         return "views/content/home";
     }
+    @RequestMapping("/customer/logout")
+    public String logout(){
+        session.removeAttribute("customer");
+        return "redirect:/DBmarket/Home";
+    }
+
 }

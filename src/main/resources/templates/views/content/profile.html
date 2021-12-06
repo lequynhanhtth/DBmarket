@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/layout/user.html}">
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<section class="section-big-py-space b-g-light" layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="account-sidebar"><a class="popup-btn">my account</a></div>
+                <div class="dashboard-left">
+                    <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back</span></div>
+                    <div class="block-content ">
+                        <ul>
+                            <li class="active"><a th:href="@{'/customer/profile'}">Profile</a></li>
+                            <li><a th:href="@{'/customer/changepassword'}">Change Password</a></li>
+                            <li><a th:href="@{'/customer/listOrder'}">Orders List</a></li>
+                            <li class="last"><a th:href="@{'/customer/logout'}">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="dashboard-right">
+                    <div class="dashboard">
+                        <form th:action="@{'/customer/profile/update'}">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h3 class="mb-3">PERSONAL DETAIL</h3>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Fullname</label>
+                                                <input type="text" name = "fullname" th:value="${customer.fullname}" class="form-control"
+                                                       placeholder="Enter Your name" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Phone number</label>
+                                                <input type="text" name = "phone" th:value="${customer.phone}" class="form-control"
+                                                       placeholder="Enter your number" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" name ="email" th:value="${customer.email}" class="form-control"
+                                                           placeholder="Email" required="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h3 class="mb-3 spc-responsive">SHIPPING ADDRESS</h3>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Address *</label>
+                                                <input type="text" name="address"   th:value="${customer.address}" class="form-control" placeholder="Address" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="btn btn-sm btn-normal mb-lg-5" type="submit">Save setting</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

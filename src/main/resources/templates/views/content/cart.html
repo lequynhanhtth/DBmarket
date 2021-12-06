@@ -58,37 +58,33 @@
 
                             <td>
                                 <img th:src="@{'/assets/images/product/'+${carts.product.productId}+'/'+${carts.product.photos[0].photoName}}"
-                                     class="img-fluid"
+                                     class="img-fluid" width="150px"
                                      alt="product">
                             </td>
                             <td>
-
-                                <a
-                                        href="javascript:void(0)" th:text="${carts.product.productName}">
-                                </a>
+                                <a href="javascript:void(0)" th:text="${carts.product.productName}"> </a>
                             </td>
                             <td>
                                 <h2 th:text="${carts.product.price}"></h2></td>
                             <td>
                                 <div class="qty-box">
-                                    <div
-                                            class="input-group">
-                                        <input th:text="${carts.quantity}">
+                                    <div class="input-group">
+                                        <input th:value="${carts.quantity}">
                                     </div>
                                 </div>
                             </td>
-                            <td><a
-                                    href="javascript:void(0)"
-                                    class="icon"><i
-                                    class="ti-close"></i></a></td>
+                            <td>
+                                <a th:href="@{'/customer/cart/delete?id='+${carts.cartDetailId}+'&&url='+${#httpServletRequest.requestURI}}" class="icon">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </td>
                             <td>
                                 <h2 class="td-color" th:text="${carts.product.price} * ${carts.quantity}"></h2></td>
                         </tr>
                         </tbody>
 
                     </table>
-                    <table class="table cart-table
-                                    table-responsive-md">
+                    <table class="table cart-table table-responsive-md">
                         <tfoot>
                         <tr>
                             <td>total price :</td>
@@ -104,7 +100,7 @@
                         href="javascript:void(0)"
                         class="btn btn-normal">continue
                     shopping</a> <a
-                        href="javascript:void(0)"
+                        th:href="@{'/customer/cart/order'}"
                         class="btn btn-normal ms-3">check
                     out</a></div>
             </div>

@@ -3,12 +3,13 @@ package com.example.dbmarket.entities;
 import org.hibernate.mapping.Join;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "Product")
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
@@ -38,7 +39,7 @@ public class Product {
     private List<CartDetail> cartDetails;
     @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetails;
-    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "product", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Photo> photos;
 
     public Product(int productId, String productName, String description, Long price, Double weight, Long inStock, Double discount, LocalDate date, List<Rate> rates, Category category, Supplier supplier, List<CartDetail> cartDetails, List<OrderDetail> orderDetails, List<Photo> photos) {

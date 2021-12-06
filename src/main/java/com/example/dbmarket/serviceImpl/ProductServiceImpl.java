@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository productRepository;
@@ -41,6 +43,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public boolean existById(int id) {
         return productRepository.existsById(id);
+    }
+
+    @Override
+    public List<Product> findBySupplierId(int id) {
+        return productRepository.findBySupplierId(id);
     }
 
     @Override

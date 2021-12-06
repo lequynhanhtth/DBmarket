@@ -899,24 +899,28 @@
                                 <div class="product-box product-box2">
                                     <div class="product-imgbox">
                                         <div class="product-front">
-                                            <a href="product-page(left-sidebar).html">
+                                            <a th:href="@{'/DBmarket/productdetail/'+${product.productId}}">
                                                 <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
                                                      class="img-fluid"
                                                      alt="product">
                                             </a>
                                         </div>
                                         <div class="product-back" style="width: 100%">
-                                            <a href="product-page(left-sidebar).html">
+                                            <a th:href="@{'/DBmarket/productdetail/'+${product.productId}}">
                                                 <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos.size>0 ?product.photos[1].photoName : product.photos[0].photoName}}"
                                                      class="img-fluid"
                                                      alt="product">
                                             </a>
                                         </div>
                                         <div class="product-icon icon-inline">
-                                            <button class="tooltip-top add-cartnoty"
-                                                    data-tippy-content="Add to cart">
+                                            <button th:if="${customer == null}" class="tooltip-top add-cartnoty" data-tippy-content="Add to cart" onclick="openAccount()">
                                                 <i data-feather="shopping-cart"></i>
                                             </button>
+                                            <a th:if="${customer != null}" class="tooltip-top add-cartnoty"
+                                               th:href="@{'/customer/cart?id='+${product.productId}+'&&url='+${#httpServletRequest.requestURI}}"
+                                                    data-tippy-content="Add to cart">
+                                                <i data-feather="shopping-cart"></i>
+                                            </a>
                                             <a href="javascript:void(0)" class="add-to-wish tooltip-top"
                                                data-tippy-content="Add to Wishlist">
                                                 <i data-feather="heart"></i>
@@ -949,7 +953,7 @@
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star-o"></i></li>
                                         </ul>
-                                        <a href="product-page(no-sidebar).html">
+                                        <a th:href="@{'/DBmarket/productdetail/'+${product.productId}}">
                                             <h3>women fashion shoes</h3>
                                         </a>
                                         <h5> $50
@@ -968,8 +972,7 @@
     <!--title start-->
     <div
             class="title8 section-big-pt-space">
-        <h4>our
-            category</h4>
+        <h4>our category</h4>
     </div>
     <!--title end-->
     <!-- category start -->
@@ -977,13 +980,14 @@
             class="category4 section-big-pb-space">
         <div class="container-fluid">
             <div class="row">
+
                 <div class="col-12 pr-0">
-                    <th:block th:each="category : ${categories}">
-                        <div class="category-slide5two no-arrow">
+                    <div class="category-slide5two no-arrow">
+                        <th:block th:each="category : ${categories}">
                             <div>
                                 <div class="category-box">
                                     <div class="img-wrraper">
-                                        <a href="category-page(left-sidebar).html">
+                                        <a th:href="@{'/DBmarket/Category?categoryId='+${category.categoryId}}">
                                             <img th:src="@{'/assets/images/category/'+${category.categoryId}+'/'+${category.photo}}"
                                                  alt="category"
                                                  class="img-fluid">
@@ -993,20 +997,19 @@
                                         <a href="category-page(left-sidebar).html">
                                             <h2 th:text="${category.name}"></h2>
                                         </a>
-                                        <ul>
+                                        <ul th:if="${products.size > 0}">
                                             <li th:each="product,state:${category.products}" th:if="${state.index<5}">
                                                 <a href="category-page(left-sidebar).html"
                                                    th:text="${product.productName}"> </a>
                                             </li>
                                         </ul>
-                                        <a href="category-page(left-sidebar).html"
+                                        <a th:href="@{'/DBmarket/Category?categoryId='+${category.categoryId}}"
                                            class="btn btn-rounded btn-md btn-block">shop now</a>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-                    </th:block>
+                        </th:block>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1362,7 +1365,7 @@
                 class="tab-prodcut-contain">
             <ul class="tabs tab-title">
                 <li th:each="category,status : ${categories}" th:if="${status.index < 5}">
-                    <a th:href="@{'tab-'+${status.index}}" th:text="${category.name}" ></a>
+                    <a th:href="@{'tab-'+${status.index}}" th:text="${category.name}"></a>
                 </li>
             </ul>
         </div>
@@ -1376,11 +1379,12 @@
                 <div class="col-12 p-0">
                     <div class="theme-tab product">
                         <div class="tab-content-cls">
-                            <th:block th:each="category,status : ${categories}"  th:if="${status.index < 5}">
+                            <th:block th:each="category,status : ${categories}" th:if="${status.index < 5}">
                                 <div th:id="'tab-'+${status.index}" class="tab-content active default product-block3">
                                     <div class="col-12">
                                         <div class="product-slide-3 no-arrow">
-                                            <div th:each="product,state : ${category.products}" th:if="${state.index < 6}">
+                                            <div th:each="product,state : ${category.products}"
+                                                 th:if="${state.index < 6}">
                                                 <div class="product-box3">
                                                     <div class="media">
                                                         <div class="img-wrapper">
@@ -2763,6 +2767,6 @@
             </div>
         </div>
     </div>
-    </th:block>
+</th:block>
 </body>
 </html>

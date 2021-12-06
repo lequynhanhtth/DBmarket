@@ -9,6 +9,7 @@
 <body>
 <!-- breadcrumb start -->
 <th:block layout:fragment="content">
+
     <div class="breadcrumb-main ">
         <div class="container">
             <div class="row">
@@ -38,32 +39,32 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <div class="filter-main-btn mb-2"><span class="filter-btn"><i class="fa fa-filter"
-                                                                                                  aria-hidden="true"></i> filter</span>
+                                    <div class="filter-main-btn mb-2"><span class="filter-btn">
+                                        <i class="fa fa-filter" aria-hidden="true"></i> filter</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="product-slick">
-                                        <div><<div><img th:src="@{'/assets/images/product/'+${productDetail.productId}+'/'+${productDetail.photos[0].photoName}}"
-                                                        class="img-fluid"
-                                                        alt="product"></div></div>
-                                        <div><div><img th:src="@{'/assets/images/product/'+${productDetail.productId}+'/'+${productDetail.photos[1].photoName}}"
-                                                       class="img-fluid"
-                                                       alt="product"></div></div>
+                                        <th:block th:each="photo,state  : ${productDetail.photos}">
+                                            <div th:if="${photo.photoName != null }">
+                                                <img th:src="@{'/assets/images/product/'+${productDetail.productId}+'/'+${photo.photoName}}"
+                                                     alt=""
+                                                     th:class="'img-fluid  image_zoom_cls-'+${state.index}">
+                                            </div>
+                                        </th:block>
                                     </div>
                                     <div class="row">
                                         <div class="col-12 p-0">
                                             <div class="slider-nav">
-                                                <div><img src="../assets/images/product-sidebar/001.jpg" alt=""
-                                                          class="img-fluid  image_zoom_cls-0"></div>
-                                                <div><img src="../assets/images/product-sidebar/002.jpg" alt=""
-                                                          class="img-fluid  image_zoom_cls-1"></div>
-                                                <div><img src="../assets/images/product-sidebar/003.jpg" alt=""
-                                                          class="img-fluid  image_zoom_cls-2"></div>
-                                                <div><img src="../assets/images/product-sidebar/004.jpg" alt=""
-                                                          class="img-fluid  image_zoom_cls-3"></div>
+                                                <th:block th:each="photo,state : ${productDetail.photos}">
+                                                    <div th:if="${photo.photoName !=  null  }">
+                                                        <img th:src="@{'/assets/images/product/'+${productDetail.productId}+'/'+${photo.photoName}}"
+                                                             alt=""
+                                                             th:class="'img-fluid  image_zoom_cls-'+${state.index}">
+                                                    </div>
+                                                </th:block>
                                             </div>
                                         </div>
                                     </div>
@@ -238,27 +239,31 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <h6 class="product-title">quantity</h6>
-                                            <div class="qty-box">
-                                                <div class="input-group">
-                                                    <button class="qty-minus"></button>
-                                                    <input class="qty-adj form-control" type="number" value="1"/>
-                                                    <button class="qty-plus"></button>
+                                            <form th:action="@{'/customer/cart'}" method="get">
+                                                <h6 class="product-title">quantity</h6>
+                                                <div class="qty-box">
+                                                    <div class="input-group">
+                                                        <input class="qty-adj form-control" name="quantity"
+                                                               type="number" value="1"/>
+                                                        <input type="hidden"
+                                                               th:value="${#httpServletRequest.requestURI}" name="url"/>
+                                                        <input type="hidden" th:value="${productDetail.productId}"
+                                                               name="id">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="product-buttons">
-                                                <a href="javascript:void(0)" id="cartEffect"
-                                                   class="btn cart-btn btn-normal tooltip-top"
-                                                   data-tippy-content="Add to cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                    add to cart
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                   class="btn btn-normal add-to-wish tooltip-top"
-                                                   data-tippy-content="Add to wishlist">
-                                                    <i class="fa fa-heart" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
+                                                <div class="product-buttons">
+                                                    <button type="submit" class="btn cart-btn btn-normal tooltip-top"
+                                                            data-tippy-content="Add to cart">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        add to cart
+                                                    </button>
+                                                    <a href="javascript:void(0)"
+                                                       class="btn btn-normal add-to-wish tooltip-top"
+                                                       data-tippy-content="Add to wishlist">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </form>
                                         </div>
                                         <div class="pro-group">
                                             <h6 class="product-title">delivery location</h6>

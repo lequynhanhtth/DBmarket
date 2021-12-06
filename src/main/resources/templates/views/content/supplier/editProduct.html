@@ -24,7 +24,7 @@
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
                         <li class="breadcrumb-item">Digital</li>
-                        <li class="breadcrumb-item active">Add Product</li>
+                        <li class="breadcrumb-item active">Edit Product</li>
                     </ol>
                 </div>
             </div>
@@ -43,16 +43,17 @@
                         </div>
                         <div class="card-body">
                             <div class="digital-add needs-validation">
+                                <input type="hidden" name="productId" th:value="${product.productId}">
                                 <div class="form-group">
                                     <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Product
                                         Name</label>
                                     <input class="form-control" id="validationCustom01" name="productName" type="text"
-                                           required="">
+                                           required="" th:value="${product.productName}">
                                 </div>
                                 <div class="form-group">
                                     <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> weight</label>
                                     <input class="form-control" id="validationCustomtitle" name="weight" type="text"
-                                           required="">
+                                           required="" th:value="${product.weight}">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label"><span>*</span> Categories</label>
@@ -60,42 +61,44 @@
                                         <option value="">--Select--</option>
                                         <th:block th:each="category : ${categories}">
                                             <option th:value="${category.categoryId}"
-                                                    th:text="${category.name}"></option>
+                                                    th:text="${category.name}"
+                                                    th:selected="${category.categoryId == product.category.categoryId}"></option>
                                         </th:block>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
                                     <input class="form-control" name="price" id="validationCustom02" type="text"
+                                           th:value="${product.price}"
                                            required="">
                                 </div>
                                 <div class="form-group">
                                     <label for="validationCustom02" class="col-form-label"><span>*</span> In
                                         Stock</label>
                                     <input class="form-control" name="inStock" id="validationCustom03" type="text"
-                                           required="">
+                                           th:value="${product.inStock}" required="">
                                 </div>
                                 <div style="margin-top: 10px">
-                                    <img id="previewImg" width="300px"
+                                    <img id="previewImg"  width="300px" th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
+                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"  th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
                                                class="form-control-user" onchange="previewFile(this);">
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px">
-                                    <img id="previewImg1" width="300px"
+                                    <img id="previewImg1" width="300px" th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[1].photoName}}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
+                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"  th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[1].photoName}}"
                                                class="form-control-user" onchange="previewFile1(this);">
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px">
-                                    <img id="previewImg2" width="300px"
+                                    <img id="previewImg2" width="300px"  th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[2].photoName}}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
+                                        <input type="file" style="width: 300px; padding: 0;" name="photo1" th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[2].photoName}}"
                                                class="form-control-user" onchange="previewFile2(this);">
                                     </div>
                                 </div>
@@ -112,37 +115,37 @@
                         <div class="card-body">
                             <div class="digital-add needs-validation">
                                 <div style="margin-top: 10px">
-                                    <img id="previewImg3" width="300px"
+                                    <img id="previewImg3"  width="300px"  th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[3].photoName}}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
+                                        <input type="file" style="width: 300px; padding: 0;" name="photo1" th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[3].photoName}}"
                                                class="form-control-user" onchange="previewFile3(this);">
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px">
-                                    <img id="previewImg4" width="300px"
+                                    <img id="previewImg4" width="300px"  th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[4].photoName}}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
+                                        <input type="file" style="width: 300px; padding: 0;" name="photo1" th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[4].photoName}}"
                                                class="form-control-user" onchange="previewFile4(this);">
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px">
-                                    <img id="previewImg5" width="300px"
+                                    <img id="previewImg5" width="300px"  th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[5].photoName}}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
+                                        <input type="file" style="width: 300px; padding: 0;" name="photo1" th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[5].photoName}}"
                                                class="form-control-user" onchange="previewFile5(this);">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Description</label>
-                                    <textarea name="description" rows="4" cols="12"></textarea>
+                                    <textarea name="description" rows="4" cols="12" th:text="${product.description}"></textarea>
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="product-buttons text-center">
-                                        <button type="submit" class="btn btn-primary">Add</button>
-                                        <button type="button" class="btn btn-light">Discard</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="button" class="btn btn-light">Delete</button>
                                     </div>
                                 </div>
                             </div>

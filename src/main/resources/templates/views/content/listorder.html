@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/layout/user.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="section-big-py-space b-g-light" layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="account-sidebar"><a class="popup-btn">my account</a></div>
+                <div class="dashboard-left">
+                    <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left"
+                                                                                     aria-hidden="true"></i> back</span>
+                    </div>
+                    <div class="block-content ">
+                        <ul>
+                            <li><a th:href="@{'/customer/profile'}">Profile</a></li>
+                            <li class="active"><a th:href="@{'/customer/changepassword'}">Change Password</a></li>
+                            <li><a th:href="@{'/customer/listOrder'}">Orders List</a></li>
+                            <li class="last"><a th:href="@{'/customer/logout'}">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="dashboard-right">
+                    <div class="dashboard">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Product Lists</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="basicScenario" class="product-list digital-product jsgrid"
+                                             style="position: relative; height: auto; width: 100%;">
+                                            <div class="jsgrid-grid-header jsgrid-header-scrollbar">
+                                                <table class="jsgrid-table">
+                                                    <tbody>
+
+                                                    <tr class="jsgrid-header-row">
+                                                        <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
+                                                            style="width: 30px;">Id
+                                                        </th>
+                                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
+                                                            style="width: 50px;">Fullname
+                                                        </th>
+                                                        <th class="jsgrid-header-cell jsgrid-header-sortable"
+                                                            style="width: 100px;">
+                                                            Email
+                                                        </th>
+                                                        <th class="jsgrid-header-cell jsgrid-header-sortable"
+                                                            style="width: 50px;">
+                                                            Date
+                                                        </th>
+                                                        <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
+                                                            style="width: 50px;">Status
+                                                        </th>
+                                                        <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center"
+                                                            style="width: 50px;"></th>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="jsgrid-grid-body">
+                                                <table class="jsgrid-table">
+                                                    <tbody>
+                                                    <tr th:each="order : ${orders}" class="jsgrid-row">
+                                                        <td class="jsgrid-cell jsgrid-align-right" style="width: 30px;"
+                                                            th:text="${order.orderId}"></td>
+                                                        <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"
+                                                            th:text="${order.fullname}">
+
+                                                        </td>
+                                                        <td class="jsgrid-cell" style="width: 100px;"
+                                                            th:text="${order.email}"></td>
+                                                        <td class="jsgrid-cell" style="width: 50px;"
+                                                            th:text="${order.date}"></td>
+                                                        <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;"
+                                                            th:text="${order.status}"></td>
+                                                        <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
+                                                            style="width: 50px;"><a
+                                                                class="jsgrid-button jsgrid-search-button"
+                                                                type="button" title="Detail"
+                                                                th:href="@{'/supplier/invoice?id='+${order.orderId}}">
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="jsgrid-pager-container" style="display: none;">
+                                                <div class="jsgrid-pager">Pages: <span
+                                                        class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                                        href="javascript:void(0);">First</a></span> <span
+                                                        class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                                        href="javascript:void(0);">Prev</a></span> <span
+                                                        class="jsgrid-pager-page jsgrid-pager-current-page">1</span>
+                                                    <span
+                                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                                            href="javascript:void(0);">Next</a></span> <span
+                                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                                            href="javascript:void(0);">Last</a></span> &nbsp;&nbsp; 1 of
+                                                    1
+                                                </div>
+                                            </div>
+                                            <div class="jsgrid-load-shader"
+                                                 style="display: none; position: absolute; inset: 0px; z-index: 1000;"></div>
+                                            <div class="jsgrid-load-panel"
+                                                 style="display: none; position: absolute; top: 50%; left: 50%; z-index: 1000;">
+                                                Please, wait...
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
