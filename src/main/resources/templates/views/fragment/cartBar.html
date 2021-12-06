@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="cart_media">
-                <ul class="cart_product" th:if="${customer != null}">
+                <ul class="cart_product" th:if="${customer != null && customer.cart != null}">
                     <li th:each="cartDetail : ${customer.cart[0].cartDetails}">
                         <div class="media">
                             <a th:href="@{'/DBmarket/productdetail/'+${cartDetail.product.productId}}">
