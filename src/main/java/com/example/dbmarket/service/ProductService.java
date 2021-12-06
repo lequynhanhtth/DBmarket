@@ -18,6 +18,8 @@ public interface ProductService {
 
     public boolean existById(int id);
 
+    public List<Product> findBySupplierId(int id);
+
     public List<Product> findTop10OrderByDate();
 
     public Page<Product> findByCategoryOrderByRate(String keyword, Pageable pageable);

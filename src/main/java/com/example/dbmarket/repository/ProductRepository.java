@@ -12,4 +12,6 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     List<Product> findTop10OrderByDate();
 @Query("select o from Product o where o.category.categoryId like ?1")
     Page<Product> findByCategoryOrderByRate(String keyword, Pageable pageable);
+@Query("SELECT  o FROM Product  o WHERE o.supplier.supplierId = ?1")
+    List<Product> findBySupplierId(int Id);
 }

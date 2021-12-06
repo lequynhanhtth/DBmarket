@@ -926,28 +926,23 @@
                                         </div>
                                         <div class="product-wrapper-grid category-6 product">
                                             <div class="row">
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
+                                                <div th:each="product:${products}" class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
                                                     <div class="product-box">
                                                         <div class="product-imgbox">
                                                             <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/1.jpg"
+                                                                <a th:href="@{'/DBmarket/productdetail/'+${product.productId}}">
+                                                                    <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
                                                                          class="img-fluid" alt="product"/>
                                                                 </a>
                                                             </div>
                                                             <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a1.jpg"
+                                                                <a th:href="@{'/DBmarket/productdetail/'+${product.productId}}">
+                                                                    <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos.size>0 ?product.photos[1].photoName : product.photos[0].photoName}}"
                                                                          class="img-fluid" alt="product"/>
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
+                                                        <div class="product-detail detail-center detail-inverse">
                                                             <div class="detail-title">
                                                                 <div class="detail-left">
                                                                     <div class="rating-star">
@@ -957,884 +952,17 @@
                                                                         <i class="fa fa-star"></i>
                                                                         <i class="fa fa-star"></i>
                                                                     </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
+                                                                    <p th:text="${product.description}">
+
                                                                     </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">realme not 7</h6>
+                                                                    <a th:href="@{'/DBmarket/productdetail/'+${product.productId}}">
+                                                                        <h6 class="price-title" th:text="${product.productName}"></h6>
                                                                     </a>
                                                                 </div>
                                                                 <div class="detail-right">
-                                                                    <div class="check-price">$60.21</div>
+                                                                    <div class="check-price" th:text="${product.price}">$60.21</div>
                                                                     <div class="price">
-                                                                        <div class="price">$50.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/2.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a2.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">
-                                                                            wireless speaker
-                                                                        </h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$56.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$ 24.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/3.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a3.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">
-                                                                            Travel Backpack
-                                                                        </h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$90.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$70.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/4.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a4.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">Modern Shoes</h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$ 70.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$ 44.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/5.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a5.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">sleeve fress</h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$ 56.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$ 24.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/6.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a5.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">
-                                                                            Acer Swift laptop
-                                                                        </h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$ 57.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$ 30.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/7.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a7.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">
-                                                                            fastrack watch
-                                                                        </h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$ 88.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$65.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product">
-                                                        <div class="product-box">
-                                                            <div class="product-imgbox">
-                                                                <div class="product-front">
-                                                                    <img src="../assets/images/layout-1/product/3.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </div>
-                                                                <div class="product-back">
-                                                                    <img src="../assets/images/layout-1/product/a3.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-detail detail-center">
-                                                                <div class="detail-title">
-                                                                    <div class="detail-left">
-                                                                        <div class="rating-star">
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i>
-                                                                        </div>
-                                                                        <p>
-                                                                            Lorem Ipsum is simply dummy text of the
-                                                                            printing and typesetting industry. Lorem
-                                                                            Ipsum has been the industry's standard
-                                                                            dummy text ever since the 1500s, when an
-                                                                            unknown printer took a galley of type
-                                                                            and scrambled it to make a type specimen
-                                                                            book
-                                                                        </p>
-                                                                        <a href="">
-                                                                            <h6 class="price-title">
-                                                                                reader will be distracted.
-                                                                            </h6>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="detail-right">
-                                                                        <div class="check-price">$ 56.21</div>
-                                                                        <div class="price">
-                                                                            <div class="price">$ 24.05</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="icon-detail">
-                                                                    <button data-bs-toggle="modal"
-                                                                            data-bs-target="#addtocart"
-                                                                            onclick="openCart()"
-                                                                            class="tooltip-top" data-tippy-content="Add
-                                                                          to
-                                                                          cart">
-                                                                        <i data-feather="shopping-cart"></i>
-                                                                    </button>
-                                                                    <a href="javascript:void(0)"
-                                                                       class="add-to-wish tooltip-top"
-                                                                       data-tippy-content="Add
-                                                                          to
-                                                                          Wishlist">
-                                                                        <i data-feather="heart"></i>
-                                                                    </a>
-                                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                       data-bs-target="#quick-view"
-                                                                       class="tooltip-top"
-                                                                       data-tippy-content="Quick View">
-                                                                        <i data-feather="eye"></i>
-                                                                    </a>
-                                                                    <a href="compare.html" class="tooltip-top"
-                                                                       data-tippy-content="Compare">
-                                                                        <i data-feather="refresh-cw"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/8.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a8.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">
-                                                                            dressing mirror
-                                                                        </h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$ 97.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$ 84.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/1.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a1.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">realme not 7</h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$60.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$50.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/2.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a2.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">
-                                                                            wireless speaker
-                                                                        </h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$56.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$ 24.05</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="icon-detail">
-                                                                <button class="tooltip-top add-cartnoty"
-                                                                        data-tippy-content="Add
-                                                                        to
-                                                                        cart">
-                                                                    <i data-feather="shopping-cart"></i>
-                                                                </button>
-                                                                <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
-                                                                        to
-                                                                        Wishlist">
-                                                                    <i data-feather="heart"></i>
-                                                                </a>
-                                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
-                                                                    <i data-feather="eye"></i>
-                                                                </a>
-                                                                <a href="compare.html" class="tooltip-top"
-                                                                   data-tippy-content="Compare">
-                                                                    <i data-feather="refresh-cw"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="
-                              col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box
-                            ">
-                                                    <div class="product-box">
-                                                        <div class="product-imgbox">
-                                                            <div class="product-front">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/3.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-back">
-                                                                <a href="product-page(left-sidebar).html">
-                                                                    <img src="../assets/images/layout-4/product/a3.jpg"
-                                                                         class="img-fluid" alt="product"/>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="
-                                  product-detail
-                                  detail-center detail-inverse
-                                ">
-                                                            <div class="detail-title">
-                                                                <div class="detail-left">
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <p>
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing and typesetting industry. Lorem
-                                                                        Ipsum has been the industry's standard
-                                                                        dummy text ever since the 1500s, when an
-                                                                        unknown printer took a galley of type and
-                                                                        scrambled it to make a type specimen book
-                                                                    </p>
-                                                                    <a href="product-page(left-sidebar).html">
-                                                                        <h6 class="price-title">
-                                                                            Travel Backpack
-                                                                        </h6>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="detail-right">
-                                                                    <div class="check-price">$90.21</div>
-                                                                    <div class="price">
-                                                                        <div class="price">$70.05</div>
+                                                                        <div class="price" th:text="${product.price}">$50.05</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1875,28 +1003,27 @@
                                                                     navigation">
                                                             <ul class="pagination">
                                                                 <li class="page-item">
-                                                                    <a class="page-link" href="javascript:void(0)"
-                                                                       aria-label="Previous"><span
+                                                                    <a class="page-link"
+                                                                       th:href="@{'/DBmarket/Category?categoryId='${categoryId}+'&&pageNumber='+${pageNumber - 1}}"
+                                                                       aria-label="Previous" th:classappend="${pageNumber == 1 ? ' disabled':''}">
+                                                                        <span
                                                                             aria-hidden="true"><i
                                                                             class="fa fa-chevron-left"
                                                                             aria-hidden="true"></i></span>
                                                                         <span class="sr-only">Previous</span></a>
                                                                 </li>
+                                                                <th:block th:each="i: ${#numbers.sequence(1, pageMax)}">
+                                                                    <li class="page-item">
+                                                                        <a class="page-link" th:href="@{'/DBmarket/Category?categoryId='+${categoryId}+'&&pageNumber='+${i}}">[[${i}]]</a>
+                                                                    </li>
+                                                                </th:block>
+
                                                                 <li class="page-item">
-                                                                    <a class="page-link" href="javascript:void(0)">1</a>
-                                                                </li>
-                                                                <li class="page-item">
-                                                                    <a class="page-link" href="javascript:void(0)">2</a>
-                                                                </li>
-                                                                <li class="page-item">
-                                                                    <a class="page-link" href="javascript:void(0)">3</a>
-                                                                </li>
-                                                                <li class="page-item">
-                                                                    <a class="page-link" href="javascript:void(0)"
-                                                                       aria-label="Next"><span
-                                                                            aria-hidden="true"><i
-                                                                            class="fa fa-chevron-right"
-                                                                            aria-hidden="true"></i></span>
+                                                                    <a class="page-link"
+                                                                       th:classappend="${pageNumber == pageMax ? ' disabled':''}"
+                                                                       th:href="@{'/DBmarket/Category?categoryId='${categoryId}+'&&pageNumber='+${pageNumber + 1}}" aria-label="Next">
+                                                                        <span aria-hidden="true">
+                                                                            <i class="fa fa-chevron-right" aria-hidden="true"></i></span>
                                                                         <span class="sr-only">Next</span></a>
                                                                 </li>
                                                             </ul>
@@ -1929,7 +1056,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-xs-12">
                             <div class="quick-view-img">
-                                <img src="../assets/images/layout-1/product/3.jpg" alt="" class="img-fluid bg-img" />
+                                <img src="../assets/images/layout-1/product/3.jpg" alt="" class="img-fluid bg-img"/>
                             </div>
                         </div>
                         <div class="col-lg-6 rtl-text">
@@ -2047,8 +1174,8 @@
                                                                   3.809 0 0 1
                                                                   .825-4.151l2.324-2.324a3.809
                                                                   3.809 0 0 0
-                                                                  -.003-5.39z" fill="#f9cc4e" />
-                                                    <circle cx="64" cy="45.848" fill="#4ec4b5" r="29.146" />
+                                                                  -.003-5.39z" fill="#f9cc4e"/>
+                                                    <circle cx="64" cy="45.848" fill="#4ec4b5" r="29.146"/>
                                                     <path d="m59.795
                                                                       41.643
                                                                       4.205-12.614
@@ -2057,7 +1184,7 @@
                                                                       8.41 4.205
                                                                       12.615-12.615-8.41-12.615
                                                                       8.41
-                                                                      4.205-12.615-8.41-8.41z" fill="#f9cc4e" />
+                                                                      4.205-12.615-8.41-8.41z" fill="#f9cc4e"/>
                                                     <path d="m87.579
                                                                         74.924h-1.6a3.809
                                                                         3.809 0
@@ -2096,7 +1223,7 @@
                                                                         36.3
                                                                         5.872-17.256
                                                                         17.26
-                                                                        5.876z" fill="#f95050" />
+                                                                        5.876z" fill="#f95050"/>
                                                 </g>
                                             </svg>
                                             3 best seller
@@ -2127,7 +1254,7 @@
                                                                           3.11
                                                                           7.25
                                                                           6.87
-                                                                          8.47z" fill="#f2d1a5" />
+                                                                          8.47z" fill="#f2d1a5"/>
                                                     <path d="m420.39
                                                                             497h-343.78c-6.21
                                                                             0-7.159-6.156-6.089-12.266l2.53-14.57c3.82-21.96
@@ -2154,7 +1281,7 @@
                                                                             14.57c1.07
                                                                             6.111-3.64
                                                                             11.711-9.85
-                                                                            11.711z" fill="#7e8b96" />
+                                                                            11.711z" fill="#7e8b96"/>
                                                     <g>
                                                         <path d="m384.055
                                                                                 215c-2.94
@@ -2170,7 +1297,7 @@
                                                                                 0-12.55-5.37-12.94-12.23
                                                                                 0
                                                                                 0-5.58-84.28-7.63-128.77z"
-                                                              fill="#dc4955" />
+                                                              fill="#dc4955"/>
                                                     </g>
                                                     <path d="m141
                                                                                 271c-27.062
@@ -2188,7 +1315,7 @@
                                                                                 0
                                                                                 27.062-21.938
                                                                                 49-49
-                                                                                49z" fill="#f2bb88" />
+                                                                                49z" fill="#f2bb88"/>
                                                     <path d="m360.6
                                                                                   415.39-.06.09c-49.3
                                                                                   66.23-174.56
@@ -2202,7 +1329,7 @@
                                                                                   29.8h.15c32.4-.04
                                                                                   62.28-11.1
                                                                                   80.83-29.43l.38-.43z"
-                                                          fill="#a9a4d3" />
+                                                          fill="#a9a4d3"/>
                                                     <path d="m147.8
                                                                                     418.394v10.136l-32.89
                                                                                     10.59c-15.6
@@ -2213,7 +1340,7 @@
                                                                                     0-10.92-5.6-9.85-11.71l2.53-14.57c3.82-21.96
                                                                                     19.5-40
                                                                                     40.72-46.83l26.34-8.48z"
-                                                          fill="#64727a" />
+                                                          fill="#64727a"/>
                                                     <path d="m182.19
                                                                                       417.45-34.39
                                                                                       11.08c-3.99-3.86-7.68-8.02-11.02-12.49l-.43-.63
@@ -2226,7 +1353,7 @@
                                                                                       2.433-.561
                                                                                       7.928
                                                                                       2.647
-                                                                                      9.95z" fill="#938dc8" />
+                                                                                      9.95z" fill="#938dc8"/>
                                                     <path d="m299.7
                                                                                         358.2-2.71-28.06-79.861
                                                                                         2.255.001-.005-16.48.47-2.98
@@ -2258,7 +1385,7 @@
                                                                                         11.322.001
                                                                                         31.852-7.509
                                                                                         52.202-20.299z"
-                                                          fill="#f2bb88" />
+                                                          fill="#f2bb88"/>
                                                     <path d="m134.539
                                                                                           164.427s-.849
                                                                                           18.411-.849
@@ -2278,7 +1405,7 @@
                                                                                           23.338-55.482
                                                                                           25.843-87.741.458-5.894-9.799-20.073-9.799-26.058l10.491-24.775c0-38.422-36.205-111.427-114.81-111.427s-113.961
                                                                                           73.005-113.961
-                                                                                          111.427z" fill="#f2d1a5" />
+                                                                                          111.427z" fill="#f2d1a5"/>
                                                     <g>
                                                         <path d="m294
                                                                                               227.5c-4.142
@@ -2290,7 +1417,7 @@
                                                                                               7.5v15c0
                                                                                               4.142-3.358
                                                                                               7.5-7.5
-                                                                                              7.5z" fill="#64727a" />
+                                                                                              7.5z" fill="#64727a"/>
                                                     </g>
                                                     <g>
                                                         <path d="m203
@@ -2303,7 +1430,7 @@
                                                                                                 7.5v15c0
                                                                                                 4.142-3.358
                                                                                                 7.5-7.5
-                                                                                                7.5z" fill="#64727a" />
+                                                                                                7.5z" fill="#64727a"/>
                                                     </g>
                                                     <g>
                                                         <path d="m249
@@ -2329,7 +1456,7 @@
                                                                                                   2.775-11.422
                                                                                                   4.163-17.398
                                                                                                   4.163z"
-                                                              fill="#f2bb88" />
+                                                              fill="#f2bb88"/>
                                                     </g>
                                                     <path d="m288.989
                                                                                                   40.759c0
@@ -2347,7 +1474,7 @@
                                                                                                   3.497-13.903
                                                                                                   7.182-13.903
                                                                                                   10.99z"
-                                                          fill="#df646e" />
+                                                          fill="#df646e"/>
                                                     <path d="m254.305
                                                                                                     81.307c1.031-.099
                                                                                                     2.069-.167
@@ -2375,7 +1502,7 @@
                                                                                                     1.946.008
                                                                                                     3.872-.09
                                                                                                     5.805-.213z"
-                                                          fill="#dc4955" />
+                                                          fill="#dc4955"/>
                                                     <path d="m363.31
                                                                                                       164.43v33c0
                                                                                                       5.99-.23
@@ -2395,7 +1522,7 @@
                                                                                                       73
                                                                                                       114.81
                                                                                                       111.43z"
-                                                          fill="#f2bb88" />
+                                                          fill="#f2bb88"/>
                                                     <path d="m381
                                                                                                         164.19v37.81h-11.25c-4
                                                                                                         0-7.93-1.16-11.22-3.44-19.74-13.72-26.93-35.65-33.69-58.43-1.26-4.24-5.16-7.13-9.58-7.13h-36.165c-.873
@@ -2441,7 +1568,7 @@
                                                                                                         55.879
                                                                                                         31.9
                                                                                                         82.369z"
-                                                          fill="#df646e" />
+                                                          fill="#df646e"/>
                                                     <path d="m211.62
                                                                                                           38.54c-19.38
                                                                                                           9.9-33.55
@@ -2474,7 +1601,7 @@
                                                                                                           12.94-16.18
                                                                                                           33.4-34.63
                                                                                                           63.37-43.36z"
-                                                          fill="#dc4955" />
+                                                          fill="#dc4955"/>
                                                     <g>
                                                         <path d="m316.539
                                                                                                               193.816c-1.277
@@ -2495,7 +1622,7 @@
                                                                                                               2.399-3.909
                                                                                                               3.739-6.496
                                                                                                               3.739z"
-                                                              fill="#df646e" />
+                                                              fill="#df646e"/>
                                                     </g>
                                                     <g>
                                                         <path d="m225.539
@@ -2517,7 +1644,7 @@
                                                                                                                 2.399-3.909
                                                                                                                 3.739-6.496
                                                                                                                 3.739z"
-                                                              fill="#df646e" />
+                                                              fill="#df646e"/>
                                                     </g>
                                                     <g>
                                                         <path
@@ -2532,7 +1659,7 @@
                                                                                                                   66.63
                                                                                                                   20.37
                                                                                                                   95.05-.12.2-.14.39-.27.6-.39l3.826-2.211z"
-                                                                fill="#a9a4d3" />
+                                                                fill="#a9a4d3"/>
                                                     </g>
                                                     <g>
                                                         <path
@@ -2546,7 +1673,7 @@
                                                                                                                     4.72
                                                                                                                     10.92
                                                                                                                     6.61z"
-                                                                fill="#938dc8" />
+                                                                fill="#938dc8"/>
                                                     </g>
                                                     <g>
                                                         <path
@@ -2561,7 +1688,7 @@
                                                                                                                       7.5s-3.358
                                                                                                                       7.5-7.5
                                                                                                                       7.5z"
-                                                                fill="#df646e" />
+                                                                fill="#df646e"/>
                                                     </g>
                                                 </g>
                                             </svg>
@@ -2581,7 +1708,8 @@
                                         select size<span>
                       <a href="" data-bs-toggle="modal" data-bs-target="#sizemodal">size chart</a></span>
                                     </h6>
-                                    <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                    <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel"
                                          aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -2589,10 +1717,12 @@
                                                     <h5 class="modal-title" id="exampleModalLabel">
                                                         Sheer Straight Kurta
                                                     </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img src="../assets/images/size-chart.jpg" alt="" class="img-fluid" />
+                                                    <img src="../assets/images/size-chart.jpg" alt=""
+                                                         class="img-fluid"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -2636,12 +1766,13 @@
                                     <div class="qty-box">
                                         <div class="input-group">
                                             <button class="qty-minus"></button>
-                                            <input class="qty-adj form-control" type="number" value="1" />
+                                            <input class="qty-adj form-control" type="number" value="1"/>
                                             <button class="qty-plus"></button>
                                         </div>
                                     </div>
                                     <div class="product-buttons">
-                                        <a href="javascript:void(0)" onclick="openCart()" class="btn cart-btn btn-normal tooltip-top"
+                                        <a href="javascript:void(0)" onclick="openCart()"
+                                           class="btn cart-btn btn-normal tooltip-top"
                                            data-tippy-content="Add
                                                                                                                 to
                                                                                                                 cart">

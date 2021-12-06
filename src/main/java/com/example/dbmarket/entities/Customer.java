@@ -9,20 +9,24 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
-    @Column(name="Username")
+    @Column(name = "Username")
     private String username;
     @Column(name = "Password")
     private String password;
     @Column(name = "Fullname")
     private String fullname;
-    @Column(name ="Phone")
+    @Column(name = "Phone")
     private String phone;
     @Column(name = "Email")
     private String email;
+    @Column(name = "Address")
+    private String address;
     @OneToMany(mappedBy = "customer")
     private List<Cart> cart;
     @OneToMany(mappedBy = "customer")
     private List<BillInfo> billInfos;
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders;
 
     public int getCustomerId() {
         return customerId;
@@ -86,5 +90,21 @@ public class Customer {
 
     public void setBillInfos(List<BillInfo> billInfos) {
         this.billInfos = billInfos;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

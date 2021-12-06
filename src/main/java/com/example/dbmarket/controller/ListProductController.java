@@ -26,7 +26,7 @@ public class ListProductController {
     @GetMapping("supplier/listproduct")
     public String showListProduct(Model model) {
         Supplier supplier = (Supplier) session.getAttribute("supplier");
-        List<Product> products = supplier.getProducts();
+        List<Product> products = productService.findBySupplierId(supplier.getSupplierId());
         model.addAttribute("products", products);
         return "views/content/supplier/listproduct";
     }

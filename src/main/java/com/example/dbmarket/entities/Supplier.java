@@ -1,11 +1,12 @@
 package com.example.dbmarket.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "Supplier")
-public class Supplier {
+public class Supplier implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int supplierId;
@@ -21,9 +22,10 @@ public class Supplier {
     private String email;
     @Column(name = "Address")
     private String address;
-    @OneToMany(mappedBy = "supplier",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "supplier")
     private List<Product> products;
-
+    @OneToMany(mappedBy = "supplier")
+    private List<Order> orders;
     public int getSupplierId() {
         return supplierId;
     }
@@ -86,5 +88,13 @@ public class Supplier {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

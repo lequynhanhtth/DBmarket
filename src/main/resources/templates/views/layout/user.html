@@ -54,6 +54,12 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="/assets/css/color11.css"
           media="screen" id="color">
+    <style>
+        .disabled {
+            pointer-events: none;
+        }
+    </style>
+
 </head>
 <body class="bg-light">
 <!-- loader start-->
@@ -66,7 +72,7 @@
 <th:block layout:fragment="content">
 </th:block>
 <!-- footer start -->
-<footer  th:replace="~{views/fragment/footer :: footer}"></footer>
+<footer th:replace="~{views/fragment/footer :: footer}"></footer>
 <!-- footer end -->
 <!--Newsletter modal popup start-->
 <div th:replace="~{views/fragment/newletter :: newletter}"></div>
@@ -136,5 +142,6 @@
         src="/assets/js/timer2.js"></script>
 <script
         src="/assets/js/modal.js"></script>
+
 </body>
 </html>

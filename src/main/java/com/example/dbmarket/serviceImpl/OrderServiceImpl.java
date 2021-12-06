@@ -39,4 +39,9 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.existsById(id);
 
     }
+
+    @Override
+    public List<Order> findOrderBySupplierId(int id) {
+        return orderRepository.findOrderBySupplierId(id);
+    }
 }

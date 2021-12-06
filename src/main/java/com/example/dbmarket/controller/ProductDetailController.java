@@ -30,19 +30,7 @@ public class ProductDetailController {
         Pageable pageable = PageRequest.of(0, 4);
         List<Product> products = productService.findByCategoryOrderByRate(product.getCategory().getCategoryId(), pageable).getContent();
         model.addAttribute("productdetails", products);
-        session.setAttribute("uriProductDetail","/views/productdetail/"+id);
         return "views/content/productdetail";
     }
 
-    @GetMapping("productdetail")
-    public String showProductDetail(){
-        return "views/content/productdetail";
-    }
-
-//    @GetMapping("/user/cart/add")
-//    public String addCart(@RequestMapping stParam("id") int id, @RequestParam("soluong") int quantity, @RequestParam("size") String size) {
-//        Product product = productService.findById(id).get();
-//        CartDAO.addCart(id,quantity,product,size);
-//        return "redirect:/home/productdetail/" + id;
-//    }
 }

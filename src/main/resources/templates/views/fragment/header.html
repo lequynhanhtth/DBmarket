@@ -37,13 +37,16 @@
                                        fa-heart"></i> wishlist</a>
                                 </li>
 
-                                <li th:if="${customer == null}" onclick="openAccount()"><a
-                                        href="javascript:void(0)"><i class="fa
+                                <li th:if="${customer == null}" ><a
+                                        th:href="@{'/login'}"><i class="fa
                                        fa-user"></i> my profile</a>
                                 </li>
-                                <li th:if = "${customer != null}">
-                                    <a href="#"><i class="fa
+                                <li th:if="${customer != null}">
+                                    <a th:href="@{'/customer/profile'}"><i class="fa
                                        fa-user"></i> [[${customer.email}]]</a>
+                                </li>
+                                <li th:if="${customer != null}">
+                                    <a th:href="@{'/customer/logout'}">logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -178,35 +181,11 @@
                                     <li class="back-btn"><i class="fa
                                              fa-angle-left"></i> back
                                     </li>
-                                    <li><a
-                                            href="category-page(left-sidebar).html"><img
-                                            src="/assets/images/category/fashionsmall.png"
-                                            alt="">fashions</a></li>
-                                    <li><a
-                                            href="category-page(left-sidebar).html"><img
-                                            src="/assets/images/category/eletronicsmall.jpg"
-                                            alt="">electronics</a></li>
-
-                                    <li><a
-                                            href="category-page(left-sidebar).html"><img
-                                            src="/assets/images/category/beautysmall.png"
-                                            alt="">Beauty</a></li>
-                                    <li><a
-                                            href="category-page(left-sidebar).html"><img
-                                            src="/assets/images/category/PetsProductsSmall.png"
-                                            alt="">Pet Products</a></li>
-                                    <li><a
-                                            href="category-page(left-sidebar).html"><img
-                                            src="/assets/images/category/sport.png"
-                                            alt="">Sports</a></li>
-                                    <li><a
-                                            href="category-page(left-sidebar).html"><img
-                                            src="/assets/images/category/toysmall.png"
-                                            alt="">Toys</a></li>
-                                    <li><a
-                                            href="category-page(left-sidebar).html"><img
-                                            src="/assets/images/category/videogamesmall.png"
-                                            alt="">Video Games</a></li>
+                                    <li th:each="category : ${categories}">
+                                        <a th:href="@{'/DBmarket/Category?categoryId='+${category.categoryId}}">
+                                            <img th:src="@{'/assets/images/category/'+${category.categoryId}+'/'+${category.photoSmall}}"
+                                                 alt="">[[${category.name}]]</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="logo-block">

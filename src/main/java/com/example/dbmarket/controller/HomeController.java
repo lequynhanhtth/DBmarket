@@ -21,11 +21,9 @@ public class HomeController {
     CategoryService categoryService;
     @GetMapping("/Home")
     public String showHome(Model model) {
-        List<Product> products = productService.findTop10OrderByDate();
-        List<Category> categories = categoryService.findAll();
+        List<Product> products = productService.findTop10OrderByDate();;
         List<Product> productList = productService.findAll();
         model.addAttribute("products", products);
-        model.addAttribute("categories",categories);
         model.addAttribute("productList",productList);
         return "views/content/home";
     }

@@ -3,6 +3,7 @@ package com.example.dbmarket.service;
 import com.example.dbmarket.entities.Order;
 import com.example.dbmarket.entities.OrderDetail;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,4 +17,6 @@ public interface OrderService {
     public Optional<Order> findById(int id);
 
     public boolean existById(int id);
+
+    public List<Order> findOrderBySupplierId(int id);
 }
