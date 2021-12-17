@@ -10,5 +10,53 @@ public class AccountBanned {
     private int accountBannedId;
     @Column(name = "Description")
     private String description;
-    @ManyToOne()
+    @ManyToOne
+    @JoinColumn(name = "banned")
+    private Banned banned;
+    @ManyToOne
+    @JoinColumn(name = "customer")
+    private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "supplier")
+    private Supplier supplier;
+
+    public int getAccountBannedId() {
+        return accountBannedId;
+    }
+
+    public void setAccountBannedId(int accountBannedId) {
+        this.accountBannedId = accountBannedId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Banned getBanned() {
+        return banned;
+    }
+
+    public void setBanned(Banned banned) {
+        this.banned = banned;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
 }
