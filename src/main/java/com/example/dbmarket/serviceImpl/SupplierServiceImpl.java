@@ -7,6 +7,8 @@ import com.example.dbmarket.repository.SupplierRepository;
 import com.example.dbmarket.service.ShipperService;
 import com.example.dbmarket.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,5 +48,10 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public Optional<Supplier> findByEmail(String email){
         return supplierRepository.findByEmail(email);
+    }
+
+    @Override
+    public Page<Supplier> findAll(Pageable pageable) {
+        return supplierRepository.findAll(pageable);
     }
 }
