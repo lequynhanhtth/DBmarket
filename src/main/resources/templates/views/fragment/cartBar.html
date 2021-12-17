@@ -21,8 +21,8 @@
                 </div>
             </div>
             <div class="cart_media">
-                <ul class="cart_product" th:if="${customer != null && customer.cart.size > 0}">
-                    <li th:each="cartDetail : ${customer.cart[0].cartDetails}">
+                <ul class="cart_product" th:if="${customer != null }">
+                    <li th:if="${customer.cart !=  null}" th:each="cartDetail : ${customer.cart[0].cartDetails}">
                         <div class="media">
                             <a th:href="@{'/DBmarket/productdetail/'+${cartDetail.product.productId}}">
                                 <img alt="megastore1" class="me-3"
