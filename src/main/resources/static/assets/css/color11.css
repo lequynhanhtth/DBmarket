@@ -19492,7 +19492,7 @@ body.rtl {
     height: 15px;
     font-size: 10px; }
   .top-header .top-header-right .top-menu-block {
-    display: block; }
+    display: none; }
   .category-header .navbar-menu .category-left {
     width: 60%; }
     .category-header .navbar-menu .category-left .input-block {
