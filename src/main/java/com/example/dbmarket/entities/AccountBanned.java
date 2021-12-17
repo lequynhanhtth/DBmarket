@@ -1,6 +1,7 @@
 package com.example.dbmarket.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "AccountBanned")
@@ -10,6 +11,10 @@ public class AccountBanned {
     private int accountBannedId;
     @Column(name = "Description")
     private String description;
+    @Column(name = "DateBanned")
+    private LocalDate dateBanned;
+    @Column(name = "DateUnbanned")
+    private LocalDate dateUnbanned;
     @ManyToOne
     @JoinColumn(name = "Banned")
     private Banned banned;

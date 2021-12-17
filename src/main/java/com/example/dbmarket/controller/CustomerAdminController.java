@@ -44,7 +44,7 @@ public class CustomerAdminController {
     public String EditCustomer(int customerId, Optional<Integer> bannedId) {
         Customer customer = customerService.findById(customerId).orElse(null);
         Banned banned = bannedService.findById(bannedId.orElse(-1)).orElse(null);
-        customer.setBanned(banned);
+
         customerService.save(customer);
         return "redirect:/admin/editCustomer?id=" + customerId;
     }

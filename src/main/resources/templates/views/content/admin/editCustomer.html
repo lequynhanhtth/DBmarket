@@ -89,7 +89,7 @@
                                     <select class="custom-select form-control"  name="bannedId" required="">
                                         <option value="">--Select--</option>
                                         <th:block th:each="banned : ${banneds}">
-                                            <option th:selected="${customer.banned.bannedId == banned.bannedId}" th:value="${banned.bannedId}"
+                                            <option th:selected="${(customer.accountBanneds != null ? customer.accountBanneds[(customer.accountBanneds.size)-1].banned.bannedId : -1) == banned.bannedId}" th:value="${banned.bannedId}"
                                                     th:text="${banned.reason}"></option>
                                         </th:block>
                                     </select>
