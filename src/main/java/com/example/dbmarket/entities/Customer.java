@@ -29,9 +29,8 @@ public class Customer {
     private List<BillInfo> billInfos;
     @OneToMany(mappedBy = "customer")
     private List<Order> orders;
-    @ManyToOne
-    @JoinColumn(name = "bannedId")
-    private Banned banned;
+    @OneToMany(mappedBy = "customer")
+    private List<AccountBanned> accountBanneds;
 
     public int getCustomerId() {
         return customerId;
@@ -122,11 +121,11 @@ public class Customer {
         this.orders = orders;
     }
 
-    public Banned getBanned() {
-        return banned;
+    public List<AccountBanned> getAccountBanneds() {
+        return accountBanneds;
     }
 
-    public void setBanned(Banned banned) {
-        this.banned = banned;
+    public void setAccountBanneds(List<AccountBanned> accountBanneds) {
+        this.accountBanneds = accountBanneds;
     }
 }

@@ -13,7 +13,7 @@ public class Banned {
     @Column(name = "Reason")
     private String reason;
     @OneToMany(mappedBy = "banned")
-    private List<Customer> customers;
+    private List<AccountBanned> accountBanneds;
 
     public int getBannedId() {
         return bannedId;
@@ -31,11 +31,11 @@ public class Banned {
         this.reason = reason;
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
+    public List<AccountBanned> getAccountBanneds() {
+        return accountBanneds;
     }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
+    public void setAccountBanneds(List<AccountBanned> accountBanneds) {
+        this.accountBanneds = accountBanneds;
     }
 }

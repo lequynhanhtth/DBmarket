@@ -10,7 +10,7 @@
      id="cart_side"
      class="add_to_cart right">
     <a href="javascript:void(0)" class="overlay" onclick="closeCart()"></a>
-    <form method="get" th:action="@{'/customer/cart/edit'}" >
+    <form method="get" th:action="@{'/customer/cart/edit'}">
         <div class="cart-inner">
             <div class="cart_top">
                 <h3>my cart</h3>
@@ -22,45 +22,51 @@
             </div>
             <div class="cart_media">
                 <ul class="cart_product" th:if="${customer != null }">
-                    <li th:if="${customer.cart !=  null}" th:each="cartDetail : ${customer.cart[0].cartDetails}">
-                        <div class="media">
-                            <a th:href="@{'/DBmarket/productdetail/'+${cartDetail.product.productId}}">
-                                <img alt="megastore1" class="me-3"
-                                     th:src="@{'/assets/images/product/'+${cartDetail.product.productId}+'/'+${cartDetail.product.photos[0].photoName}}">
-                            </a>
-                            <div class="media-body">
+                    <th:block th:if="${customer.cart !=  null && customer.cart.size > 0}">
+                        <li th:each="cartDetail : ${customer.cart[0].cartDetails}">
+                            <div class="media">
                                 <a th:href="@{'/DBmarket/productdetail/'+${cartDetail.product.productId}}">
-                                    <h4 th:text="${cartDetail.product.productName}"></h4>
+                                    <img alt="megastore1" class="me-3"
+                                         th:src="@{'/assets/images/product/'+${cartDetail.product.productId}+'/'+${cartDetail.product.photos[0].photoName}}">
                                 </a>
-                                <h6> $80.00
-                                    <span>$120.00</span>
-                                </h6>
-                                <div class="addit-box">
-                                    <div class="qty-box">
-                                            <input type="hidden" th:value="${#httpServletRequest.requestURI}" name = "urlEdit" />
-                                        <input type="hidden" th:value="${cartDetail.product.productId}" name = "id" />
-                                        <div class="input-group">
-                                            <a><i class="fa fa-minus" aria-hidden="true" style="padding: 5px;margin: 0px;height: 100%;"></i></a>
-                                            <input class="qty-adj form-control" name="quantity" type="number" style="width: 70px " th:value="${cartDetail.quantity}"/>
-                                            <a><i class="fa fa-plus" aria-hidden="true" style="padding: 5px;margin: 0px;height: 100%;"></i></a>
+                                <div class="media-body">
+                                    <a th:href="@{'/DBmarket/productdetail/'+${cartDetail.product.productId}}">
+                                        <h4 th:text="${cartDetail.product.productName}"></h4>
+                                    </a>
+                                    <h6> $80.00
+                                        <span>$120.00</span>
+                                    </h6>
+                                    <div class="addit-box">
+                                        <div class="qty-box">
+                                            <input type="hidden" th:value="${#httpServletRequest.requestURI}"
+                                                   name="urlEdit"/>
+                                            <input type="hidden" th:value="${cartDetail.product.productId}" name="id"/>
+                                            <div class="input-group">
+                                                <a><i class="fa fa-minus" aria-hidden="true"
+                                                      style="padding: 5px;margin: 0px;height: 100%;"></i></a>
+                                                <input class="qty-adj form-control" name="quantity" type="number"
+                                                       style="width: 70px " th:value="${cartDetail.quantity}"/>
+                                                <a><i class="fa fa-plus" aria-hidden="true"
+                                                      style="padding: 5px;margin: 0px;height: 100%;"></i></a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="pro-add">
-                                        <button type="submit">
-                                            <i data-feather="edit"></i>
-                                        </button>
-                                        <a href="javascript:void(0)">
-                                            <i data-feather="trash-2"></i>
-                                        </a>
+                                        <div class="pro-add">
+                                            <button type="submit">
+                                                <i data-feather="edit"></i>
+                                            </button>
+                                            <a href="javascript:void(0)">
+                                                <i data-feather="trash-2"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    </th:block>
                 </ul>
                 <ul class="cart_total">
                     <li>subtotal :
-                        <span  th:if="${customer.cart !=  null}" th:text="${customer.cart[0].totalPrice}"></span>
+                        <span th:if="${customer.cart !=  null && customer.cart.size > 0}" th:text="${customer.cart[0].totalPrice}"></span>
                     </li>
                     <li> shipping
                         <span>free</span>
@@ -70,7 +76,8 @@
                     </li>
                     <li>
                         <div class="total">
-                            total <span  th:if="${customer.cart !=  null}" th:text="${customer.cart[0].totalPrice}"></span>
+                            total <span th:if="${customer.cart !=  null && customer.cart.size > 0}"
+                                        th:text="${customer.cart[0].totalPrice}"></span>
                         </div>
                     </li>
                     <li>
