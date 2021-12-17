@@ -1,5 +1,7 @@
 package com.example.dbmarket.entities;
 
+import org.apache.tomcat.jni.Local;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -12,6 +14,8 @@ public class Banned {
     private int bannedId;
     @Column(name = "Reason")
     private String reason;
+    @Column(name ="Date")
+    private LocalDate date;
     @OneToMany(mappedBy = "banned")
     private List<Customer> customers;
 
@@ -29,6 +33,14 @@ public class Banned {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public List<Customer> getCustomers() {
