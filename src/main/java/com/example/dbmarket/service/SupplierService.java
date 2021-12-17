@@ -1,19 +1,23 @@
 package com.example.dbmarket.service;
 
 import com.example.dbmarket.entities.Supplier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface SupplierService {
-    public List<Supplier> findAll();
+    List<Supplier> findAll();
 
-    public void save (Supplier supplier);
+    void save (Supplier supplier);
 
-    public void delete(int id);
+    void delete(int id);
 
-    public Optional<Supplier> findById(int id);
+    Optional<Supplier> findById(int id);
 
-    public boolean existById(int id);
-    public Optional<Supplier> findByEmail(String email);
+    boolean existById(int id);
+    Optional<Supplier> findByEmail(String email);
+
+    Page<Supplier> findAll(Pageable pageable);
 }
