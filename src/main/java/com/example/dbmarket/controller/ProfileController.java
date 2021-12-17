@@ -1,6 +1,7 @@
 package com.example.dbmarket.controller;
 
 import com.example.dbmarket.entities.Customer;
+import com.example.dbmarket.entities.Order;
 import com.example.dbmarket.service.CustomerService;
 import com.example.dbmarket.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,10 @@ public class ProfileController {
     }
 
     @RequestMapping("customer/listOrder/cancel")
-    public String cancelOrder(String id) {
-        return "";
+    public String cancelOrder(int id) {
+        Order order = orderService.findById(id).orElse(null);
+        order.setStatus("Cancel");
+        orderService.save(order);
+        return "redirect:/customer/listOrder";
     }
 }

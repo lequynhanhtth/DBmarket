@@ -19,7 +19,7 @@ public class CategoryController {
     CategoryService categoryService;
 
     @GetMapping("/Category")
-    public String showCategory(String categoryId, Integer pageNumber, Model model) {
+    public String showCategory(int categoryId, Integer pageNumber, Model model) {
         Category category = categoryService.findById(categoryId).orElse(null);
         List<Product> productList = category.getProducts();
         List<Product> products = new ArrayList<>();

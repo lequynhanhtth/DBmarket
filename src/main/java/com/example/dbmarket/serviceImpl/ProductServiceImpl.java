@@ -56,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> findByCategoryOrderByRate(String keyword, Pageable pageable) {
+    public Page<Product> findByCategoryOrderByRate(int keyword, Pageable pageable) {
         return productRepository.findByCategoryOrderByRate(keyword, pageable);
     }
 }

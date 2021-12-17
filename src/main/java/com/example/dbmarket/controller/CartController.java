@@ -106,12 +106,29 @@ public class CartController {
         CartDetail cartDetail = cartDetailService.findByProductId(id, cart.getCartId()).orElse(null);
         cartDetail.setQuantity(quantity);
         cartDetailService.save(cartDetail);
+        cart.setTotalPrice(cartService.getTotalPrice(cartDetail.getCart().getCartId()));
+        cartService.save(cart);
         return "redirect:" + urlEdit;
     }
 
     @RequestMapping("customer/cart/delete")
     public String deleteCart(int id, String url) {
+        CartDetail cartDetail = cartDetailService.findById(id).orElse(null);
+        Cart cart = cartDetail.getCart();
         cartDetailService.delete(id);
+        cart.setTotalPrice(cartService.getTotalPrice(cartDetail.getCart().getCartId()));
+        cartService.save(cart);
         return "redirect:" + url;
+    }
+
+    @PostMapping("customer/cart/update")
+    public String updateCart(int quantity, int id) {
+        CartDetail cartDetail = cartDetailService.findById(id).orElse(null);
+        cartDetail.setQuantity(quantity);
+        Cart cart = cartDetail.getCart();
+        cartDetailService.save(cartDetail);
+        cart.setTotalPrice(cartService.getTotalPrice(cartDetail.getCart().getCartId()));
+        cartService.save(cart);
+        return "redirect:/customer/showCart";
     }
 }

@@ -51,4 +51,9 @@ public class CartServiceImpl implements CartService {
     public void delete(Cart entity) {
         cartRepository.delete(entity);
     }
+
+    @Override
+    public Double getTotalPrice(int cartID) {
+        return cartRepository.getTotalCart(cartID);
+    }
 }

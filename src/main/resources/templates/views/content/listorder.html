@@ -19,8 +19,8 @@
                     <div class="block-content ">
                         <ul>
                             <li><a th:href="@{'/customer/profile'}">Profile</a></li>
-                            <li class="active"><a th:href="@{'/customer/changepassword'}">Change Password</a></li>
-                            <li><a th:href="@{'/customer/listOrder'}">Orders List</a></li>
+                            <li><a th:href="@{'/customer/changepassword'}">Change Password</a></li>
+                            <li class="active"><a th:href="@{'/customer/listOrder'}">Orders List</a></li>
                             <li class="last"><a th:href="@{'/customer/logout'}">Log Out</a></li>
                         </ul>
                     </div>
@@ -83,10 +83,13 @@
                                                         <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;"
                                                             th:text="${order.status}"></td>
                                                         <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
-                                                            style="width: 50px;"><a
-                                                                class="jsgrid-button jsgrid-search-button"
-                                                                type="button" title="Detail"
-                                                                th:href="@{'/supplier/invoice?id='+${order.orderId}}">
+                                                            style="width: 50px;">
+                                                            <a class="jsgrid-button jsgrid-search-button"
+                                                               type="button" title="Detail"
+                                                               th:href="@{'/customer/invoice?id='+${order.orderId}}"></a>
+                                                            <a th:if="${order.status == 'Wait Confirm'}" class="jsgrid-button jsgrid-cancel-button"
+                                                               type="button" title="Cancel"
+                                                               th:href="@{'/customer/listOrder/cancel?id='+${order.orderId}}"></a>
                                                         </td>
                                                     </tr>
                                                     </tbody>

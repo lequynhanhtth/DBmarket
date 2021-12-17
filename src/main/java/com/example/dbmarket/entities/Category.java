@@ -10,7 +10,8 @@ import java.util.List;
 @Table(name = "Category")
 public class Category implements Serializable {
     @Id
-    private String categoryId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int categoryId;
     @Column(name = "Name")
     private String name;
     @Column(name = "Description")
@@ -22,11 +23,11 @@ public class Category implements Serializable {
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
-    public String getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 
