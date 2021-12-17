@@ -21,12 +21,17 @@ public class Customer {
     private String email;
     @Column(name = "Address")
     private String address;
+    @Column(name = "Avatar")
+    private String avatar;
     @OneToMany(mappedBy = "customer")
     private List<Cart> cart;
     @OneToMany(mappedBy = "customer")
     private List<BillInfo> billInfos;
     @OneToMany(mappedBy = "customer")
     private List<Order> orders;
+    @ManyToOne
+    @JoinColumn(name = "bannedId")
+    private Banned banned;
 
     public int getCustomerId() {
         return customerId;
@@ -76,6 +81,14 @@ public class Customer {
         this.email = email;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public List<Cart> getCart() {
         return cart;
     }
@@ -105,6 +118,15 @@ public class Customer {
     }
 
     public void setOrders(List<Order> orders) {
+
         this.orders = orders;
+    }
+
+    public Banned getBanned() {
+        return banned;
+    }
+
+    public void setBanned(Banned banned) {
+        this.banned = banned;
     }
 }

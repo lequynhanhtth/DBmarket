@@ -46,7 +46,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/slick.css">
     <link rel="stylesheet" type="text/css"
           href="/assets/css/slick-theme.css">
-
+    <link rel="stylesheet" type="text/css" href="/assets/css/jsgrid.css">
     <!--Animate css-->
     <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
     <!-- Bootstrap css -->
@@ -84,7 +84,9 @@
 <div th:replace="~{views/fragment/editProduct :: editProduct}"></div>
 <!-- edit product modal end-->
 <!-- Add to cart bar -->
-<div th:replace="~{views/fragment/cartBar :: cartBar}"></div>
+<th:block th:if="${customer != null}">
+    <div th:replace="~{views/fragment/cartBar :: cartBar}"></div>
+</th:block>
 <!-- Add to cart bar end-->
 <!-- Add to wishlist bar -->
 <div th:replace="~{views/fragment/wishlist :: wishlist}"></div>

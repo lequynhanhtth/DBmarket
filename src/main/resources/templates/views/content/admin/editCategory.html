@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/layout/admin.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="page-body" layout:fragment="content">
+
+    Container-fluid starts
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>Add Category
+                            <small>Bigdeal Admin panel</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">Digital</li>
+                        <li class="breadcrumb-item active">Add Product</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row product-adding">
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>General</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="hidden" name="categoryId" th:value="${category.categoryId}">
+                            <div class="digital-add needs-validation">
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Category
+                                        Name</label>
+                                    <input class="form-control" id="validationCustom01" name="name" type="text"
+                                           required="" th:value="${category.name}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5></h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="digital-add needs-validation">
+                                <div style="margin-top: 10px">
+                                    <label class="col-form-label pt-0"><span>*</span> Photo Category</label>
+                                    <br>
+                                    <img id="previewImg" width="361px"
+                                         th:src="@{'/assets/images/category/'+${category.categoryId}+'/'+${category.photo}}"
+                                         alt="Placeholder">
+                                    <div class="row mt-4 ml-4 text-center ">
+                                        <input type="file" style="width: 300px; padding: 0;" name="photo"
+                                               th:value="${'/assets/images/category/'+${category.categoryId}+'/'+${category.photo}}"
+                                               class="form-control-user" onchange="previewFile(this);">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <label class="col-form-label pt-0"><span>*</span>Photo Small</label>
+                                    <br>
+                                    <img id="previewImg1" width="39px"
+                                         alt="Placeholder"
+                                         th:src="@{'/assets/images/category/'+${category.categoryId}+'/'+${category.photoSmall}}">
+                                    <div class="row mt-4 ml-4 text-center ">
+                                        <input type="file" style="width: 300px; padding: 0;" name="photoSmall"
+                                               th:value="${'/assets/images/category/'+${category.categoryId}+'/'+${category.photoSmall}}"
+                                               class="form-control-user" onchange="previewFile1(this);">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="button" class="btn btn-light">Discard</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+</body>
+</html>

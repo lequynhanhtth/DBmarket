@@ -35,13 +35,18 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "SupplierId")
     private Supplier supplier;
+    @ManyToOne
+    @JoinColumn(name = "BrandId")
+    private Brand brand;
+    @ManyToOne
+    @JoinColumn(name = "CategoryProductID")
+    private CategoryProduct categoryProduct;
     @OneToMany(mappedBy = "product")
     private List<CartDetail> cartDetails;
     @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetails;
     @OneToMany(mappedBy = "product", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Photo> photos;
-
     public Product(int productId, String productName, String description, Long price, Double weight, Long inStock, Double discount, LocalDate date, List<Rate> rates, Category category, Supplier supplier, List<CartDetail> cartDetails, List<OrderDetail> orderDetails, List<Photo> photos) {
         this.productId = productId;
         this.productName = productName;
@@ -172,5 +177,21 @@ public class Product implements Serializable {
 
     public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public CategoryProduct getCategoryProduct() {
+        return categoryProduct;
+    }
+
+    public void setCategoryProduct(CategoryProduct categoryProduct) {
+        this.categoryProduct = categoryProduct;
     }
 }

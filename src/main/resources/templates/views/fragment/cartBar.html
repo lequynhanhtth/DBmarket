@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="cart_media">
-                <ul class="cart_product" th:if="${customer != null && customer.cart != null}">
+                <ul class="cart_product" th:if="${customer != null && customer.cart.size > 0}">
                     <li th:each="cartDetail : ${customer.cart[0].cartDetails}">
                         <div class="media">
                             <a th:href="@{'/DBmarket/productdetail/'+${cartDetail.product.productId}}">
@@ -60,9 +60,9 @@
                 </ul>
                 <ul class="cart_total">
                     <li>subtotal :
-                        <span>$1050.00</span>
+                        <span th:text="${customer.cart[0].totalPrice}"></span>
                     </li>
-                    <li> shpping
+                    <li> shipping
                         <span>free</span>
                     </li>
                     <li> taxes
@@ -70,7 +70,7 @@
                     </li>
                     <li>
                         <div class="total">
-                            total<span>$1050.00</span>
+                            total <span th:text="${customer.cart[0].totalPrice}"></span>
                         </div>
                     </li>
                     <li>

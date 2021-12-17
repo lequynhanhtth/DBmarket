@@ -55,31 +55,37 @@
                         </thead>
                         <tbody>
                         <tr th:if="${cartDetails != null}" th:each="carts : ${cartDetails}">
-
-                            <td>
-                                <img th:src="@{'/assets/images/product/'+${carts.product.productId}+'/'+${carts.product.photos[0].photoName}}"
-                                     class="img-fluid" width="150px"
-                                     alt="product">
-                            </td>
-                            <td>
-                                <a href="javascript:void(0)" th:text="${carts.product.productName}"> </a>
-                            </td>
-                            <td>
-                                <h2 th:text="${carts.product.price}"></h2></td>
-                            <td>
-                                <div class="qty-box">
-                                    <div class="input-group">
-                                        <input th:value="${carts.quantity}">
+                            <form th:action="@{'/customer/cart/update'}" method="post">
+                                <input type="hidden" th:value="${carts.cartDetailId}" name = "id" />
+                                <td>
+                                    <img th:src="@{'/assets/images/product/'+${carts.product.productId}+'/'+${carts.product.photos[0].photoName}}"
+                                         class="img-fluid" width="150px"
+                                         alt="product">
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" th:text="${carts.product.productName}"> </a>
+                                </td>
+                                <td>
+                                    <h2 th:text="${carts.product.price}"></h2></td>
+                                <td>
+                                    <div class="qty-box">
+                                        <div class="input-group">
+                                            <input th:value="${carts.quantity}" name = "quantity">
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <a th:href="@{'/customer/cart/delete?id='+${carts.cartDetailId}+'&&url='+${#httpServletRequest.requestURI}}" class="icon">
-                                    <i class="ti-close"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <h2 class="td-color" th:text="${carts.product.price} * ${carts.quantity}"></h2></td>
+                                </td>
+                                <td>
+                                    <a th:href="@{'/customer/cart/delete?id='+${carts.cartDetailId}+'&&url='+${#httpServletRequest.requestURI}}"
+                                       class="icon">
+                                        <i class="ti-close"></i>
+                                    </a>
+                                    <button type="submit" class="icon">
+                                        <i class="ti-reload"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <h2 class="td-color" th:text="${carts.product.price} * ${carts.quantity}"></h2></td>
+                            </form>
                         </tr>
                         </tbody>
 

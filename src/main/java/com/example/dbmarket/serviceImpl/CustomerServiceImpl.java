@@ -4,6 +4,8 @@ import com.example.dbmarket.entities.Customer;
 import com.example.dbmarket.repository.CustomerRepository;
 import com.example.dbmarket.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,5 +44,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Optional<Customer> findByEmail(String email) {
         return customerRepository.findByEmail(email);
+    }
+
+    @Override
+    public Page<Customer> findAll(Pageable pageable) {
+        return customerRepository.findAll(pageable);
     }
 }

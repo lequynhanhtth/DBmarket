@@ -1,6 +1,8 @@
 package com.example.dbmarket.service;
 
 import com.example.dbmarket.entities.Category;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,9 +12,11 @@ public interface CategoryService {
 
     void save(Category category);
 
-    void delete(String id);
+    void delete(int id);
 
-    Optional<Category> findById(String id);
+    Optional<Category> findById(int id);
 
-    boolean existById(String id);
+    boolean existById(int id);
+
+    Page<Category> findAdd(Pageable pageable);
 }

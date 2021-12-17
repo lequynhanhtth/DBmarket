@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/layout/admin.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="page-body" layout:fragment="content">
+
+    Container-fluid starts
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>Add Category
+                            <small>Bigdeal Admin panel</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">Digital</li>
+                        <li class="breadcrumb-item active">Add Product</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row product-adding">
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>General</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="hidden" name="customerId" th:value="${customer.customerId}">
+                            <div class="digital-add needs-validation">
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Fullname</label>
+                                    <input class="form-control" id="validationCustom01" name="fullname" type="text"
+                                           required="" disabled th:value="${customer.fullname}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="col-form-label pt-0"><span>*</span> Username</label>
+                                    <input class="form-control" id="validationCustom02" name="username" type="text"
+                                           required="" disabled th:value="${customer.username}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="col-form-label pt-0"><span>*</span>
+                                        Email</label>
+                                    <input class="form-control" id="validationCustom03" name="email" type="text"
+                                           required="" disabled th:value="${customer.email}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom04" class="col-form-label pt-0"><span>*</span>
+                                        Phone</label>
+                                    <input class="form-control" id="validationCustom04" name="phone" type="text"
+                                           required="" disabled th:value="${customer.phone}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5></h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="digital-add needs-validation">
+                                <div style="margin-top: 10px">
+                                    <label class="col-form-label pt-0"><span>*</span> Avatar</label>
+                                    <br>
+                                    <img id="previewImg" width="361px"
+                                         th:src="@{'/assets/images/customer/'+${customer.customerId}+'/'+${customer.avatar}}"
+                                         alt="Placeholder">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label"><span>*</span> Categories</label>
+                                    <select class="custom-select form-control"  name="bannedId" required="">
+                                        <option value="">--Select--</option>
+                                        <th:block th:each="banned : ${banneds}">
+                                            <option th:selected="${customer.banned.bannedId == banned.bannedId}" th:value="${banned.bannedId}"
+                                                    th:text="${banned.reason}"></option>
+                                        </th:block>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <button type="submit" class="btn btn-primary">Banned</button>
+                                        <button type="button" class="btn btn-light">Discard</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+</body>
+</html>

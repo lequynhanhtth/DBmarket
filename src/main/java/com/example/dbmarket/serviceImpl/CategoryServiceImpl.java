@@ -5,6 +5,8 @@ import com.example.dbmarket.entities.Customer;
 import com.example.dbmarket.repository.CategoryRepository;
 import com.example.dbmarket.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,17 +27,22 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         categoryRepository.deleteById(id);
     }
 
     @Override
-    public Optional<Category> findById(String id) {
+    public Optional<Category> findById(int id) {
         return categoryRepository.findById(id);
     }
 
     @Override
-    public boolean existById(String id) {
+    public boolean existById(int id) {
         return categoryRepository.existsById(id);
+    }
+
+    @Override
+    public Page<Category> findAdd(Pageable pageable) {
+        return categoryRepository.findAll(pageable);
     }
 }
