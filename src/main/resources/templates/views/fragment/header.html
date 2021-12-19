@@ -34,7 +34,7 @@
                             <ul>
                                 <li onclick="openWishlist()">
                                     <a href="javascript:void(0)"><i class="fa
-                                       fa-heart"></i> wishlist</a>
+                                       fa-shopping-cart"></i> Cart</a>
                                 </li>
 
                                 <li th:if="${customer == null}" ><a
@@ -192,7 +192,7 @@
                                 <div class="mobilecat-toggle"><i class="fa
                                           fa-bars sidebar-bar"></i></div>
                                 <div class="brand-logo logo-sm-center">
-                                    <a href="index.html">
+                                    <a th:href="@{'/DBmarket/Home'}">
                                         <img
                                                 src="/assets/images/mega-store/logo.png"
                                                 class="img-fluid" alt="logo">
