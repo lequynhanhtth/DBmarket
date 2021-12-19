@@ -66,8 +66,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice, int categoryId, Pageable pageable) {
-        return productRepository.findManyOption(brands, categoryProducts, minPrice, maxPrice,categoryId,pageable);
+    public Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice, int categoryId, Pageable pageable,String productName) {
+        return productRepository.findManyOption(brands, categoryProducts, minPrice, maxPrice,categoryId,pageable,productName);
     }
 
     @Override

@@ -21,7 +21,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("Select o FROM Product o WHERE o.category.categoryId =  ?1")
     Page<Product> findByCategoryId(int id, Pageable pageable);
 
-    @Query("SELECT o FROM Product o WHERE o.brand.brandId in (:brands) and o.categoryProduct.categoryProductId in (:categoryProducts) and o.price > :minPrice and o.price < :maxPrice and o.category.categoryId = :categoryId")
-    Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice,int categoryId,Pageable pageable);
+    @Query("SELECT o FROM Product o WHERE o.brand.brandId in (:brands) and o.categoryProduct.categoryProductId in (:categoryProducts) and o.price > :minPrice and o.price < :maxPrice and o.category.categoryId = :categoryId and o.productName = :productName")
+    Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice,int categoryId,Pageable pageable,String productName);
 
 }
