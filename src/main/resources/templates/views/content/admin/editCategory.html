@@ -69,7 +69,7 @@
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
                                         <input type="file" style="width: 300px; padding: 0;" name="photo"
-                                               th:value="${'/assets/images/category/'+${category.categoryId}+'/'+${category.photo}}"
+                                               th:value="${category.photo}"
                                                class="form-control-user" onchange="previewFile(this);">
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                          th:src="@{'/assets/images/category/'+${category.categoryId}+'/'+${category.photoSmall}}">
                                     <div class="row mt-4 ml-4 text-center ">
                                         <input type="file" style="width: 300px; padding: 0;" name="photoSmall"
-                                               th:value="${'/assets/images/category/'+${category.categoryId}+'/'+${category.photoSmall}}"
+                                               th:value="${category.photoSmall}"
                                                class="form-control-user" onchange="previewFile1(this);">
                                     </div>
                                 </div>
