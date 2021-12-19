@@ -8,19 +8,25 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
-    public List<Product> findAll();
+    List<Product> findAll();
 
-    public void save (Product product);
+    void save(Product product);
 
-    public void delete(int id);
+    void delete(int id);
 
-    public Optional<Product> findById(int id);
+    Optional<Product> findById(int id);
 
-    public boolean existById(int id);
+    boolean existById(int id);
 
-    public List<Product> findBySupplierId(int id);
+    List<Product> findBySupplierId(int id);
 
-    public List<Product> findTop10OrderByDate();
+    List<Product> findTop10OrderByDate();
 
-    public Page<Product> findByCategoryOrderByRate(int keyword, Pageable pageable);
+    Page<Product> findByCategoryOrderByRate(int keyword, Pageable pageable);
+
+    Page<Product> findByCategoryId(int id, Pageable pageable);
+
+    Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice, int categoryId, Pageable pageable,String productName);
+
+    Page<Product> findAll(Pageable pageable);
 }

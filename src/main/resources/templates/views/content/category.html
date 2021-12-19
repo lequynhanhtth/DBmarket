@@ -36,170 +36,78 @@
                 <div class="row">
                     <div class="col-sm-3 collection-filter category-page-side">
                         <!-- side-bar colleps block stat -->
-                        <div class="
-                  collection-filter-block
-                  creative-card creative-inner
-                  category-side
-                ">
-                            <!-- brand filter start -->
-                            <div class="collection-mobile-back">
-                <span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i>
-                  back</span>
-                            </div>
-                            <div class="collection-collapse-block open">
-                                <h3 class="collapse-block-title mt-0">brand</h3>
-                                <div class="collection-collapse-block-content">
-                                    <div class="collection-brand-filter">
-                                        <div class="
-                          custom-control custom-checkbox
-                          form-check
-                          collection-filter-checkbox
-                        ">
-                                            <input type="checkbox" class="custom-control-input form-check-input"
-                                                   id="zara"/>
-                                            <label class="custom-control-label form-check-label" for="zara">zara</label>
-                                        </div>
-                                        <div class="
-                          custom-control custom-checkbox
-                          form-check
-                          collection-filter-checkbox
-                        ">
-                                            <input type="checkbox" class="custom-control-input form-check-input"
-                                                   id="vera-moda"/>
-                                            <label class="custom-control-label form-check-label" for="vera-moda">vera-moda</label>
-                                        </div>
-                                        <div class="
-                          custom-control custom-checkbox
-                          form-check
-                          collection-filter-checkbox
-                        ">
-                                            <input type="checkbox" class="custom-control-input form-check-input"
-                                                   id="forever-21"/>
-                                            <label class="custom-control-label form-check-label" for="forever-21">forever-21</label>
-                                        </div>
-                                        <div class="
-                          custom-control custom-checkbox
-                          form-check
-                          collection-filter-checkbox
-                        ">
-                                            <input type="checkbox" class="custom-control-input form-check-input"
-                                                   id="roadster"/>
-                                            <label class="custom-control-label form-check-label"
-                                                   for="roadster">roadster</label>
-                                        </div>
-                                        <div class="
-                          custom-control custom-checkbox
-                          form-check
-                          collection-filter-checkbox
-                        ">
-                                            <input type="checkbox" class="custom-control-input form-check-input"
-                                                   id="only"/>
-                                            <label class="custom-control-label form-check-label" for="only">only</label>
+                        <form method="get" th:action="@{'/DBmarket/Category/filter'}">
+                            <input type="hidden" th:value="${categoryId}" name="categoryId"/>
+                            <div class="collection-filter-block creative-card creative-inner category-side ">
+                                <!-- brand filter start -->
+                                <div class="collection-mobile-back">
+                                <span class="filter-back">
+                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                    back</span>
+                                </div>
+                                <!-- price filter start here -->
+                                <div class="collection-collapse-block border-0 open">
+                                    <h3 class="collapse-block-title">Search</h3>
+                                    <div class="collection-collapse-block-content">
+                                        <div class="filter-slide">
+                                            Name Product
+                                            <br>
+                                            <input class="js-range-slider" type="text" name="search" th:value="${search}"/>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- color filter start here -->
-                            <div class="collection-collapse-block open">
-                                <h3 class="collapse-block-title">colors</h3>
-                                <div class="collection-collapse-block-content">
-                                    <div class="color-selector">
-                                        <ul>
-                                            <li>
-                                                <div class="color-1 active"></div>
-                                                white (14)
-                                            </li>
-                                            <li>
-                                                <div class="color-2"></div>
-                                                brown(24)
-                                            </li>
-                                            <li>
-                                                <div class="color-3"></div>
-                                                red(18)
-                                            </li>
-                                            <li>
-                                                <div class="color-4"></div>
-                                                purple(10)
-                                            </li>
-                                            <li>
-                                                <div class="color-5"></div>
-                                                teal(9)
-                                            </li>
-                                            <li>
-                                                <div class="color-6"></div>
-                                                pink(11)
-                                            </li>
-                                            <li>
-                                                <div class="color-7"></div>
-                                                coral(15)
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- size filter start here -->
-                            <div class="collection-collapse-block open">
-                                <h3 class="collapse-block-title">size</h3>
-                                <div class="collection-collapse-block-content">
-                                    <div class="size-selector">
+                                <div class="collection-collapse-block open">
+                                    <h3 class="collapse-block-title">brand</h3>
+                                    <div class="collection-collapse-block-content">
                                         <div class="collection-brand-filter">
-                                            <div class="
-                            custom-control custom-checkbox
-                            form-check
-                            collection-filter-checkbox
-                          ">
+                                            <div th:each="brand : ${brands}"
+                                                 class=" custom-control custom-checkbox form-check collection-filter-checkbox">
                                                 <input type="checkbox" class="custom-control-input form-check-input"
-                                                       id="small"/>
+                                                       name="brands" th:checked="${brandsArray != null ? #lists.contains(brandsArray,brand.brandId) : false }" th:value="${brand.brandId}"/>
                                                 <label class="custom-control-label form-check-label"
-                                                       for="small">s</label>
-                                            </div>
-                                            <div class="
-                            custom-control custom-checkbox
-                            form-check
-                            collection-filter-checkbox
-                          ">
-                                                <input type="checkbox" class="custom-control-input form-check-input"
-                                                       id="mediam"/>
-                                                <label class="custom-control-label form-check-label"
-                                                       for="mediam">m</label>
-                                            </div>
-                                            <div class="
-                            custom-control custom-checkbox
-                            form-check
-                            collection-filter-checkbox
-                          ">
-                                                <input type="checkbox" class="custom-control-input form-check-input"
-                                                       id="large"/>
-                                                <label class="custom-control-label form-check-label"
-                                                       for="large">l</label>
-                                            </div>
-                                            <div class="
-                            custom-control custom-checkbox
-                            form-check
-                            collection-filter-checkbox
-                          ">
-                                                <input type="checkbox" class="custom-control-input form-check-input"
-                                                       id="extralarge"/>
-                                                <label class="custom-control-label form-check-label"
-                                                       for="extralarge">xl</label>
+                                                       th:text="${brand.brandName}"></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- price filter start here -->
-                            <div class="collection-collapse-block border-0 open">
-                                <h3 class="collapse-block-title">price</h3>
-                                <div class="collection-collapse-block-content">
-                                    <div class="filter-slide">
-                                        <input class="js-range-slider" type="text" name="my_range" value=""
-                                               data-type="double"/>
+                                <!-- color filter start here -->
+                                <div class="collection-collapse-block open">
+                                    <h3 class="collapse-block-title ">Category Product</h3>
+                                    <div class="collection-collapse-block-content">
+                                        <div class="collection-brand-filter">
+                                            <div th:each="categoryProduct : ${categoryProducts}"
+                                                 class=" custom-control custom-checkbox form-check collection-filter-checkbox">
+                                                <input type="checkbox" class="custom-control-input form-check-input"
+                                                       name="categoryProducts" th:checked="${categoryProductsArray != null ?  #lists.contains(categoryProductsArray,categoryProduct.categoryProductId) : false}"
+                                                       th:value="${categoryProduct.categoryProductId}"/>
+                                                <label class="custom-control-label form-check-label"
+                                                       th:text="${categoryProduct.categoryProductName}"></label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- price filter start here -->
+                                <div class="collection-collapse-block border-0 open">
+                                    <h3 class="collapse-block-title">price</h3>
+                                    <div class="collection-collapse-block-content">
+                                        <div class="filter-slide">
+                                            From
+                                            <br>
+                                            <input class="js-range-slider" type="text" name="minPrice" value=""
+                                                   data-type="double"/>
+                                            <br>
+                                            To
+                                            <br>
+                                            <input class="js-range-slider" type="text" name="maxPrice" value=""
+                                                   data-type="double"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-solid btn-sm"> Filter</button>
+                                <br>
                             </div>
-                        </div>
+                        </form>
                         <!-- silde-bar colleps block end here -->
                         <!-- side-bar single product slider start -->
                         <div class="theme-card creative-card creative-inner">
@@ -210,7 +118,7 @@
                                         <div class="media-banner-box">
                                             <div class="media">
                                                 <a href="product-page(left-sidebar).html" tabindex="0">
-                                                    <img src="../assets/images/layout-2/media-banner/3.jpg"
+                                                    <img src="/assets/images/layout-2/media-banner/3.jpg"
                                                          class="img-fluid" alt="banner"/>
                                                 </a>
                                                 <div class="media-body">
@@ -224,7 +132,8 @@
                                                                     <li><i class="fa fa-star"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                 </ul>
-                                                                <a href="product-page(left-sidebar).html" tabindex="0">
+                                                                <a href="product-page(left-sidebar).html"
+                                                                   tabindex="0">
                                                                     <p>sumsung galaxy</p>
                                                                 </a>
                                                                 <h6>$47.05 <span>$55.21</span></h6>
@@ -234,7 +143,8 @@
                                                                         data-tippy-content="Add
                                                                         to
                                                                         cart">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="24"
                                                                          height="24" viewBox="0
                                                                           0 24
                                                                           24" fill="none" stroke="currentColor"
@@ -257,7 +167,8 @@
                                                                     </svg>
                                                                 </button>
                                                                 <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
+                                                                   class="add-to-wish tooltip-top"
+                                                                   data-tippy-content="Add
                                                                         to
                                                                         Wishlist"><i data-feather="heart"
                                                                                      class="add-to-wish"></i></a>
@@ -277,7 +188,7 @@
                                         <div class="media-banner-box">
                                             <div class="media">
                                                 <a href="product-page(left-sidebar).html" tabindex="0">
-                                                    <img src="../assets/images/layout-2/media-banner/1.jpg"
+                                                    <img src="/assets/images/layout-2/media-banner/1.jpg"
                                                          class="img-fluid" alt="banner"/>
                                                 </a>
                                                 <div class="media-body">
@@ -291,7 +202,8 @@
                                                                     <li><i class="fa fa-star"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                 </ul>
-                                                                <a href="product-page(left-sidebar).html" tabindex="0">
+                                                                <a href="product-page(left-sidebar).html"
+                                                                   tabindex="0">
                                                                     <p>bajaj rex mixer</p>
                                                                 </a>
                                                                 <h6>$40.05 <span>$60.21</span></h6>
@@ -301,7 +213,8 @@
                                                                         data-tippy-content="Add
                                                                         to
                                                                         cart">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="24"
                                                                          height="24" viewBox="0
                                                                           0 24
                                                                           24" fill="none" stroke="currentColor"
@@ -324,7 +237,8 @@
                                                                     </svg>
                                                                 </button>
                                                                 <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
+                                                                   class="add-to-wish tooltip-top"
+                                                                   data-tippy-content="Add
                                                                         to
                                                                         Wishlist"><i data-feather="heart"
                                                                                      class="add-to-wish"></i></a>
@@ -344,7 +258,7 @@
                                         <div class="media-banner-box">
                                             <div class="media">
                                                 <a href="product-page(left-sidebar).html" tabindex="0">
-                                                    <img src="../assets/images/layout-2/media-banner/2.jpg"
+                                                    <img src="/assets/images/layout-2/media-banner/2.jpg"
                                                          class="img-fluid" alt="banner"/>
                                                 </a>
                                                 <div class="media-body">
@@ -358,7 +272,8 @@
                                                                     <li><i class="fa fa-star"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                 </ul>
-                                                                <a href="product-page(left-sidebar).html" tabindex="0">
+                                                                <a href="product-page(left-sidebar).html"
+                                                                   tabindex="0">
                                                                     <p>usha table fan</p>
                                                                 </a>
                                                                 <h6>$52.05 <span>$60.21</span></h6>
@@ -368,7 +283,8 @@
                                                                         data-tippy-content="Add
                                                                         to
                                                                         cart">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="24"
                                                                          height="24" viewBox="0
                                                                           0 24
                                                                           24" fill="none" stroke="currentColor"
@@ -391,7 +307,8 @@
                                                                     </svg>
                                                                 </button>
                                                                 <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
+                                                                   class="add-to-wish tooltip-top"
+                                                                   data-tippy-content="Add
                                                                         to
                                                                         Wishlist"><i data-feather="heart"
                                                                                      class="add-to-wish"></i></a>
@@ -415,7 +332,7 @@
                                         <div class="media-banner-box">
                                             <div class="media">
                                                 <a href="product-page(left-sidebar).html" tabindex="0">
-                                                    <img src="../assets/images/layout-2/media-banner/2.jpg"
+                                                    <img src="/assets/images/layout-2/media-banner/2.jpg"
                                                          class="img-fluid" alt="banner"/>
                                                 </a>
                                                 <div class="media-body">
@@ -429,7 +346,8 @@
                                                                     <li><i class="fa fa-star"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                 </ul>
-                                                                <a href="product-page(left-sidebar).html" tabindex="0">
+                                                                <a href="product-page(left-sidebar).html"
+                                                                   tabindex="0">
                                                                     <p>usha table fan</p>
                                                                 </a>
                                                                 <h6>$52.05 <span>$60.21</span></h6>
@@ -439,7 +357,8 @@
                                                                         data-tippy-content="Add
                                                                         to
                                                                         cart">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="24"
                                                                          height="24" viewBox="0
                                                                           0 24
                                                                           24" fill="none" stroke="currentColor"
@@ -462,7 +381,8 @@
                                                                     </svg>
                                                                 </button>
                                                                 <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
+                                                                   class="add-to-wish tooltip-top"
+                                                                   data-tippy-content="Add
                                                                         to
                                                                         Wishlist"><i data-feather="heart"
                                                                                      class="add-to-wish"></i></a>
@@ -482,7 +402,7 @@
                                         <div class="media-banner-box">
                                             <div class="media">
                                                 <a href="product-page(left-sidebar).html" tabindex="0">
-                                                    <img src="../assets/images/layout-2/media-banner/3.jpg"
+                                                    <img src="/assets/images/layout-2/media-banner/3.jpg"
                                                          class="img-fluid" alt="banner"/>
                                                 </a>
                                                 <div class="media-body">
@@ -496,7 +416,8 @@
                                                                     <li><i class="fa fa-star"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                 </ul>
-                                                                <a href="product-page(left-sidebar).html" tabindex="0">
+                                                                <a href="product-page(left-sidebar).html"
+                                                                   tabindex="0">
                                                                     <p>sumsung galaxy</p>
                                                                 </a>
                                                                 <h6>$47.05 <span>$55.21</span></h6>
@@ -506,7 +427,8 @@
                                                                         data-tippy-content="Add
                                                                         to
                                                                         cart">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="24"
                                                                          height="24" viewBox="0
                                                                           0 24
                                                                           24" fill="none" stroke="currentColor"
@@ -529,7 +451,8 @@
                                                                     </svg>
                                                                 </button>
                                                                 <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
+                                                                   class="add-to-wish tooltip-top"
+                                                                   data-tippy-content="Add
                                                                         to
                                                                         Wishlist"><i data-feather="heart"
                                                                                      class="add-to-wish"></i></a>
@@ -549,7 +472,7 @@
                                         <div class="media-banner-box">
                                             <div class="media">
                                                 <a href="product-page(left-sidebar).html" tabindex="0">
-                                                    <img src="../assets/images/layout-2/media-banner/1.jpg"
+                                                    <img src="/assets/images/layout-2/media-banner/1.jpg"
                                                          class="img-fluid" alt="banner"/>
                                                 </a>
                                                 <div class="media-body">
@@ -563,7 +486,8 @@
                                                                     <li><i class="fa fa-star"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                 </ul>
-                                                                <a href="product-page(left-sidebar).html" tabindex="0">
+                                                                <a href="product-page(left-sidebar).html"
+                                                                   tabindex="0">
                                                                     <p>bajaj rex mixer</p>
                                                                 </a>
                                                                 <h6>$40.05 <span>$60.21</span></h6>
@@ -573,7 +497,8 @@
                                                                         data-tippy-content="Add
                                                                         to
                                                                         cart">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="24"
                                                                          height="24" viewBox="0
                                                                           0 24
                                                                           24" fill="none" stroke="currentColor"
@@ -596,7 +521,8 @@
                                                                     </svg>
                                                                 </button>
                                                                 <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
+                                                                   class="add-to-wish tooltip-top"
+                                                                   data-tippy-content="Add
                                                                         to
                                                                         Wishlist"><i data-feather="heart"
                                                                                      class="add-to-wish"></i></a>
@@ -620,7 +546,7 @@
                                         <div class="media-banner-box">
                                             <div class="media">
                                                 <a href="product-page(left-sidebar).html" tabindex="0">
-                                                    <img src="../assets/images/layout-2/media-banner/1.jpg"
+                                                    <img src="/assets/images/layout-2/media-banner/1.jpg"
                                                          class="img-fluid" alt="banner"/>
                                                 </a>
                                                 <div class="media-body">
@@ -634,7 +560,8 @@
                                                                     <li><i class="fa fa-star"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                 </ul>
-                                                                <a href="product-page(left-sidebar).html" tabindex="0">
+                                                                <a href="product-page(left-sidebar).html"
+                                                                   tabindex="0">
                                                                     <p>bajaj rex mixer</p>
                                                                 </a>
                                                                 <h6>$40.05 <span>$60.21</span></h6>
@@ -644,7 +571,8 @@
                                                                         data-tippy-content="Add
                                                                         to
                                                                         cart">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="24"
                                                                          height="24" viewBox="0
                                                                           0 24
                                                                           24" fill="none" stroke="currentColor"
@@ -667,7 +595,8 @@
                                                                     </svg>
                                                                 </button>
                                                                 <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
+                                                                   class="add-to-wish tooltip-top"
+                                                                   data-tippy-content="Add
                                                                         to
                                                                         Wishlist"><i data-feather="heart"
                                                                                      class="add-to-wish"></i></a>
@@ -687,7 +616,7 @@
                                         <div class="media-banner-box">
                                             <div class="media">
                                                 <a href="product-page(left-sidebar).html" tabindex="0">
-                                                    <img src="../assets/images/layout-2/media-banner/2.jpg"
+                                                    <img src="/assets/images/layout-2/media-banner/2.jpg"
                                                          class="img-fluid" alt="banner"/>
                                                 </a>
                                                 <div class="media-body">
@@ -701,7 +630,8 @@
                                                                     <li><i class="fa fa-star"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                 </ul>
-                                                                <a href="product-page(left-sidebar).html" tabindex="0">
+                                                                <a href="product-page(left-sidebar).html"
+                                                                   tabindex="0">
                                                                     <p>usha table fan</p>
                                                                 </a>
                                                                 <h6>$52.05 <span>$60.21</span></h6>
@@ -711,7 +641,8 @@
                                                                         data-tippy-content="Add
                                                                         to
                                                                         cart">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="24"
                                                                          height="24" viewBox="0
                                                                           0 24
                                                                           24" fill="none" stroke="currentColor"
@@ -734,7 +665,8 @@
                                                                     </svg>
                                                                 </button>
                                                                 <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
+                                                                   class="add-to-wish tooltip-top"
+                                                                   data-tippy-content="Add
                                                                         to
                                                                         Wishlist"><i data-feather="heart"
                                                                                      class="add-to-wish"></i></a>
@@ -754,7 +686,7 @@
                                         <div class="media-banner-box">
                                             <div class="media">
                                                 <a href="product-page(left-sidebar).html" tabindex="0">
-                                                    <img src="../assets/images/layout-2/media-banner/3.jpg"
+                                                    <img src="/assets/images/layout-2/media-banner/3.jpg"
                                                          class="img-fluid" alt="banner"/>
                                                 </a>
                                                 <div class="media-body">
@@ -768,7 +700,8 @@
                                                                     <li><i class="fa fa-star"></i></li>
                                                                     <li><i class="fa fa-star-o"></i></li>
                                                                 </ul>
-                                                                <a href="product-page(left-sidebar).html" tabindex="0">
+                                                                <a href="product-page(left-sidebar).html"
+                                                                   tabindex="0">
                                                                     <p>sumsung galaxy</p>
                                                                 </a>
                                                                 <h6>$47.05 <span>$55.21</span></h6>
@@ -778,7 +711,8 @@
                                                                         data-tippy-content="Add
                                                                         to
                                                                         cart">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="24"
                                                                          height="24" viewBox="0
                                                                           0 24
                                                                           24" fill="none" stroke="currentColor"
@@ -801,7 +735,8 @@
                                                                     </svg>
                                                                 </button>
                                                                 <a href="javascript:void(0)"
-                                                                   class="add-to-wish tooltip-top" data-tippy-content="Add
+                                                                   class="add-to-wish tooltip-top"
+                                                                   data-tippy-content="Add
                                                                         to
                                                                         Wishlist"><i data-feather="heart"
                                                                                      class="add-to-wish"></i></a>
@@ -825,11 +760,12 @@
                         <!-- side-bar single product slider end -->
                         <!-- side-bar banner start here -->
                         <div class="collection-sidebar-banner">
-                            <a href="javascript:void(0)"><img src="../assets/images/category/side-banner.png"
+                            <a href="javascript:void(0)"><img src="/assets/images/category/side-banner.png"
                                                               class="img-fluid"
                                                               alt=""/></a>
                         </div>
                     </div>
+
                     <div class="collection-content col">
                         <div class="page-main-content">
                             <div class="row">
@@ -863,22 +799,22 @@
                                                         <div class="collection-grid-view">
                                                             <ul>
                                                                 <li>
-                                                                    <img src="../assets/images/category/icon/2.png"
+                                                                    <img src="/assets/images/category/icon/2.png"
                                                                          alt="grid-view"
                                                                          class="product-2-layout-view"/>
                                                                 </li>
                                                                 <li>
-                                                                    <img src="../assets/images/category/icon/3.png"
+                                                                    <img src="/assets/images/category/icon/3.png"
                                                                          alt="grid-view"
                                                                          class="product-3-layout-view"/>
                                                                 </li>
                                                                 <li>
-                                                                    <img src="../assets/images/category/icon/4.png"
+                                                                    <img src="/assets/images/category/icon/4.png"
                                                                          alt="grid-view"
                                                                          class="product-4-layout-view"/>
                                                                 </li>
                                                                 <li>
-                                                                    <img src="../assets/images/category/icon/6.png"
+                                                                    <img src="/assets/images/category/icon/6.png"
                                                                          alt="grid-view"
                                                                          class="product-6-layout-view"/>
                                                                 </li>
@@ -926,7 +862,7 @@
                                         </div>
                                         <div class="product-wrapper-grid category-6 product">
                                             <div class="row">
-                                                <div th:each="product:${products}"
+                                                <div th:each="product:${productPage.content}"
                                                      class="col-xl-2 col-lg-3 col-md-4 col-6 col-grid-box">
                                                     <div class="product-box">
                                                         <div class="product-imgbox">
@@ -986,9 +922,9 @@
                                                                     <i data-feather="heart"></i>
                                                                 </a>
                                                                 <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                   data-bs-target="#quick-view"
-                                                                   class="tooltip-top" data-tippy-content="Quick
-                                                                        View">
+                                                                   th:data-bs-target="${'#'+product.productId}"
+                                                                   class="tooltip-top"
+                                                                   th:data-tippy-content="${product.productId}">
                                                                     <i data-feather="eye"></i>
                                                                 </a>
                                                                 <a href="compare.html" class="tooltip-top"
@@ -1010,25 +946,26 @@
                                                             <ul class="pagination">
                                                                 <li class="page-item">
                                                                     <a class="page-link"
-                                                                       th:href="@{'/DBmarket/Category?categoryId='${categoryId}+'&&pageNumber='+${pageNumber - 1}}"
+                                                                       th:href="@{'/DBmarket/Category/filter?categoryId='${categoryId}+'&&pageNumber='+${productPage.number - 1}+'&&brands='+${brandsArray}+'&&categoryProducts='+${categoryProductsArray}}"
                                                                        aria-label="Previous"
-                                                                       th:classappend="${pageNumber == 1 ? ' disabled':''}">
+                                                                       th:classappend="${productPage.number == 0 ? ' disabled':''}">
                                                                         <span
                                                                                 aria-hidden="true"><i
                                                                                 class="fa fa-chevron-left"
                                                                                 aria-hidden="true"></i></span>
                                                                         <span class="sr-only">Previous</span></a>
                                                                 </li>
-                                                                <th:block th:each="i: ${#numbers.sequence(1, pageMax)}">
+                                                                <th:block
+                                                                        th:each="i: ${#numbers.sequence(1, productPage.totalPages)}">
                                                                     <li class="page-item">
                                                                         <a class="page-link"
-                                                                           th:href="@{'/DBmarket/Category?categoryId='+${categoryId}+'&&pageNumber='+${i}}">[[${i}]]</a>
+                                                                           th:href="@{'/DBmarket/Category?categoryId='+${categoryId}+'&&page='+${i}+'&&brands='+${brandsArray}+'&&categoryProducts='+${categoryProductsArray}}">[[${i}]]</a>
                                                                     </li>
                                                                 </th:block>
                                                                 <li class="page-item">
                                                                     <a class="page-link"
-                                                                       th:classappend="${pageNumber == pageMax ? ' disabled':''}"
-                                                                       th:href="@{'/DBmarket/Category?categoryId='${categoryId}+'&&pageNumber='+${pageNumber + 1}}"
+                                                                       th:classappend="${productPage.number == (productPage.totalPages - 1 ) ? ' disabled':''}"
+                                                                       th:href="@{'/DBmarket/Category?categoryId='${categoryId}+'&&page='+${productPage.number + 1}+'&&brands='+${brandsArray}+'&&categoryProducts='+${categoryProductsArray}}"
                                                                        aria-label="Next">
                                                                         <span aria-hidden="true">
                                                                             <i class="fa fa-chevron-right"
@@ -1056,7 +993,8 @@
         </div>
     </section>
     <!-- section End -->
-    <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog"
+    <div th:each="product : ${productPage.content}" class="modal fade bd-example-modal-lg theme-modal"
+         th:id="${product.productId}" tabindex="-1" role="dialog"
          aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content quick-view-modal">
@@ -1065,17 +1003,18 @@
                     <div class="row">
                         <div class="col-lg-6 col-xs-12">
                             <div class="quick-view-img">
-                                <img src="../assets/images/layout-1/product/3.jpg" alt="" class="img-fluid bg-img"/>
+                                <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
+                                     alt="" class="img-fluid bg-img"/>
                             </div>
                         </div>
                         <div class="col-lg-6 rtl-text">
                             <div class="product-right">
                                 <div class="pro-group">
-                                    <h2>reader will be distracted</h2>
+                                    <h2 th:text="${product.productName}"></h2>
                                     <ul class="pro-price">
-                                        <li>$70</li>
-                                        <li><span>mrp $140</span></li>
-                                        <li>50% off</li>
+                                        <li th:text="${'$ '+ product.price}"></li>
+                                        <!--                                        <li><span>mrp $140</span></li>-->
+                                        <!--                                        <li>50% off</li>-->
                                     </ul>
                                     <div class="revieu-box">
                                         <ul>
@@ -1707,71 +1646,9 @@
                                 </div>
                                 <div class="pro-group">
                                     <h6 class="product-title">product infomation</h6>
-                                    <p>
-                                        Sed ut perspiciatis, unde omnis iste natus error sit
-                                        voluptatem accusantium doloremque laudantium
-                                    </p>
+                                    <p th:text="${product.description}"></p>
                                 </div>
                                 <div class="pro-group pb-0">
-                                    <h6 class="product-title size-text">
-                                        select size<span>
-                      <a href="" data-bs-toggle="modal" data-bs-target="#sizemodal">size chart</a></span>
-                                    </h6>
-                                    <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog"
-                                         aria-labelledby="exampleModalLabel"
-                                         aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                        Sheer Straight Kurta
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <img src="../assets/images/size-chart.jpg" alt=""
-                                                         class="img-fluid"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="size-box">
-                                        <ul>
-                                            <li><a href="javascript:void(0)">s</a></li>
-                                            <li><a href="javascript:void(0)">m</a></li>
-                                            <li><a href="javascript:void(0)">l</a></li>
-                                            <li><a href="javascript:void(0)">xl</a></li>
-                                            <li><a href="javascript:void(0)">2xl</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="product-title">color</h6>
-                                    <div class="color-selector inline">
-                                        <ul>
-                                            <li>
-                                                <div class="color-1 active"></div>
-                                            </li>
-                                            <li>
-                                                <div class="color-2"></div>
-                                            </li>
-                                            <li>
-                                                <div class="color-3"></div>
-                                            </li>
-                                            <li>
-                                                <div class="color-4"></div>
-                                            </li>
-                                            <li>
-                                                <div class="color-5"></div>
-                                            </li>
-                                            <li>
-                                                <div class="color-6"></div>
-                                            </li>
-                                            <li>
-                                                <div class="color-7"></div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="product-title">quantity</h6>
                                     <div class="qty-box">
                                         <div class="input-group">
                                             <button class="qty-minus"></button>
@@ -1782,15 +1659,12 @@
                                     <div class="product-buttons">
                                         <a href="javascript:void(0)" onclick="openCart()"
                                            class="btn cart-btn btn-normal tooltip-top"
-                                           data-tippy-content="Add
-                                                                                                                to
-                                                                                                                cart">
+                                           data-tippy-content="Add to cart">
                                             <i class="fa fa-shopping-cart"></i>
                                             add to cart
                                         </a>
                                         <a href="product-page(left-sidebar).html" class="btn btn-normal tooltip-top"
-                                           data-tippy-content="view
-                                                                                                                detail">
+                                           data-tippy-content="view detail">
                                             view detail
                                         </a>
                                     </div>
