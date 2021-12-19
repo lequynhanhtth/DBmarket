@@ -54,13 +54,24 @@
                                     <input class="form-control" id="validationCustomtitle" name="weight" type="text"
                                            required="">
                                 </div>
+                                <input type="hidden" name="category" th:value="${categoryId}" />
                                 <div class="form-group">
-                                    <label class="col-form-label"><span>*</span> Categories</label>
-                                    <select class="custom-select form-control" name="category" required="">
-                                        <option value="">--Select--</option>
-                                        <th:block th:each="category : ${categories}">
-                                            <option th:value="${category.categoryId}"
-                                                    th:text="${category.name}"></option>
+                                    <label class="col-form-label"><span>*</span> Brands</label>
+                                    <select class="custom-select form-control" name="brandId" required="">
+                                        <option value="" hidden>--Select--</option>
+                                        <th:block th:each="brand : ${brands}">
+                                            <option th:value="${brand.brandId}"
+                                                    th:text="${brand.brandName}"></option>
+                                        </th:block>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label"><span>*</span> Category Product</label>
+                                    <select class="custom-select form-control" name="categoryProductId" required="">
+                                        <option value="" hidden>--Select--</option>
+                                        <th:block th:each="categoryProduct : ${categoryProducts}">
+                                            <option th:value="${categoryProduct.categoryProductId}"
+                                                    th:text="${categoryProduct.categoryProductName}"></option>
                                         </th:block>
                                     </select>
                                 </div>

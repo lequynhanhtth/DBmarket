@@ -86,17 +86,32 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label"><span>*</span> Categories</label>
-                                    <select class="custom-select form-control"  name="bannedId" required="">
+                                    <select class="custom-select form-control" name="bannedId" required=""
+                                            th:disabled="${(customer.accountBanneds.size > 0  ? (customer.accountBanneds[(customer.accountBanneds.size)-1].dateUnbanned == null) : false)}">
                                         <option value="">--Select--</option>
                                         <th:block th:each="banned : ${banneds}">
-                                            <option th:selected="${(customer.accountBanneds != null ? customer.accountBanneds[(customer.accountBanneds.size)-1].banned.bannedId : -1) == banned.bannedId}" th:value="${banned.bannedId}"
+                                            <option th:selected="${(customer.accountBanneds.size > 0  ? customer.accountBanneds[(customer.accountBanneds.size)-1].banned.bannedId == banned.bannedId && (customer.accountBanneds[(customer.accountBanneds.size)-1].dateUnbanned == null ): false) }"
+                                                    th:value="${banned.bannedId}"
                                                     th:text="${banned.reason}"></option>
                                         </th:block>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="" class="col-form-label pt-0"><span>*</span>
+                                        Description</label>
+                                    <textarea class="form-control" id="" name="description" type="text"
+                                              required="" th:disabled="${(customer.accountBanneds.size > 0  ? (customer.accountBanneds[(customer.accountBanneds.size)-1].dateUnbanned == null) : true)}"
+                                              th:text="${((customer.accountBanneds.size > 0  ?  (customer.accountBanneds[(customer.accountBanneds.size)-1].dateUnbanned == null) : false) ? customer.accountBanneds[(customer.accountBanneds.size)-1].description  : null)}"></textarea>
+                                </div>
                                 <div class="form-group mb-0">
                                     <div class="product-buttons text-center">
-                                        <button type="submit" class="btn btn-primary">Banned</button>
+                                        <button type="submit" class="btn btn-primary"
+                                                th:if="${(customer.accountBanneds.size > 0  ? (customer.accountBanneds[(customer.accountBanneds.size)-1].dateUnbanned != null) : true)}">Banned
+                                        </button>
+                                        <a th:href="@{'/admin/customer/unBanned?id='+${customer.customerId}}"
+                                           class="btn btn-primary"
+                                           th:if="${(customer.accountBanneds.size > 0  ? (customer.accountBanneds[(customer.accountBanneds.size)-1].dateUnbanned == null) : false)}">Unbanned
+                                        </a>
                                         <button type="button" class="btn btn-light">Discard</button>
                                     </div>
                                 </div>
