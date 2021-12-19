@@ -41,6 +41,22 @@ public class AccountBanned {
         this.description = description;
     }
 
+    public LocalDate getDateBanned() {
+        return dateBanned;
+    }
+
+    public void setDateBanned(LocalDate dateBanned) {
+        this.dateBanned = dateBanned;
+    }
+
+    public LocalDate getDateUnbanned() {
+        return dateUnbanned;
+    }
+
+    public void setDateUnbanned(LocalDate dateUnbanned) {
+        this.dateUnbanned = dateUnbanned;
+    }
+
     public Banned getBanned() {
         return banned;
     }
@@ -64,4 +80,5 @@ public class AccountBanned {
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
     }
+
 }

@@ -59,4 +59,19 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> findByCategoryOrderByRate(int keyword, Pageable pageable) {
         return productRepository.findByCategoryOrderByRate(keyword, pageable);
     }
+
+    @Override
+    public Page<Product> findByCategoryId(int id, Pageable pageable) {
+        return productRepository.findByCategoryId(id, pageable);
+    }
+
+    @Override
+    public Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice, int categoryId, Pageable pageable) {
+        return productRepository.findManyOption(brands, categoryProducts, minPrice, maxPrice,categoryId,pageable);
+    }
+
+    @Override
+    public Page<Product> findAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
 }

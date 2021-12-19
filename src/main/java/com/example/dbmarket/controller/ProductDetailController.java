@@ -4,6 +4,7 @@ import com.example.dbmarket.entities.Product;
 import com.example.dbmarket.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +25,28 @@ public class ProductDetailController {
     HttpSession session;
 
     @GetMapping("/productdetail/{id}")
-    public String getProductDetail(@PathVariable("id") int id, Model model){
+    public String getProductDetail(@PathVariable("id") int id, Model model) {
         Product product = productService.findById(id).get();
+        Sort sort = Sort.by(Sort.Direction.DESC, "productId");
+
+        //new product 1
+        Pageable pageable = PageRequest.of(0, 3, sort);
+        List<Product> newProducts = productService.findAll(pageable).getContent();
+        model.addAttribute("newProducts1", newProducts);
+        //new product 2
+        pageable = PageRequest.of(1, 3, sort);
+        newProducts = productService.findAll(pageable).getContent();
+        model.addAttribute("newProducts2", newProducts);
+        //new product 3
+        pageable = PageRequest.of(2, 3, sort);
+        newProducts = productService.findAll(pageable).getContent();
+        model.addAttribute("newProducts3", newProducts);
+        //product detail
         model.addAttribute("productDetail", product);
-        Pageable pageable = PageRequest.of(0, 4);
+        pageable = PageRequest.of(0, 4);
         List<Product> products = productService.findByCategoryOrderByRate(product.getCategory().getCategoryId(), pageable).getContent();
         model.addAttribute("productdetails", products);
+        model.addAttribute("newProducts", newProducts);
         return "views/content/productdetail";
     }
 

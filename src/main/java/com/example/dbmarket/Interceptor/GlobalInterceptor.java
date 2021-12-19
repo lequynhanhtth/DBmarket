@@ -32,7 +32,7 @@ public class GlobalInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-            Customer customer = (Customer) session.getAttribute("customer");
+        Customer customer = (Customer) session.getAttribute("customer");
         if (customer != null) {
             customer = customerService.findById(customer.getCustomerId()).orElse(null);
         }
