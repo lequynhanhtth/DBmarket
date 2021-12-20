@@ -59,21 +59,27 @@ public class CategoryController {
         List<Integer> c = new ArrayList<>();
         if (categoryProducts == null) {
             for (CategoryProduct categoryProduct : categoryProductList) {
-                c.add(categoryId);
+                c.add(categoryProduct.getCategoryProductId());
             }
+            model.addAttribute("categoryProductNull", false);
         } else {
             for (int categoryProduct : categoryProducts) {
                 c.add(categoryProduct);
             }
+            model.addAttribute("categoryProductNull", true);
         }
         if (brands == null) {
             for (Brand brand : brandList) {
                 b.add(brand.getBrandId());
+
             }
+            model.addAttribute("brandNull", false);
         } else {
             for (int brand : brands) {
                 b.add(brand);
             }
+            model.addAttribute("brandNull", true);
+
         }
         Page<Product> productPage = productService.findManyOption(b, c, minPrice.orElse((long) 0), maxPrice.orElse((long) 10000000), categoryId, pageable, "%" + search.orElse("") + "%");
         model.addAttribute("productPage", productPage);

@@ -63,7 +63,7 @@
                                             <div th:each="brand : ${brands}"
                                                  class=" custom-control custom-checkbox form-check collection-filter-checkbox">
                                                 <input type="checkbox" class="custom-control-input form-check-input"
-                                                       name="brands" th:checked="${brandsArray != null ? #lists.contains(brandsArray,brand.brandId) : false }" th:value="${brand.brandId}"/>
+                                                       name="brands" th:checked="${brandsArray != null ? (brandNull  ?   #lists.contains(brandsArray,brand.brandId) :false) : false }" th:value="${brand.brandId}"/>
                                                 <label class="custom-control-label form-check-label"
                                                        th:text="${brand.brandName}"></label>
                                             </div>
@@ -78,7 +78,7 @@
                                             <div th:each="categoryProduct : ${categoryProducts}"
                                                  class=" custom-control custom-checkbox form-check collection-filter-checkbox">
                                                 <input type="checkbox" class="custom-control-input form-check-input"
-                                                       name="categoryProducts" th:checked="${categoryProductsArray != null ?  #lists.contains(categoryProductsArray,categoryProduct.categoryProductId) : false}"
+                                                       name="categoryProducts" th:checked="${categoryProductsArray != null ? (categoryProductNull ? #lists.contains(categoryProductsArray,categoryProduct.categoryProductId) :false ): false}"
                                                        th:value="${categoryProduct.categoryProductId}"/>
                                                 <label class="custom-control-label form-check-label"
                                                        th:text="${categoryProduct.categoryProductName}"></label>
