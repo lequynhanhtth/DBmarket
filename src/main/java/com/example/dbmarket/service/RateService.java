@@ -1,18 +1,24 @@
 package com.example.dbmarket.service;
 
 import com.example.dbmarket.entities.Rate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface RateService {
-    public List<Rate> findAll();
+    List<Rate> findAll();
 
-    public void save (Rate rate);
+    void save(Rate rate);
 
-    public void delete(int id);
+    void delete(int id);
 
-    public Optional<Rate> findById(int id);
+    Optional<Rate> findById(int id);
 
-    public boolean existById(int id);
+    boolean existById(int id);
+
+    Page<Rate> findAll(Pageable pageable);
+
+    Page<Rate> findRateByProductId(int productId,Pageable pageable);
 }

@@ -2,21 +2,25 @@ package com.example.dbmarket.service;
 
 import com.example.dbmarket.entities.Order;
 import com.example.dbmarket.entities.OrderDetail;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
 public interface OrderService {
-    public List<Order> findAll();
+    List<Order> findAll();
 
-    public void save (Order order);
+    void save(Order order);
 
-    public void delete(int id);
+    void delete(int id);
 
-    public Optional<Order> findById(int id);
+    Optional<Order> findById(int id);
 
-    public boolean existById(int id);
+    boolean existById(int id);
 
-    public List<Order> findOrderBySupplierId(int id);
+    List<Order> findOrderBySupplierId(int id);
+
+    Page<Order> findAll(Pageable pageable);
 }

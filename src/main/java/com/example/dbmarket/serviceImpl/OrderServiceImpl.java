@@ -4,6 +4,8 @@ import com.example.dbmarket.entities.Order;
 import com.example.dbmarket.repository.OrderRepository;
 import com.example.dbmarket.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,5 +45,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> findOrderBySupplierId(int id) {
         return orderRepository.findOrderBySupplierId(id);
+    }
+
+    @Override
+    public Page<Order> findAll(Pageable pageable) {
+        return orderRepository.findAll(pageable);
     }
 }

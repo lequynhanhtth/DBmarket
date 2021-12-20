@@ -899,10 +899,10 @@
                                                                 </div>
                                                                 <div class="detail-right">
                                                                     <div class="check-price" th:text="${product.price}">
-                                                                        $60.21
+
                                                                     </div>
                                                                     <div class="price">
-                                                                        <div class="price" th:text="${product.price}">
+                                                                        <div class="price" th:text="${product.price * ( 100 - product.discount ) / 100}">
                                                                             $50.05
                                                                         </div>
                                                                     </div>

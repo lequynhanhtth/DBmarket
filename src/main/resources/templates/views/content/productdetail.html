@@ -74,9 +74,10 @@
                                         <div class="pro-group">
                                             <h2>[[${productDetail.productName}]]</h2>
                                             <ul class="pro-price">
-                                                <li>[[${productDetail.price}]]</li>
-                                                <li><span>mrp $140</span></li>
-                                                <li>50% off</li>
+                                                <li>$ [[${productDetail.price}]]</li>
+                                                <li><span>$ [[${productDetail.price*( 100 - productDetail.discount )/100}]]</span>
+                                                </li>
+                                                <li> [[${productDetail.discount}]] % off</li>
                                             </ul>
                                             <div class="revieu-box">
                                                 <ul>
@@ -86,7 +87,7 @@
                                                     <li><i class="fa fa-star"></i></li>
                                                     <li><i class="fa fa-star-o"></i></li>
                                                 </ul>
-                                                <a href="review.html"><span>(6 reviews)</span></a>
+                                                <a th:href="@{'/productDetail/review?productId='+${productDetail.productId}}"><span>(6 reviews)</span></a>
                                             </div>
                                             <ul class="best-seller">
                                                 <li>
@@ -186,15 +187,6 @@
                                         <div class="pro-group">
                                             <h6 class="product-title">delivery location</h6>
                                             <div class="delivery-detail">
-                                                <div class="delivery-detail-contian">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text"><i
-                                                                class="ti-location-pin"></i></span>
-                                                        <input type="text" class="form-control"
-                                                               placeholder="Enter Pincode for delivery">
-                                                    </div>
-                                                    <a href="javascript:void(0)" class="btn btn-solid btn-md ">check</a>
-                                                </div>
                                                 <div class="delivery-lable">
                                                     <svg enable-background="new 0 0 512 512" viewBox="0 0 512 512"
                                                          xmlns="http://www.w3.org/2000/svg">
@@ -233,6 +225,32 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <form method="get" th:action="@{'/customer/cart'}">
+                                            <div class="pro-group">
+                                                <input type="hidden" name="id" th:value="${productDetail.productId}">
+                                                <input type="hidden" name="url"
+                                                       th:value="${#httpServletRequest.requestURI}">
+                                                <h6 class="product-title">quantity</h6>
+                                                <div class="qty-box">
+                                                    <div class="input-group">
+                                                        <button class="qty-minus"></button>
+                                                        <input class="qty-adj form-control" name="quantity"
+                                                               type="number"
+                                                               value="1"/>
+                                                        <button class="qty-plus"></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pro-group">
+                                                <div class="product-buttons">
+                                                    <button class="btn cart-btn btn-normal tooltip-top"
+                                                            data-tippy-content="Add to cart">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        add to cart
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                         <div class="pro-group">
                                             <div class="product-offer">
                                                 <h6 class="product-title"><i class="fa fa-tags"></i>5 offers Available
@@ -296,6 +314,7 @@
                                             <p>Weight: [[${productDetail.weight}]]</p>
                                             <p>In Stock</p>
                                         </div>
+
                                         <div class="pro-group">
                                             <h6 class="product-title">Delivery option</h6>
                                             <ul class="delivery-services">
@@ -428,45 +447,32 @@
                                             </div>
                                             <div class="tab-pane fade" id="top-review" role="tabpanel"
                                                  aria-labelledby="review-top-tab">
-                                                <form class="theme-form">
+                                                <form class="theme-form" th:action="@{'/DBmarket/productDetail/rate'}"
+                                                      method="get">
+                                                    <input type="hidden" th:value="${productDetail.productId}"
+                                                           name="productId"/>
                                                     <div class="row g-3">
                                                         <div class="col-md-12">
+                                                            <label>Rating</label>
                                                             <div class="media">
-                                                                <label>Rating</label>
-                                                                <div class="media-body ms-3">
-                                                                    <div class="rating three-star"><i
-                                                                            class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i></div>
-                                                                </div>
+                                                                <select class="custom-select form-control" name="rate"
+                                                                        required="">
+                                                                    <option value="" hidden>--Select--</option>
+                                                                    <option value="1">1 Star</option>
+                                                                    <option value="2">2 Star</option>
+                                                                    <option value="3">3 Star</option>
+                                                                    <option value="4">4 Star</option>
+                                                                    <option value="5">5 Star</option>
+                                                                </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <label for="name">Name</label>
-                                                            <input type="text" class="form-control" id="name"
-                                                                   placeholder="Enter Your name" required>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label>Email</label>
-                                                            <input type="text" class="form-control" placeholder="Email"
-                                                                   required>
+                                                        <div class="col-md-12">
+                                                            <label>Comment</label>
+                                                            <input type="text" class="form-control" name="comment"
+                                                                   placeholder="Enter your Review Subjects">
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <label>Review Title</label>
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Enter your Review Subjects" required>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <label>Review Title</label>
-                                                            <textarea class="form-control"
-                                                                      placeholder="Wrire Your Testimonial Here"
-                                                                      id="exampleFormControlTextarea1"
-                                                                      rows="6"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <button class="btn btn-normal" type="submit">Submit YOur
+                                                            <button class="btn btn-normal" type="submit">Submit Your
                                                                 Review
                                                             </button>
                                                         </div>

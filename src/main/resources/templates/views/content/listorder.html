@@ -87,9 +87,6 @@
                                                             <a class="jsgrid-button jsgrid-search-button"
                                                                type="button" title="Detail"
                                                                th:href="@{'/customer/invoice?id='+${order.orderId}}"></a>
-                                                            <a th:if="${order.status == 'Wait Confirm'}" class="jsgrid-button jsgrid-cancel-button"
-                                                               type="button" title="Cancel"
-                                                               th:href="@{'/customer/listOrder/cancel?id='+${order.orderId}}"></a>
                                                         </td>
                                                     </tr>
                                                     </tbody>

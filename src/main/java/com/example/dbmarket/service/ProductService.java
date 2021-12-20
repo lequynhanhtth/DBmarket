@@ -26,7 +26,13 @@ public interface ProductService {
 
     Page<Product> findByCategoryId(int id, Pageable pageable);
 
-    Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice, int categoryId, Pageable pageable,String productName);
+    Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice, int categoryId, Pageable pageable, String productName);
 
     Page<Product> findAll(Pageable pageable);
+
+    Page<Product> findProductNotAccept(Pageable pageable);
+
+    void changeStatusFalseProductBySupplier(int supplierId);
+
+    void changeStatusTrueProductBySupplier(int supplierId);
 }

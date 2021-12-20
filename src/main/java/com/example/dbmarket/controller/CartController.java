@@ -49,7 +49,7 @@ public class CartController {
         return "/views/content/cart";
     }
 
-    @RequestMapping("customer/cart")
+    @GetMapping("customer/cart")
     public String addCart(int id, String url, Integer quantity) {
         Customer customer = (Customer) session.getAttribute("customer");
         customer = customerService.findById(customer.getCustomerId()).orElse(null);
@@ -81,7 +81,7 @@ public class CartController {
             }
             cartDetailService.save(cartDetail);
         }
-        cart.setTotalPrice((double) (cart.getTotalPrice() + cartDetail.getQuantity() * cartDetail.getProduct().getPrice()));
+        cart.setTotalPrice((double) (cart.getTotalPrice() + cartDetail.getQuantity() * cartDetail.getProduct().getPrice()*(100 - cartDetail.getProduct().getDiscount()/100)));
         cart.setNumberOfProduct(cart.getNumberOfProduct() + cartDetail.getQuantity());
         cartService.save(cart);
         return "redirect:" + url;
