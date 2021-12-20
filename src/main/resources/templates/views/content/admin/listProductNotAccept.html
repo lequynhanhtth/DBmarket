@@ -96,17 +96,28 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="jsgrid-pager-container" style="display: none;">
-                                    <div class="jsgrid-pager">Pages: <span
-                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
-                                            href="javascript:void(0);">First</a></span> <span
-                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
-                                            href="javascript:void(0);">Prev</a></span> <span
-                                            class="jsgrid-pager-page jsgrid-pager-current-page">1</span> <span
-                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
-                                            href="javascript:void(0);">Next</a></span> <span
-                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
-                                            href="javascript:void(0);">Last</a></span> &nbsp;&nbsp; 1 of 1
+                                <div class="jsgrid-pager-container" style="display: block;">
+                                    <div class="jsgrid-pager">Pages:
+                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
+                                            <a th:href="@{'/admin/producstNotAccept?page=0'}">First</a>
+                                        </span>
+                                        <span class="jsgrid-pager-nav-button "
+                                              th:classappend="${productPage.number == 0 ? 'jsgrid-pager-nav-inactive-button' : 'jsgrid-pager-nav-active-button'}">
+                                            <a th:href="@{'/admin/producstNotAccept?page='+${productPage.number - 1}}">Prev</a>
+                                        </span>
+                                        <th:block th:if="${productPage.totalPages>0}"
+                                                  th:each="i: ${#numbers.sequence(1, productPage.totalPages)}">
+                                            <a th:href="@{'/admin/producstNotAccept?page='+${i - 1 }}"><span
+                                                    class="jsgrid-pager-page jsgrid-pager-current-page"
+                                                    th:text="${i}">  </span> </a>
+                                        </th:block>
+                                        <span class="jsgrid-pager-nav-button"
+                                              th:classappend="${productPage.number == productPage.totalPages - 1 ? 'jsgrid-pager-nav-inactive-button' : 'jsgrid-pager-nav-active-button'}">
+                                        <a th:href="@{'/admin/producstNotAccept?page='+${productPage.number + 1}}">Next</a>
+                                        </span>
+                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
+                                            <a th:href="@{'/admin/producstNotAccept?page='+${productPage.totalPages - 1}}">Last</a>
+                                        </span> &nbsp;&nbsp; [[${productPage.number + 1}]] of [[${productPage.totalPages}]]
                                     </div>
                                 </div>
                                 <div class="jsgrid-load-shader"
