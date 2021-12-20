@@ -204,6 +204,10 @@ public class Product implements Serializable {
         return status;
     }
 
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public boolean isAccept() {
         return accept;
     }
