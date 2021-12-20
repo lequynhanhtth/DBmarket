@@ -6,6 +6,7 @@ import com.example.dbmarket.service.CustomerService;
 import com.example.dbmarket.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,27 +24,40 @@ public class LoginController {
     public String showLogin() {
         return "views/content/login";
     }
-
     @GetMapping("doLogin")
-    public String doLogin(String email, String password, String isUser) {
+    public String doLogin(Model model, String email, String password, String isUser) {
         if (isUser.equals("User")) {
             Customer customer = customerService.findByEmail(email).orElse(null);
             if (customer != null) {
                 if (password.equals(customer.getPassword())) {
                     session.setAttribute("customer",customer);
                     return "redirect:/DBmarket/Home";
+                }else{
+                    model.addAttribute("messageLogin", "Sai mật khẩu");
+                    return "redirect:/login";
                 }
+
+            }else{
+                model.addAttribute("messageLogin", "Tài khoản không tồn tại ");
+                return "redirect:/login";
             }
+
         }else{
             Supplier supplier = supplierService.findByEmail(email).orElse(null);
             if(supplier != null){
                 if(password.equals(supplier.getPassword())){
                     session.setAttribute("supplier",supplier);
                     return "redirect:/supplier/dashboard";
+                }else{
+                    model.addAttribute("messageLogin", "Sai mật khẩu");
+                    return "redirect:/login";
                 }
+
+            }else{
+                model.addAttribute("messageLogin", "Tài khoản không tồn tại ");
+                return "redirect:/login";
             }
         }
-        return "views/content/home";
     }
     @RequestMapping("/customer/logout")
     public String logout(){

@@ -34,7 +34,7 @@
 
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <form method="post" enctype="multipart/form-data">
+        <form id="addProduct" method="post" enctype="multipart/form-data">
             <div class="row product-adding">
                 <div class="col-xl-6">
                     <div class="card">
@@ -44,61 +44,74 @@
                         <div class="card-body">
                             <div class="digital-add needs-validation">
                                 <div class="form-group">
-                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Product
+                                    <label for="productName" class="col-form-label pt-0"><span>*</span> Product
                                         Name</label>
-                                    <input class="form-control" id="validationCustom01" name="productName" type="text"
-                                           required="">
+                                    <input class="form-control" id="productName"  type="text">
+                                    <div id="errorproductName" class="invalid-feedback">productName is
+                                        required</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> weight</label>
-                                    <input class="form-control" id="validationCustomtitle" name="weight" type="text"
-                                           required="">
+                                    <label for="weight" class="col-form-label pt-0"><span>*</span> Weight</label>
+                                    <input class="form-control" id="weight" name="weight" type="text"
+                                           >
+                                    <div id="errorweight" class="invalid-feedback">Weight is
+                                        required</div>
                                 </div>
                                 <input type="hidden" name="category" th:value="${categoryId}" />
                                 <div class="form-group">
-                                    <label class="col-form-label"><span>*</span> Brands</label>
-                                    <select class="custom-select form-control" name="brandId" required="">
+                                    <label for="Brands" class="col-form-label" ><span>*</span> Brands</label>
+                                    <select class="custom-select form-control" id="Brands" name="brandId" >
                                         <option value="" hidden>--Select--</option>
                                         <th:block th:each="brand : ${brands}">
                                             <option th:value="${brand.brandId}"
                                                     th:text="${brand.brandName}"></option>
                                         </th:block>
                                     </select>
+                                    <div id="errorcategory" class="invalid-feedback">Brands is
+                                        required</div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-form-label"><span>*</span> Category Product</label>
-                                    <select class="custom-select form-control" name="categoryProductId" required="">
+                                    <label for="categoryProduct" class="col-form-label"><span>*</span> Category Product</label>
+                                    <select class="custom-select form-control" id="categoryProduct" name="categoryProductId" >
                                         <option value="" hidden>--Select--</option>
                                         <th:block th:each="categoryProduct : ${categoryProducts}">
                                             <option th:value="${categoryProduct.categoryProductId}"
                                                     th:text="${categoryProduct.categoryProductName}"></option>
                                         </th:block>
                                     </select>
+                                    <div id="errorName" class="invalid-feedback">Category Product is
+                                        required</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
-                                    <input class="form-control" name="price" id="validationCustom02" type="text"
-                                           required="">
+                                    <label for="productPrice" class="col-form-label"><span>*</span> Product Price</label>
+                                    <input class="form-control" name="price" id="productPrice" type="text"
+                                           >
+                                    <div id="errorproductPrice" class="invalid-feedback">productPrice is
+                                        required</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustom02" class="col-form-label"><span>*</span> In
+                                    <label for="inStock" class="col-form-label"><span>*</span> In
                                         Stock</label>
-                                    <input class="form-control" name="inStock" id="validationCustom03" type="text"
-                                           required="">
+                                    <input class="form-control" name="inStock" id="inStock" type="text"
+                                          >
+                                    <div id="errorinStock" class="invalid-feedback">in Stock is
+                                        required</div>
                                 </div>
                                 <div style="margin-top: 10px">
-                                    <img id="previewImg" width="300px"
+                                    <img for="image" id="previewImg" width="300px"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
-                                               class="form-control-user" onchange="previewFile(this);">
+                                        <input type="file" id="image" style="width: 300px; padding: 0;"  name="photo1"
+                                               class="form-control" onchange="previewFile(this);">
+                                     <div class="invalid-feedback" style="margin-left: -180px;">File invalid form file feedback</div>
                                     </div>
+
                                 </div>
                                 <div style="margin-top: 10px">
-                                    <img id="previewImg1" width="300px"
+                                    <img  id="previewImg1" width="300px"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
+                                        <input type="file" style="width: 300px; padding: 0;" id="imaga" name="photo1"
                                                class="form-control-user" onchange="previewFile1(this);">
                                     </div>
                                 </div>
@@ -164,7 +177,7 @@
         </form>
     </div>
     <!-- Container-fluid Ends-->
-
 </div>
+<script src="/assets/js/addProduct/addProduct.js"></script>
 </body>
 </html>

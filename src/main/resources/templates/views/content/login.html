@@ -15,14 +15,16 @@
           <h3 class="text-center">Login</h3>
           <form id="loginForm" class="theme-form" th:action="@{/doLogin}"  method="get">
             <div class="form-group">
+              <div th:if="${messageLogin!=null}" class="alert alert-danger text-center"
+                   style="font-size: 16px;padding: 5px 15px;border-radius: 99px" th:text="${messageLogin}"></div>
               <label >Email</label>
-              <input type="text" class="form-control" name="email" id="email" th:value="${customer.email}"  placeholder="Email">
+              <input type="text" class="form-control" name="email" id="email" placeholder="Email" th:name="email" th:value="${email}">
               <div id="errorEmail" class="invalid-feedback">Email is
                 required</div>
             </div>
             <div class="form-group">
               <label >Password</label>
-              <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your password">
+              <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your password" th:name="password" th:value="${password}">
               <div id="errorPassword" class="invalid-feedback">Password is
                 required</div>
             </div>
@@ -48,6 +50,7 @@
     </div>
   </div>
 </section>
-</body>
 <script src="/static/assets/js/login/login.js"></script>
+</body>
+
 </html>
