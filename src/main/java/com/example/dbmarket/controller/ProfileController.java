@@ -67,10 +67,17 @@ public class ProfileController {
         return "views/content/listOrder";
     }
 
-    @RequestMapping("customer/listOrder/cancel")
-    public String cancelOrder(int id) {
+    @GetMapping("customer/listOrder/cancel")
+    public String doCancel(int id) {
         Order order = orderService.findById(id).orElse(null);
-        order.setStatus("Cancel");
+        order.setStatus("Canceled");
+        orderService.save(order);
+        return "redirect:/customer/listOrder";
+    }
+    @GetMapping("customer/listOrder/accept")
+    public String doAccept(int id){
+        Order order = orderService.findById(id).orElse(null);
+        order.setStatus("Waiting to ship");
         orderService.save(order);
         return "redirect:/customer/listOrder";
     }

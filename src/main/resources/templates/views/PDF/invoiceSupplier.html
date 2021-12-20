@@ -189,11 +189,18 @@
                                             <i class="fa fa-print"></i>
                                             Print
                                         </button>
-                                        <a th:if="${order.status == 'Wait Confirm'}" th:href="@{'/customer/listOrder/cancel?id=' + ${order.orderId}}" class="btn btn-solid btn-md">
+                                        <a th:if="${order.status == 'Wait Confirm'}" th:href="@{'/supplier/listOrder/accept?id=' + ${order.orderId}}" class="btn btn-solid btn-md">
+                                            <i class="fa fa-check"></i>
+                                            Accept
+                                        </a>
+                                        <a th:if="${order.status == 'Waiting to ship'}" th:href="@{'/supplier/listOrder/cancel?id=' + ${order.orderId}}" class="btn btn-solid btn-md">
+                                            <i class="fa fa-ban"></i>
+                                           Customer don't get product
+                                        </a>
+                                        <a th:if="${order.status == 'Wait Confirm'}" th:href="@{'/supplier/listOrder/cancel?id=' + ${order.orderId}}" class="btn btn-solid btn-md">
                                             <i class="fa fa-ban"></i>
                                             Cancel
                                         </a>
-
                                     </div>
                                 </div>
                             </div>

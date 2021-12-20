@@ -26,6 +26,8 @@ public class Supplier implements Serializable {
     private List<Product> products;
     @OneToMany(mappedBy = "supplier")
     private List<Order> orders;
+    @OneToMany(mappedBy = "supplier")
+    private List<AccountBanned> accountBanneds;
     public int getSupplierId() {
         return supplierId;
     }
@@ -96,5 +98,13 @@ public class Supplier implements Serializable {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public List<AccountBanned> getAccountBanneds() {
+        return accountBanneds;
+    }
+
+    public void setAccountBanneds(List<AccountBanned> accountBanneds) {
+        this.accountBanneds = accountBanneds;
     }
 }

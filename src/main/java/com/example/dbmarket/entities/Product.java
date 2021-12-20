@@ -199,6 +199,7 @@ public class Product implements Serializable {
     public void setCategoryProduct(CategoryProduct categoryProduct) {
         this.categoryProduct = categoryProduct;
     }
+
     public boolean isStatus() {
         return status;
     }

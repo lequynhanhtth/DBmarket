@@ -31,6 +31,8 @@ public class Customer {
     private List<Order> orders;
     @OneToMany(mappedBy = "customer")
     private List<AccountBanned> accountBanneds;
+    @OneToMany(mappedBy = "customer")
+    private List<Rate> rates;
 
     public int getCustomerId() {
         return customerId;
@@ -127,5 +129,13 @@ public class Customer {
 
     public void setAccountBanneds(List<AccountBanned> accountBanneds) {
         this.accountBanneds = accountBanneds;
+    }
+
+    public List<Rate> getRates() {
+        return rates;
+    }
+
+    public void setRates(List<Rate> rates) {
+        this.rates = rates;
     }
 }

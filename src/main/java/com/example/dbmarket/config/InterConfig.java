@@ -24,6 +24,6 @@ public class InterConfig implements WebMvcConfigurer {
         registry.addInterceptor(global).addPathPatterns("/**").excludePathPatterns("/assets/**");
         registry.addInterceptor(supplier).addPathPatterns("/supplier/**").excludePathPatterns("/assets/**");
         registry.addInterceptor(customer).addPathPatterns("/customer/**").excludePathPatterns("/assets/**");
-        registry.addInterceptor(admin).addPathPatterns("/admin/**").excludePathPatterns("/assets/**");
+        registry.addInterceptor(admin).addPathPatterns("/admin/**","/admin/**/**/**","/admin/**/**").excludePathPatterns("/assets/**");
     }
 }

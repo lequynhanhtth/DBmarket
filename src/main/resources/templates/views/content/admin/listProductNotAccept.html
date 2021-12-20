@@ -39,7 +39,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Brand Lists</h5>
+                            <h5>Product Lists</h5>
                         </div>
                         <div class="card-body">
                             <div id="basicScenario" class="product-list digital-product jsgrid"
@@ -53,19 +53,16 @@
                                                 style="width: 30px;">Id
                                             </th>
                                             <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
-                                                style="width: 50px;"> Username
+                                                style="width: 50px;">Image
                                             </th>
                                             <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">
-                                                Email
+                                                Product Name
                                             </th>
-                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">
-                                                Fullname
+                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">
+                                                Price
                                             </th>
-                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">
-                                                Address
-                                            </th>
-                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">
-                                                Banned
+                                            <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
+                                                style="width: 50px;">In Stock
                                             </th>
                                             <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center"
                                                 style="width: 50px;"></th>
@@ -76,54 +73,40 @@
                                 <div class="jsgrid-grid-body">
                                     <table class="jsgrid-table">
                                         <tbody>
-                                        <tr th:each="supplier : ${supplierPage.content}" class="jsgrid-row">
+                                        <tr th:each="product : ${productPage.content}" class="jsgrid-row">
                                             <td class="jsgrid-cell jsgrid-align-right" style="width: 30px;"
-                                                th:text="${supplier.supplierId}"></td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"
-                                                th:text="${supplier.username}">
+                                                th:text="${product.productId}"></td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">
+                                                <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
+                                                     style="height: 50px; width: 50px;">
                                             </td>
                                             <td class="jsgrid-cell" style="width: 100px;"
-                                                th:text="${supplier.email}">
-                                            </td>
-                                            <td class="jsgrid-cell" style="width: 100px;"
-                                                th:text="${supplier.fullname}">
-                                            </td>
-                                            <td class="jsgrid-cell" style="width: 100px;"
-                                                th:text="${supplier.address}">
-                                            </td>
-                                            <td class="jsgrid-cell" style="width: 100px;"
-                                                th:text="${((supplier.accountBanneds.size > 0  ? supplier.accountBanneds[(supplier.accountBanneds.size)-1].dateUnbanned == null : false) ? 'Banned' : 'Normal')}">
-                                            </td>
+                                                th:text="${product.productName}"></td>
+                                            <td class="jsgrid-cell" style="width: 50px;"
+                                                th:text="${product.price}"></td>
+                                            <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;"
+                                                th:text="${product.inStock}"></td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
                                                 style="width: 50px;">
-                                                <a class="jsgrid-button jsgrid-delete-button"
-                                                   th:href="@{'/admin/editSupplier?id='+${supplier.supplierId}}"
-                                                   type="button" title="Banned"></a>
-                                                <a class="jsgrid-button jsgrid-delete-button" type="button"
-                                                   th:href="@{'/admin/listSupplier/delete?id='+${supplier.supplierId}}"></a>
+                                                <a class="jsgrid-button jsgrid-edit-button"
+                                                   th:href="@{'/admin/manage/edit?id='+${product.productId}}"
+                                                   type="button" title="Edit"></a>
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="jsgrid-pager-container" style="display: none;">
-                                    <div class="jsgrid-pager">Pages:
-                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                            <a href="javascript:void(0);">First</a>
-                                        </span>
-                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                            <a href="javascript:void(0);">Prev</a>
-                                        </span>
-                                        <th:block th:each="i: ${#numbers.sequence(1, supplierPage.totalPages)}">
-                                              <span class="jsgrid-pager-page jsgrid-pager-current-page" th:text="${i}">
-                                            </span>
-                                        </th:block>
-                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                        <a href="javascript:void(0);">Next</a>
-                                        </span>
-                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                            <a href="javascript:void(0);">Last</a>
-                                        </span> &nbsp;&nbsp; [[${supplierPage.number}]] of 1
+                                    <div class="jsgrid-pager">Pages: <span
+                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                            href="javascript:void(0);">First</a></span> <span
+                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                            href="javascript:void(0);">Prev</a></span> <span
+                                            class="jsgrid-pager-page jsgrid-pager-current-page">1</span> <span
+                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                            href="javascript:void(0);">Next</a></span> <span
+                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                            href="javascript:void(0);">Last</a></span> &nbsp;&nbsp; 1 of 1
                                     </div>
                                 </div>
                                 <div class="jsgrid-load-shader"

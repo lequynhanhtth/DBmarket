@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/layout/admin.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="page-body" layout:fragment="content">
+
+    Container-fluid starts
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>Add Category
+                            <small>Bigdeal Admin panel</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">Digital</li>
+                        <li class="breadcrumb-item active">Add Product</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row product-adding">
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>General</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="hidden" name="supplierId" th:value="${supplier.supplierId}">
+                            <div class="digital-add needs-validation">
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Fullname</label>
+                                    <input class="form-control" id="validationCustom01" name="fullname" type="text"
+                                           required="" disabled th:value="${supplier.fullname}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="col-form-label pt-0"><span>*</span> Username</label>
+                                    <input class="form-control" id="validationCustom02" name="username" type="text"
+                                           required="" disabled th:value="${supplier.username}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom03" class="col-form-label pt-0"><span>*</span>
+                                        Email</label>
+                                    <input class="form-control" id="validationCustom03" name="email" type="text"
+                                           required="" disabled th:value="${supplier.email}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom04" class="col-form-label pt-0"><span>*</span>
+                                        Phone</label>
+                                    <input class="form-control" id="validationCustom04" name="phone" type="text"
+                                           required="" disabled th:value="${supplier.phone}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5></h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="digital-add needs-validation">
+<!--                                <div style="margin-top: 10px">-->
+<!--                                    <label class="col-form-label pt-0"><span>*</span> Avatar</label>-->
+<!--                                    <br>-->
+<!--                                    <img id="previewImg" width="361px"-->
+<!--                                         th:src="@{'/assets/images/supplier/'+${supplier.supplierId}+'/'+${supplier.avatar}}"-->
+<!--                                         alt="Placeholder">-->
+<!--                                </div>-->
+                                <div class="form-group">
+                                    <label class="col-form-label"><span>*</span> Categories</label>
+                                    <select class="custom-select form-control" name="bannedId" required=""
+                                            th:disabled="${(supplier.accountBanneds.size > 0  ? (supplier.accountBanneds[(supplier.accountBanneds.size)-1].dateUnbanned == null) : false)}">
+                                        <option value="">--Select--</option>
+                                        <th:block th:each="banned : ${banneds}">
+                                            <option th:selected="${(supplier.accountBanneds.size > 0  ? supplier.accountBanneds[(supplier.accountBanneds.size)-1].banned.bannedId == banned.bannedId && (supplier.accountBanneds[(supplier.accountBanneds.size)-1].dateUnbanned == null ): false) }"
+                                                    th:value="${banned.bannedId}"
+                                                    th:text="${banned.reason}"></option>
+                                        </th:block>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-form-label pt-0"><span>*</span>
+                                        Description</label>
+                                    <textarea class="form-control" id="" name="description" type="text"
+                                              required="" th:disabled="${(supplier.accountBanneds.size > 0  ? (supplier.accountBanneds[(supplier.accountBanneds.size)-1].dateUnbanned == null) : true)}"
+                                              th:text="${((supplier.accountBanneds.size > 0  ?  (supplier.accountBanneds[(supplier.accountBanneds.size)-1].dateUnbanned == null) : false) ? supplier.accountBanneds[(supplier.accountBanneds.size)-1].description  : null)}"></textarea>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <button type="submit" class="btn btn-primary"
+                                                th:if="${(supplier.accountBanneds.size > 0  ? (supplier.accountBanneds[(supplier.accountBanneds.size)-1].dateUnbanned != null) : true)}">Banned
+                                        </button>
+                                        <a th:href="@{'/admin/supplier/unBanned?id='+${supplier.supplierId}}"
+                                           class="btn btn-primary"
+                                           th:if="${(supplier.accountBanneds.size > 0  ? (supplier.accountBanneds[(supplier.accountBanneds.size)-1].dateUnbanned == null) : false)}">Unbanned
+                                        </a>
+                                        <button type="button" class="btn btn-light">Discard</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+</body>
+</html>

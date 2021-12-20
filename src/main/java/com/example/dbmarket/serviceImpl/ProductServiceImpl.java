@@ -66,12 +66,27 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice, int categoryId, Pageable pageable,String productName) {
-        return productRepository.findManyOption(brands, categoryProducts, minPrice, maxPrice,categoryId,pageable,productName);
+    public Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice, int categoryId, Pageable pageable, String productName) {
+        return productRepository.findManyOption(brands, categoryProducts, minPrice, maxPrice, categoryId, pageable, productName);
     }
 
     @Override
     public Page<Product> findAll(Pageable pageable) {
         return productRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Product> findProductNotAccept(Pageable pageable) {
+        return productRepository.findProductNotAccept(pageable);
+    }
+
+    @Override
+    public void changeStatusFalseProductBySupplier(int supplierId) {
+        productRepository.changeStatusFalseProductBySupplier(supplierId);
+    }
+
+    @Override
+    public void changeStatusTrueProductBySupplier(int supplierId) {
+        productRepository.changeStatusTrueProductBySupplier(supplierId);
     }
 }

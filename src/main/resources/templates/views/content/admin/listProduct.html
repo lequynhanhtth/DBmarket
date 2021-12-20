@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{views/layout/supplier.html}">
+      layout:decorate="~{views/layout/admin.html}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -64,6 +64,12 @@
                                             <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
                                                 style="width: 50px;">In Stock
                                             </th>
+                                            <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
+                                                style="width: 50px;">Status
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
+                                                style="width: 50px;">Accept
+                                            </th>
                                             <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center"
                                                 style="width: 50px;"></th>
                                         </tr>
@@ -73,7 +79,7 @@
                                 <div class="jsgrid-grid-body">
                                     <table class="jsgrid-table">
                                         <tbody>
-                                        <tr th:each="product : ${products}" class="jsgrid-row">
+                                        <tr th:each="product : ${productPage.content}" class="jsgrid-row">
                                             <td class="jsgrid-cell jsgrid-align-right" style="width: 30px;"
                                                 th:text="${product.productId}"></td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">
@@ -86,13 +92,15 @@
                                                 th:text="${product.price}"></td>
                                             <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;"
                                                 th:text="${product.inStock}"></td>
+                                            <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;"
+                                                th:text="${product.status? 'Normal' : 'Canceled' }"></td>
+                                            <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;"
+                                                th:text="${product.accept? 'Accept' : ' Unaccept'}"></td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
                                                 style="width: 50px;">
                                                 <a class="jsgrid-button jsgrid-edit-button"
-                                                   th:href="@{'/supplier/product/edit?id='+${product.productId}}"
+                                                   th:href="@{'/admin/manage/edit?id='+${product.productId}}"
                                                    type="button" title="Edit"></a>
-                                                <a class="jsgrid-button jsgrid-delete-button" type="button"
-                                                   th:href="@{'/supplier/listProduct/delete/'+${product.productId}}"></a>
                                             </td>
                                         </tr>
                                         </tbody>
