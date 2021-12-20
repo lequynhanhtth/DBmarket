@@ -99,7 +99,7 @@
                                         <th:block th:if="${brandPage.totalPages>0}" th:each="i: ${#numbers.sequence(1, brandPage.totalPages)}">
                                             <a th:href="@{'/admin/listBrand?page='+${i - 1 }}"><span class="jsgrid-pager-page jsgrid-pager-current-page" th:text="${i}">  </span> </a>
                                         </th:block>
-                                        <span class="jsgrid-pager-nav-button" th:classappend="${brandPage.number == randPage.totalPages - 1 ? 'jsgrid-pager-nav-inactive-button' : 'jsgrid-pager-nav-active-button'}">
+                                        <span class="jsgrid-pager-nav-button" th:classappend="${brandPage.number == brandPage.totalPages - 1 ? 'jsgrid-pager-nav-inactive-button' : 'jsgrid-pager-nav-active-button'}">
                                         <a th:href="@{'/admin/listBrand?page='+${brandPage.number + 1}}">Next</a>
                                         </span>
                                         <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
