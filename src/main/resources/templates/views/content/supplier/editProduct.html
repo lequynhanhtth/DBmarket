@@ -57,15 +57,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label"><span>*</span> Categories</label>
-                                    <select class="custom-select form-control" name="category" disabled required="">
+                                    <select class="custom-select form-control" name="categoryId" required="">
                                         <option value="" hidden>--Select--</option>
                                         <th:block th:each="category : ${categories}">
                                             <option th:value="${category.categoryId}"
                                                     th:text="${category.name}"
-                                                    th:selected="${category.categoryId == product.category.categoryId}"></option>
+                                                    th:selected="${category.categoryId == product.category.categoryId}" th:if="${category.categoryId == product.category.categoryId}"></option>
                                         </th:block>
                                     </select>
-                                    <a th:href="">Change Category</a>
+                                    <a th:href="@{'/supplier/product/edit/chooseCategory?id='+${product.productId}}">Change Category</a>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label"><span>*</span> Brands</label>
@@ -184,6 +184,7 @@
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="product-buttons text-center">
+                                        <button type="submit" class="btn btn-light">Update</button>
                                         <button type="button" class="btn btn-light">Delete</button>
                                     </div>
                                 </div>
