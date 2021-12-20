@@ -997,7 +997,7 @@
                                         <a href="category-page(left-sidebar).html">
                                             <h2 th:text="${category.name}"></h2>
                                         </a>
-                                        <ul th:if="${products.size > 0}">
+                                        <ul th:if="${category.products.size > 0}">
                                             <li th:each="product,state:${category.products}" th:if="${state.index<5}">
                                                 <a href="category-page(left-sidebar).html"
                                                    th:text="${product.productName}"> </a>
@@ -1083,8 +1083,8 @@
         <div
                 class="tab-prodcut-contain">
             <ul class="tabs tab-title">
-                <li th:each="category,status : ${categories}" th:if="${status.index < 5}">
-                    <a th:href="@{'tab-'+${status.index}}" th:text="${category.name}"></a>
+                <li th:each="category,status : ${categories}" th:if="${status.index < 5}" th:classappend="${status.index == 0 ? 'current' : ''}">
+                    <a   th:href="@{'tab-'+${status.index}}" th:text="${category.name}"></a>
                 </li>
             </ul>
         </div>
@@ -1099,7 +1099,7 @@
                     <div class="theme-tab product">
                         <div class="tab-content-cls">
                             <th:block th:each="category,status : ${categories}" th:if="${status.index < 5}">
-                                <div th:id="'tab-'+${status.index}" class="tab-content active default product-block3">
+                                <div th:id="'tab-'+${status.index}" class="tab-content active default product-block3 " style="display: none !important;">
                                     <div class="col-12">
                                         <div class="product-slide-3 no-arrow">
                                             <div th:each="product,state : ${category.products}"

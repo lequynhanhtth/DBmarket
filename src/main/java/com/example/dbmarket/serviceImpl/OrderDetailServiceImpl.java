@@ -2,7 +2,6 @@ package com.example.dbmarket.serviceImpl;
 
 import com.example.dbmarket.entities.OrderDetail;
 import com.example.dbmarket.repository.OrderDetailRepository;
-import com.example.dbmarket.repository.OrderRepository;
 import com.example.dbmarket.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +38,16 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     @Override
     public boolean existById(int id) {
         return orderDetailRepository.existsById(id);
+    }
+
+    @Override
+    public Double getNumberProductBySupplierId(int supplierId) {
+        return orderDetailRepository.getNumberProductBySupplierId(supplierId);
+    }
+
+    @Override
+    public Double getTotalPriceBySupplierId(int supplierId) {
+        return orderDetailRepository.getTotalPriceBySupplierId(supplierId);
+
     }
 }
