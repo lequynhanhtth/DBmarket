@@ -3,6 +3,7 @@ package com.example.dbmarket.controller;
 import com.example.dbmarket.entities.Category;
 import com.example.dbmarket.service.CategoryService;
 import com.example.dbmarket.service.FileService;
+import com.example.dbmarket.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,6 +23,8 @@ public class CategoryAdminController {
     CategoryService categoryService;
     @Autowired
     FileService fileService;
+    @Autowired
+    ProductService productService;
 
     @GetMapping("/admin/listCategory")
     public String showListCategory(Optional<String> page, Model model) {
@@ -72,7 +75,19 @@ public class CategoryAdminController {
 
     @RequestMapping("/admin/category/delete")
     public String deleteCategory(int id) {
-        categoryService.delete(id);
+        Category category = categoryService.findById(id).orElse(null);
+        category.setStatus(false);
+        categoryService.save(category);
+        productService.changeStatusFalseProductByCategoryId(id);
+        return "redirect:/admin/listCategory";
+    }
+
+    @RequestMapping("/admin/category/accept")
+    public String acceptCategory(int id){
+        Category category = categoryService.findById(id).orElse(null);
+        category.setStatus(true);
+        categoryService.save(category);
+        productService.changeStatusTrueProductByCategoryId(id);
         return "redirect:/admin/listCategory";
     }
 

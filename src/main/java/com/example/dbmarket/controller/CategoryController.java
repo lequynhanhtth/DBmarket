@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,10 +37,11 @@ public class CategoryController {
     @GetMapping("/Category")
     public String showCategory(int categoryId, Optional<Integer> page, Model model) {
         Pageable pageable = PageRequest.of(page.orElse(0), 12);
+        Category category = categoryService.findById(categoryId).orElse(null);
         //    Page<Product> productPage = productService.findManyOption(brands.orElse(null),categoryProducts.orElse(null),minPrice.orElse(0.0),maxPrice.orElse(10000000.0),categoryId,pageable);
         Page<Product> productPage = productService.findByCategoryId(categoryId, pageable);
-        List<CategoryProduct> categoryProductList = categoryProductService.findAll();
-        List<Brand> brandList = brandService.findAll();
+        List<CategoryProduct> categoryProductList = category.getCategoryProducts();
+        List<Brand> brandList = category.getBrands();
         model.addAttribute("productPage", productPage);
         model.addAttribute("brands", brandList);
         model.addAttribute("categoryProducts", categoryProductList);
@@ -50,8 +52,9 @@ public class CategoryController {
     @GetMapping("/Category/filter")
     public String filterData(int categoryId, int[] categoryProducts, int[] brands, Optional<Long> minPrice, Optional<Long> maxPrice, Optional<Integer> page, Model model, Optional<String> search) {
         Pageable pageable = PageRequest.of(page.orElse(0), 12);
-        List<CategoryProduct> categoryProductList = categoryProductService.findAll();
-        List<Brand> brandList = brandService.findAll();
+        Category category = categoryService.findById(categoryId).orElse(null);
+        List<CategoryProduct> categoryProductList = category.getCategoryProducts();
+        List<Brand> brandList = category.getBrands();
         List<Integer> b = new ArrayList<>();
         List<Integer> c = new ArrayList<>();
         if (categoryProducts == null) {
@@ -72,7 +75,7 @@ public class CategoryController {
                 b.add(brand);
             }
         }
-        Page<Product> productPage = productService.findManyOption(b, c, minPrice.orElse((long) 0), maxPrice.orElse((long) 10000000), categoryId, pageable,"%"+search.orElse("") +"%");
+        Page<Product> productPage = productService.findManyOption(b, c, minPrice.orElse((long) 0), maxPrice.orElse((long) 10000000), categoryId, pageable, "%" + search.orElse("") + "%");
         model.addAttribute("productPage", productPage);
         model.addAttribute("brands", brandList);
         model.addAttribute("categoryProducts", categoryProductList);

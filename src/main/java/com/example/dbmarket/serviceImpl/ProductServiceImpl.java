@@ -89,4 +89,14 @@ public class ProductServiceImpl implements ProductService {
     public void changeStatusTrueProductBySupplier(int supplierId) {
         productRepository.changeStatusTrueProductBySupplier(supplierId);
     }
+
+    @Override
+    public void changeStatusTrueProductByCategoryId(int categoryId) {
+        productRepository.changeStatusTrueProductByCategoryId(categoryId);
+    }
+
+    @Override
+    public void changeStatusFalseProductByCategoryId(int categoryId) {
+        productRepository.changeStatusFalseProductByCategoryId(categoryId);
+    }
 }

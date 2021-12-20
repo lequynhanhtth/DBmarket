@@ -65,6 +65,7 @@ public class AddProductController {
         product.setBrand(brand);
         product.setAccept(false);
         product.setStatus(true);
+        product.setDiscount(0.0);
         productService.save(product);
         for (MultipartFile x : photo1) {
             photo = new Photo();

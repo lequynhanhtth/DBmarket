@@ -88,7 +88,8 @@
                                 <div class="form-group mb-0">
                                     <div class="product-buttons text-center">
                                         <button type="submit" class="btn btn-primary">Update</button>
-                                        <button type="button" class="btn btn-light">Discard</button>
+                                        <a type="button" th:href="@{'/admin/category/delete?id='+${category.categoryId}}"   th:if="${category.status == true}" class="btn btn-light">Disable</a>
+                                        <a type="button" th:href="@{'/admin/category/accept?id='+${category.categoryId}}"   th:if="${category.status == false}" class="btn btn-light">Accept</a>
                                     </div>
                                 </div>
                             </div>
