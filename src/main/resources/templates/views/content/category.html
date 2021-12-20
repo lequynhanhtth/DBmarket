@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-sm-3 collection-filter category-page-side">
                         <!-- side-bar colleps block stat -->
-                        <form method="post" th:action="@{'/DBmarket/Category/filter'}" >
+                        <form method="get" th:action="@{'/DBmarket/Category/filter'}">
                             <input type="hidden" th:value="${categoryId}" name="categoryId"/>
                             <div class="collection-filter-block creative-card creative-inner category-side ">
                                 <!-- brand filter start -->
@@ -45,14 +45,25 @@
                                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                                     back</span>
                                 </div>
+                                <!-- price filter start here -->
+                                <div class="collection-collapse-block border-0 open">
+                                    <h3 class="collapse-block-title">Search</h3>
+                                    <div class="collection-collapse-block-content">
+                                        <div class="filter-slide">
+                                            Name Product
+                                            <br>
+                                            <input class="js-range-slider" type="text" name="search" th:value="${search}"/>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="collection-collapse-block open">
-                                    <h3 class="collapse-block-title mt-0">brand</h3>
+                                    <h3 class="collapse-block-title">brand</h3>
                                     <div class="collection-collapse-block-content">
                                         <div class="collection-brand-filter">
                                             <div th:each="brand : ${brands}"
                                                  class=" custom-control custom-checkbox form-check collection-filter-checkbox">
                                                 <input type="checkbox" class="custom-control-input form-check-input"
-                                                       name="brands" th:value="${brand.brandId}"/>
+                                                       name="brands" th:checked="${brandsArray != null ? #lists.contains(brandsArray,brand.brandId) : false }" th:value="${brand.brandId}"/>
                                                 <label class="custom-control-label form-check-label"
                                                        th:text="${brand.brandName}"></label>
                                             </div>
@@ -67,7 +78,7 @@
                                             <div th:each="categoryProduct : ${categoryProducts}"
                                                  class=" custom-control custom-checkbox form-check collection-filter-checkbox">
                                                 <input type="checkbox" class="custom-control-input form-check-input"
-                                                       name="categoryProducts"
+                                                       name="categoryProducts" th:checked="${categoryProductsArray != null ?  #lists.contains(categoryProductsArray,categoryProduct.categoryProductId) : false}"
                                                        th:value="${categoryProduct.categoryProductId}"/>
                                                 <label class="custom-control-label form-check-label"
                                                        th:text="${categoryProduct.categoryProductName}"></label>
@@ -80,7 +91,6 @@
                                     <h3 class="collapse-block-title">price</h3>
                                     <div class="collection-collapse-block-content">
                                         <div class="filter-slide">
-                                            <br>
                                             From
                                             <br>
                                             <input class="js-range-slider" type="text" name="minPrice" value=""
@@ -889,10 +899,10 @@
                                                                 </div>
                                                                 <div class="detail-right">
                                                                     <div class="check-price" th:text="${product.price}">
-                                                                        $60.21
+
                                                                     </div>
                                                                     <div class="price">
-                                                                        <div class="price" th:text="${product.price}">
+                                                                        <div class="price" th:text="${product.price * ( 100 - product.discount ) / 100}">
                                                                             $50.05
                                                                         </div>
                                                                     </div>
@@ -936,7 +946,7 @@
                                                             <ul class="pagination">
                                                                 <li class="page-item">
                                                                     <a class="page-link"
-                                                                       th:href="@{'/DBmarket/Category?categoryId='${categoryId}+'&&pageNumber='+${productPage.number - 1}}"
+                                                                       th:href="@{'/DBmarket/Category/filter?categoryId='${categoryId}+'&&pageNumber='+${productPage.number - 1}+'&&brands='+${brandsArray}+'&&categoryProducts='+${categoryProductsArray}}"
                                                                        aria-label="Previous"
                                                                        th:classappend="${productPage.number == 0 ? ' disabled':''}">
                                                                         <span
@@ -949,13 +959,13 @@
                                                                         th:each="i: ${#numbers.sequence(1, productPage.totalPages)}">
                                                                     <li class="page-item">
                                                                         <a class="page-link"
-                                                                           th:href="@{'/DBmarket/Category?categoryId='+${categoryId}+'&&page='+${i}}">[[${i}]]</a>
+                                                                           th:href="@{'/DBmarket/Category?categoryId='+${categoryId}+'&&page='+${i}+'&&brands='+${brandsArray}+'&&categoryProducts='+${categoryProductsArray}}">[[${i}]]</a>
                                                                     </li>
                                                                 </th:block>
                                                                 <li class="page-item">
                                                                     <a class="page-link"
                                                                        th:classappend="${productPage.number == (productPage.totalPages - 1 ) ? ' disabled':''}"
-                                                                       th:href="@{'/DBmarket/Category?categoryId='${categoryId}+'&&page='+${productPage.number + 1}}"
+                                                                       th:href="@{'/DBmarket/Category?categoryId='${categoryId}+'&&page='+${productPage.number + 1}+'&&brands='+${brandsArray}+'&&categoryProducts='+${categoryProductsArray}}"
                                                                        aria-label="Next">
                                                                         <span aria-hidden="true">
                                                                             <i class="fa fa-chevron-right"

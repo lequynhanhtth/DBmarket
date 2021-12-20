@@ -27,6 +27,10 @@ public class Product implements Serializable {
     private Double discount;
     @Column(name = "Date")
     private LocalDate date;
+    @Column(name = "Status")
+    private boolean status;
+    @Column(name = "Accept")
+    private boolean accept;
     @OneToMany(mappedBy = "product")
     private List<Rate> rates;
     @ManyToOne
@@ -47,6 +51,7 @@ public class Product implements Serializable {
     private List<OrderDetail> orderDetails;
     @OneToMany(mappedBy = "product", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Photo> photos;
+
     public Product(int productId, String productName, String description, Long price, Double weight, Long inStock, Double discount, LocalDate date, List<Rate> rates, Category category, Supplier supplier, List<CartDetail> cartDetails, List<OrderDetail> orderDetails, List<Photo> photos) {
         this.productId = productId;
         this.productName = productName;
@@ -193,5 +198,21 @@ public class Product implements Serializable {
 
     public void setCategoryProduct(CategoryProduct categoryProduct) {
         this.categoryProduct = categoryProduct;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isAccept() {
+        return accept;
+    }
+
+    public void setAccept(boolean accept) {
+        this.accept = accept;
     }
 }

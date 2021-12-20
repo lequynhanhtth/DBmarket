@@ -20,12 +20,15 @@ public class Category implements Serializable {
     private String photo;
     @Column(name = "PhotoSmall")
     private String photoSmall;
+    @Column(name = "Status")
+    private boolean status;
     @OneToMany(mappedBy = "category")
     private List<Product> products;
     @OneToMany(mappedBy = "category")
     private List<Brand> brands;
     @OneToMany(mappedBy = "category")
     private List<CategoryProduct> categoryProducts;
+
     public int getCategoryId() {
         return categoryId;
     }
@@ -72,6 +75,14 @@ public class Category implements Serializable {
 
     public void setPhotoSmall(String photoSmall) {
         this.photoSmall = photoSmall;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public List<Brand> getBrands() {

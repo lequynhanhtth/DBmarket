@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CartRepository extends JpaRepository<Cart , Integer> {
-@Query("SELECT sum(cd.quantity*cd.product.price) FROM Cart c , CartDetail cd WHERE cd.cart.cartId = ?1")
+@Query("SELECT sum(cd.quantity*cd.product.price*(100-cd.product.discount)/100) FROM Cart c , CartDetail cd WHERE cd.cart.cartId = ?1")
     public Double getTotalCart(int cartID);
 }

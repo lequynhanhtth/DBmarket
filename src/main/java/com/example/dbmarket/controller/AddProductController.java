@@ -36,9 +36,10 @@ public class AddProductController {
         model.addAttribute("categories", categories);
         return "views/content/supplier/choosecategory";
     }
+
     @PostMapping("supplier/chooseCategory")
     public String chooseCategory(int categoryId) {
-        return "redirect:/supplier/addProduct?categoryId="+categoryId;
+        return "redirect:/supplier/addProduct?categoryId=" + categoryId;
     }
 
     @GetMapping("supplier/addProduct")
@@ -46,14 +47,14 @@ public class AddProductController {
         Category category = categoryService.findById(categoryId).orElse(null);
         List<Brand> brands = category.getBrands();
         List<CategoryProduct> categoryProducts = category.getCategoryProducts();
-        model.addAttribute("brands",brands);
-        model.addAttribute("categoryProducts",categoryProducts);
-        model.addAttribute("categoryId",categoryId);
+        model.addAttribute("brands", brands);
+        model.addAttribute("categoryProducts", categoryProducts);
+        model.addAttribute("categoryId", categoryId);
         return "views/content/supplier/addproduct";
     }
 
     @PostMapping("supplier/addProduct")
-    public String addProduct(Product product, List<MultipartFile> photo1, int brandId , int categoryProductId) {
+    public String addProduct(Product product, List<MultipartFile> photo1, int brandId, int categoryProductId) {
         Supplier supplier = (Supplier) session.getAttribute("supplier");
         CategoryProduct categoryProduct = categoryProductService.findById(categoryProductId).orElse(null);
         Brand brand = brandService.findById(brandId).orElse(null);
@@ -62,6 +63,9 @@ public class AddProductController {
         product.setSupplier(supplier);
         product.setCategoryProduct(categoryProduct);
         product.setBrand(brand);
+        product.setAccept(false);
+        product.setStatus(true);
+        product.setDiscount(0.0);
         productService.save(product);
         for (MultipartFile x : photo1) {
             photo = new Photo();

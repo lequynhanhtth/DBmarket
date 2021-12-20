@@ -71,7 +71,7 @@
                             <div class="jsgrid-grid-body">
                                 <table class="jsgrid-table">
                                     <tbody>
-                                    <tr th:each="order : ${orders}" class="jsgrid-row">
+                                    <tr th:each="order : ${orderPage.content}" class="jsgrid-row">
                                         <td class="jsgrid-cell jsgrid-align-right" style="width: 30px;"
                                             th:text="${order.orderId}"></td>
                                         <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"
@@ -85,8 +85,11 @@
                                         <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;"
                                             th:text="${order.status}"></td>
                                         <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
-                                            style="width: 50px;"><a class="jsgrid-button jsgrid-search-button"
-                                                                        type="button" title="Detail" th:href="@{'/supplier/invoice?id='+${order.orderId}}">
+                                            style="width: 50px;">
+                                            <a class="jsgrid-button jsgrid-search-button"
+                                               type="button" title="Detail"
+                                               th:href="@{'/supplier/invoice?id='+${order.orderId}}"></a>
+
                                         </td>
                                     </tr>
                                     </tbody>

@@ -39,7 +39,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Supplier Lists</h5>
+                            <h5>Brand Lists</h5>
                         </div>
                         <div class="card-body">
                             <div id="basicScenario" class="product-list digital-product jsgrid"
@@ -64,6 +64,9 @@
                                             <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">
                                                 Address
                                             </th>
+                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">
+                                                Banned
+                                            </th>
                                             <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center"
                                                 style="width: 50px;"></th>
                                         </tr>
@@ -73,7 +76,7 @@
                                 <div class="jsgrid-grid-body">
                                     <table class="jsgrid-table">
                                         <tbody>
-                                        <tr th:each="customer : ${customerPage.content}" class="jsgrid-row">
+                                        <tr th:each="supplier : ${supplierPage.content}" class="jsgrid-row">
                                             <td class="jsgrid-cell jsgrid-align-right" style="width: 30px;"
                                                 th:text="${supplier.supplierId}"></td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"
@@ -88,13 +91,16 @@
                                             <td class="jsgrid-cell" style="width: 100px;"
                                                 th:text="${supplier.address}">
                                             </td>
+                                            <td class="jsgrid-cell" style="width: 100px;"
+                                                th:text="${((supplier.accountBanneds.size > 0  ? supplier.accountBanneds[(supplier.accountBanneds.size)-1].dateUnbanned == null : false) ? 'Banned' : 'Normal')}">
+                                            </td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
                                                 style="width: 50px;">
                                                 <a class="jsgrid-button jsgrid-delete-button"
                                                    th:href="@{'/admin/editSupplier?id='+${supplier.supplierId}}"
                                                    type="button" title="Banned"></a>
                                                 <a class="jsgrid-button jsgrid-delete-button" type="button"
-                                                   th:href="@{'/admin/listSuplier/delete?id='+${supplier.supplierId}}"></a>
+                                                   th:href="@{'/admin/listSupplier/delete?id='+${supplier.supplierId}}"></a>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -103,21 +109,25 @@
                                 <div class="jsgrid-pager-container" style="display: none;">
                                     <div class="jsgrid-pager">Pages:
                                         <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                            <a href="javascript:void(0);">First</a>
+                                            <a th:href="@{'/admin/listSupplier?page=0'}">First</a>
                                         </span>
-                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                            <a href="javascript:void(0);">Prev</a>
+                                        <span class="jsgrid-pager-nav-button "
+                                              th:classappend="${supplierPage.number == 0 ? 'jsgrid-pager-nav-inactive-button' : 'jsgrid-pager-nav-active-button'}">
+                                            <a th:href="@{'/admin/listSupplier?page='+${supplierPage.number - 1}}">Prev</a>
                                         </span>
-                                        <th:block th:each="i: ${#numbers.sequence(1, supplierPage.totalPages)}">
-                                              <span class="jsgrid-pager-page jsgrid-pager-current-page" th:text="${i}">
-                                            </span>
+                                        <th:block th:if="${supplierPage.totalPages>0}"
+                                                  th:each="i: ${#numbers.sequence(1, supplierPage.totalPages)}">
+                                            <a th:href="@{'/admin/listSupplier?page='+${i - 1 }}"><span
+                                                    class="jsgrid-pager-page jsgrid-pager-current-page"
+                                                    th:text="${i}">  </span> </a>
                                         </th:block>
-                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                        <a href="javascript:void(0);">Next</a>
+                                        <span class="jsgrid-pager-nav-button"
+                                              th:classappend="${supplierPage.number == supplierPage.totalPages - 1 ? 'jsgrid-pager-nav-inactive-button' : 'jsgrid-pager-nav-active-button'}">
+                                        <a th:href="@{'/admin/listSupplier?page='+${supplierPage.number + 1}}">Next</a>
                                         </span>
                                         <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                            <a href="javascript:void(0);">Last</a>
-                                        </span> &nbsp;&nbsp; [[${supplierPage.number}]] of 1
+                                            <a th:href="@{'/admin/listSupplier?page='+${supplierPage.totalPages - 1}}">Last</a>
+                                        </span> &nbsp;&nbsp; [[${supplierPage.number + 1}]] of [[${supplierPage.totalPages}]]
                                     </div>
                                 </div>
                                 <div class="jsgrid-load-shader"

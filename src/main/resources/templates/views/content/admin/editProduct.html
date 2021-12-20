@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/layout/admin.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="page-body" layout:fragment="content">
+
+    Container-fluid starts
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>Add Products
+                            <small>Bigdeal Admin panel</small>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">Digital</li>
+                        <li class="breadcrumb-item active">Edit Product</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row product-adding">
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>General</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="digital-add needs-validation">
+                                <input disabled type="hidden" name="productId" th:value="${product.productId}">
+                                <div class="form-group">
+                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Product
+                                        Name</label>
+                                    <input disabled class="form-control" id="validationCustom01" name="productName"
+                                           type="text"
+                                           required="" th:value="${product.productName}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> weight</label>
+                                    <input disabled class="form-control" id="validationCustomtitle" name="weight"
+                                           type="text"
+                                           th:value="${product.weight}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span>
+                                        Category</label>
+                                    <input disabled class="form-control" type="text"
+                                           th:value="${product.category.name}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span>
+                                        Brand</label>
+                                    <input disabled class="form-control" type="text"
+                                           th:value="${product.brand.brandName}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span>
+                                        Brand</label>
+                                    <input disabled class="form-control" type="text"
+                                           th:value="${product.categoryProduct.categoryProductName}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
+                                    <input disabled class="form-control" name="price" id="validationCustom02"
+                                           type="text"
+                                           th:value="${product.price}"
+                                           required="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="validationCustom02" class="col-form-label"><span>*</span> In
+                                        Stock</label>
+                                    <input disabled class="form-control" name="inStock" id="validationCustom03"
+                                           type="text"
+                                           th:value="${product.inStock}" required="">
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <img id="previewImg" width="300px"
+                                         th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
+                                         alt="Placeholder">
+                                    <div class="row mt-4 ml-4 text-center ">
+                                        <input disabled type="file" style="width: 300px; padding: 0;" name="photo1"
+                                               th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
+                                               class="form-control-user" onchange="previewFile(this);">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <img id="previewImg1" width="300px"
+                                         th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[1].photoName}}"
+                                         alt="Placeholder">
+                                    <div class="row mt-4 ml-4 text-center ">
+                                        <input disabled type="file" style="width: 300px; padding: 0;" name="photo1"
+                                               th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[1].photoName}}"
+                                               class="form-control-user" onchange="previewFile1(this);">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <img id="previewImg2" width="300px"
+                                         th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[2].photoName}}"
+                                         alt="Placeholder">
+                                    <div class="row mt-4 ml-4 text-center ">
+                                        <input disabled type="file" style="width: 300px; padding: 0;" name="photo1"
+                                               th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[2].photoName}}"
+                                               class="form-control-user" onchange="previewFile2(this);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5></h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="digital-add needs-validation">
+                                <div class="form-group">
+                                    <label class="col-form-label"> Supplier username </label>
+                                    <input disabled class="form-control" id=""
+                                           type="text"
+                                           th:value="${product.supplier.username}">
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <img id="previewImg3" width="300px"
+                                         th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[3].photoName}}"
+                                         alt="Placeholder">
+                                    <div class="row mt-4 ml-4 text-center ">
+                                        <input disabled type="file" style="width: 300px; padding: 0;" name="photo1"
+                                               th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[3].photoName}}"
+                                               class="form-control-user" onchange="previewFile3(this);">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <img id="previewImg4" width="300px"
+                                         th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[4].photoName}}"
+                                         alt="Placeholder">
+                                    <div class="row mt-4 ml-4 text-center ">
+                                        <input disabled type="file" style="width: 300px; padding: 0;" name="photo1"
+                                               th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[4].photoName}}"
+                                               class="form-control-user" onchange="previewFile4(this);">
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <img id="previewImg5" width="300px"
+                                         th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[5].photoName}}"
+                                         alt="Placeholder">
+                                    <div class="row mt-4 ml-4 text-center ">
+                                        <input disabled type="file" style="width: 300px; padding: 0;" name="photo1"
+                                               th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[5].photoName}}"
+                                               class="form-control-user" onchange="previewFile5(this);">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Description</label>
+                                    <textarea name="description" rows="4" cols="12"
+                                              th:text="${product.description}"></textarea>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <a th:href="@{'/admin/manage/producstNotAccept/accept?id='+${product.productId}}"
+                                           th:text="${product.accept ? 'Unaccept':'Accept'}" class="btn btn-primary">Accept</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+</body>
+</html>

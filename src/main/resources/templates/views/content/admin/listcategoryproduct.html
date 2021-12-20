@@ -75,7 +75,8 @@
                                                 th:text="${categoryProduct.categoryProductName}">
 
                                             </td>
-                                            <td class="jsgrid-cell" style="width: 100px;" th:text="${categoryProduct.category.name}">
+                                            <td class="jsgrid-cell" style="width: 100px;"
+                                                th:text="${categoryProduct.category.name}">
 
                                             </td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
@@ -93,21 +94,25 @@
                                 <div class="jsgrid-pager-container">
                                     <div class="jsgrid-pager">Pages:
                                         <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                            <a href="javascript:void(0);">First</a>
+                                            <a th:href="@{'/admin/listCategoryProduct?page=0'}">First</a>
                                         </span>
-                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                            <a href="javascript:void(0);">Prev</a>
+                                        <span class="jsgrid-pager-nav-button "
+                                              th:classappend="${categoryProductPage.number == 0 ? 'jsgrid-pager-nav-inactive-button' : 'jsgrid-pager-nav-active-button'}">
+                                            <a th:href="@{'/admin/listCategoryProduct?page='+${categoryProductPage.number - 1}}">Prev</a>
                                         </span>
-                                        <th:block th:if="${categoryProductPage.totalPages>0}" th:each="i: ${#numbers.sequence(1, categoryProductPage.totalPages)}">
-                                              <span class="jsgrid-pager-page jsgrid-pager-current-page" th:text="${i}">
-                                            </span>
+                                        <th:block th:if="${categoryProductPage.totalPages>0}"
+                                                  th:each="i: ${#numbers.sequence(1, categoryProductPage.totalPages)}">
+                                            <a th:href="@{'/admin/listCategoryProduct?page='+${i - 1 }}"><span
+                                                    class="jsgrid-pager-page jsgrid-pager-current-page"
+                                                    th:text="${i}">  </span> </a>
                                         </th:block>
-                                        <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                        <a href="javascript:void(0);">Next</a>
+                                        <span class="jsgrid-pager-nav-button"
+                                              th:classappend="${categoryProductPage.number == categoryProductPage.totalPages - 1 ? 'jsgrid-pager-nav-inactive-button' : 'jsgrid-pager-nav-active-button'}">
+                                        <a th:href="@{'/admin/listCategoryProduct?page='+${categoryProductPage.number + 1}}">Next</a>
                                         </span>
                                         <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
-                                            <a href="javascript:void(0);">Last</a>
-                                        </span> &nbsp;&nbsp; [[${categoryProductPage.number}]] of 1
+                                            <a th:href="@{'/admin/listCategoryProduct?page='+${categoryProductPage.totalPages - 1}}">Last</a>
+                                        </span> &nbsp;&nbsp; [[${categoryProductPage.number + 1}]] of [[${categoryProductPage.totalPages}]]
                                     </div>
                                 </div>
                                 <div class="jsgrid-load-shader"

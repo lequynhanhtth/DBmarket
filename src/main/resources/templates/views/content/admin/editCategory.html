@@ -68,8 +68,8 @@
                                          th:src="@{'/assets/images/category/'+${category.categoryId}+'/'+${category.photo}}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo"
-                                               th:value="${'/assets/images/category/'+${category.categoryId}+'/'+${category.photo}}"
+                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
+                                               th:value="${category.photo}"
                                                class="form-control-user" onchange="previewFile(this);">
                                     </div>
                                 </div>
@@ -80,15 +80,16 @@
                                          alt="Placeholder"
                                          th:src="@{'/assets/images/category/'+${category.categoryId}+'/'+${category.photoSmall}}">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photoSmall"
-                                               th:value="${'/assets/images/category/'+${category.categoryId}+'/'+${category.photoSmall}}"
+                                        <input type="file" style="width: 300px; padding: 0;" name="photoSmall1"
+                                               th:value="${category.photoSmall}"
                                                class="form-control-user" onchange="previewFile1(this);">
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="product-buttons text-center">
                                         <button type="submit" class="btn btn-primary">Update</button>
-                                        <button type="button" class="btn btn-light">Discard</button>
+                                        <a type="button" th:href="@{'/admin/category/delete?id='+${category.categoryId}}"   th:if="${category.status == true}" class="btn btn-light">Disable</a>
+                                        <a type="button" th:href="@{'/admin/category/accept?id='+${category.categoryId}}"   th:if="${category.status == false}" class="btn btn-light">Accept</a>
                                     </div>
                                 </div>
                             </div>

@@ -16,6 +16,9 @@ public class Rate {
     @Column(name = "Comment")
     private String comment;
     @ManyToOne
+    @JoinColumn(name = "customerId")
+    private Customer customer;
+    @ManyToOne
     @JoinColumn(name = "ProductId")
     private Product product;
 
@@ -57,5 +60,13 @@ public class Rate {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/layout/admin.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="page-body">
+
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="page-header-left">
+                            <h3>Product List
+                                <small>Bigdeal Admin panel</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ol class="breadcrumb pull-right">
+                            <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                            <li class="breadcrumb-item">Digital</li>
+                            <li class="breadcrumb-item active">Product List</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+
+        <!-- Container-fluid starts-->
+        <div class="container-fluid" style="color: black">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Product Lists</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="basicScenario" class="product-list digital-product jsgrid"
+                                 style="position: relative; height: auto; width: 100%;">
+                                <div class="jsgrid-grid-header jsgrid-header-scrollbar">
+                                    <table class="jsgrid-table">
+                                        <tbody>
+
+                                        <tr class="jsgrid-header-row">
+                                            <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
+                                                style="width: 30px;">Id
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
+                                                style="width: 50px;">Image
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">
+                                                Product Name
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">
+                                                Price
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-align-right jsgrid-header-sortable"
+                                                style="width: 50px;">In Stock
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center"
+                                                style="width: 50px;"></th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="jsgrid-grid-body">
+                                    <table class="jsgrid-table">
+                                        <tbody>
+                                        <tr th:each="product : ${productPage.content}" class="jsgrid-row">
+                                            <td class="jsgrid-cell jsgrid-align-right" style="width: 30px;"
+                                                th:text="${product.productId}"></td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">
+                                                <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
+                                                     style="height: 50px; width: 50px;">
+                                            </td>
+                                            <td class="jsgrid-cell" style="width: 100px;"
+                                                th:text="${product.productName}"></td>
+                                            <td class="jsgrid-cell" style="width: 50px;"
+                                                th:text="${product.price}"></td>
+                                            <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;"
+                                                th:text="${product.inStock}"></td>
+                                            <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
+                                                style="width: 50px;">
+                                                <a class="jsgrid-button jsgrid-edit-button"
+                                                   th:href="@{'/admin/manage/edit?id='+${product.productId}}"
+                                                   type="button" title="Edit"></a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="jsgrid-pager-container" style="display: none;">
+                                    <div class="jsgrid-pager">Pages: <span
+                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                            href="javascript:void(0);">First</a></span> <span
+                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                            href="javascript:void(0);">Prev</a></span> <span
+                                            class="jsgrid-pager-page jsgrid-pager-current-page">1</span> <span
+                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                            href="javascript:void(0);">Next</a></span> <span
+                                            class="jsgrid-pager-nav-button jsgrid-pager-nav-inactive-button"><a
+                                            href="javascript:void(0);">Last</a></span> &nbsp;&nbsp; 1 of 1
+                                    </div>
+                                </div>
+                                <div class="jsgrid-load-shader"
+                                     style="display: none; position: absolute; inset: 0px; z-index: 1000;"></div>
+                                <div class="jsgrid-load-panel"
+                                     style="display: none; position: absolute; top: 50%; left: 50%; z-index: 1000;">
+                                    Please, wait...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+
+    </div>
+</th:block>
+</body>
+</html>

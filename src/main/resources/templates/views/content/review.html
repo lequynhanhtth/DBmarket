@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{views/layout/user.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-main ">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="breadcrumb-contain">
+                        <div>
+                            <h2>review</h2>
+                            <ul>
+                                <li><a href="index.html">home</a></li>
+                                <li><i class="fa fa-angle-double-right"></i></li>
+                                <li><a href="javascript:void(0)">review</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+    <!--review start-->
+    <section class="review  section-big-py-space">
+        <div class="container">
+            <div class="row review-block">
+                <div class="col-lg-4 col-md-6" th:each="rate : ${ratePage.content}">
+                    <div class="review-box"><img class="img-fluid " src="../assets/images/avtar/1.jpg" alt="review">
+                        <h5 th:text="${rate.customer.fullname}"></h5>
+                        <ul class="rating-star">
+                            <li><i class="fa fa-star" aria-hidden="true" th:if="${rate.star >= 1}"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true" th:if="${rate.star >=2}"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true" th:if="${rate.star >= 3}"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true" th:if="${rate.star >= 4}"></i></li>
+                            <li><i class="fa fa-star" aria-hidden="true" th:if="${rate.star >= 5}"></i></li>
+                        </ul>
+                        <div class="review-message">
+                            <p th:text="${rate.comment}"></p>
+                        </div>
+                        <h6>( [[${rate.date}]] )</h6>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--review end-->
+</div>
+
+</body>
+</html>

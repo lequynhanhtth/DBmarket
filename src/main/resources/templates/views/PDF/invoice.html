@@ -185,11 +185,15 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="printbar-right">
-                                        <button id="printinvoice" class="btn btn-solid
-                              btn-md">
+                                        <button id="printinvoice" class="btn btn-solid btn-md">
                                             <i class="fa fa-print"></i>
                                             Print
                                         </button>
+                                        <a th:if="${order.status == 'Wait Confirm'}" th:href="@{'/customer/listOrder/cancel?id=' + ${order.orderId}}" class="btn btn-solid btn-md">
+                                            <i class="fa fa-ban"></i>
+                                            Cancel
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>

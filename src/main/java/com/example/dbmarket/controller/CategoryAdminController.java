@@ -3,6 +3,7 @@ package com.example.dbmarket.controller;
 import com.example.dbmarket.entities.Category;
 import com.example.dbmarket.service.CategoryService;
 import com.example.dbmarket.service.FileService;
+import com.example.dbmarket.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,6 +23,8 @@ public class CategoryAdminController {
     CategoryService categoryService;
     @Autowired
     FileService fileService;
+    @Autowired
+    ProductService productService;
 
     @GetMapping("/admin/listCategory")
     public String showListCategory(Optional<String> page, Model model) {
@@ -48,24 +51,48 @@ public class CategoryAdminController {
         categoryService.save(category);
         return "redirect:/admin/addCategory";
     }
+
     @GetMapping("/admin/editCategory")
-    public String showEditCategory(int id,Model model){
+    public String showEditCategory(int id, Model model) {
         Category category = categoryService.findById(id).orElse(null);
-        model.addAttribute("category",category);
+        model.addAttribute("category", category);
         return "views/content/admin/editCategory";
     }
+
     @PostMapping("/admin/editCategory")
-    public String editCategory(Category category, MultipartFile photo, MultipartFile photoSmall){
-        fileService.save(photo, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
-        category.setPhoto(photo.getOriginalFilename());
-        fileService.save(photoSmall, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
-        category.setPhotoSmall(photoSmall.getOriginalFilename());
+    public String editCategory(Category category, MultipartFile photo1, MultipartFile photoSmall1) {
+        Category categoryOld = categoryService.findById(category.getCategoryId()).orElse(null);
+        if (photo1 != null && photo1.isEmpty() != true) {
+            fileService.save(photo1, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
+            category.setPhoto(photo1.getOriginalFilename());
+        } else {
+            category.setPhoto(categoryOld.getPhoto());
+        }
+        if (photoSmall1 != null && photoSmall1.isEmpty() != true) {
+            fileService.save(photoSmall1, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
+            category.setPhotoSmall(photoSmall1.getOriginalFilename());
+        } else {
+            category.setPhotoSmall(categoryOld.getPhotoSmall());
+        }
         categoryService.save(category);
-        return "redirect:/admin/editCategory?id="+category.getCategoryId();
+        return "redirect:/admin/editCategory?id=" + category.getCategoryId();
     }
+
     @RequestMapping("/admin/category/delete")
-    public String deleteCategory(int id){
-        categoryService.delete(id);
+    public String deleteCategory(int id) {
+        Category category = categoryService.findById(id).orElse(null);
+        category.setStatus(false);
+        categoryService.save(category);
+        productService.changeStatusFalseProductByCategoryId(id);
+        return "redirect:/admin/listCategory";
+    }
+
+    @RequestMapping("/admin/category/accept")
+    public String acceptCategory(int id){
+        Category category = categoryService.findById(id).orElse(null);
+        category.setStatus(true);
+        categoryService.save(category);
+        productService.changeStatusTrueProductByCategoryId(id);
         return "redirect:/admin/listCategory";
     }
 

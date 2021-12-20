@@ -7,6 +7,8 @@ import com.example.dbmarket.repository.RateRepository;
 import com.example.dbmarket.service.ProductService;
 import com.example.dbmarket.service.RateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +42,15 @@ public class RateServiceImpl implements RateService {
     @Override
     public boolean existById(int id) {
         return rateRepository.existsById(id);
+    }
+
+    @Override
+    public Page<Rate> findAll(Pageable pageable) {
+        return rateRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Rate> findRateByProductId(int productId,Pageable pageable) {
+        return rateRepository.findRateByProductId(productId,pageable);
     }
 }
