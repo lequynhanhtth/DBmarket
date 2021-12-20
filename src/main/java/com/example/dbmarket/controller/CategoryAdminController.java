@@ -48,23 +48,30 @@ public class CategoryAdminController {
         categoryService.save(category);
         return "redirect:/admin/addCategory";
     }
+
     @GetMapping("/admin/editCategory")
-    public String showEditCategory(int id,Model model){
+    public String showEditCategory(int id, Model model) {
         Category category = categoryService.findById(id).orElse(null);
-        model.addAttribute("category",category);
+        model.addAttribute("category", category);
         return "views/content/admin/editCategory";
     }
+
     @PostMapping("/admin/editCategory")
-    public String editCategory(Category category, MultipartFile photo, MultipartFile photoSmall){
-        fileService.save(photo, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
-        category.setPhoto(photo.getOriginalFilename());
-        fileService.save(photoSmall, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
-        category.setPhotoSmall(photoSmall.getOriginalFilename());
+    public String editCategory(Category category, MultipartFile photo1, MultipartFile photoSmall1) {
+        if (photo1 != null) {
+            fileService.save(photo1, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
+            category.setPhoto(photo1.getOriginalFilename());
+        }
+        if (photoSmall1 != null) {
+            fileService.save(photoSmall1, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
+            category.setPhotoSmall(photoSmall1.getOriginalFilename());
+        }
         categoryService.save(category);
-        return "redirect:/admin/editCategory?id="+category.getCategoryId();
+        return "redirect:/admin/editCategory?id=" + category.getCategoryId();
     }
+
     @RequestMapping("/admin/category/delete")
-    public String deleteCategory(int id){
+    public String deleteCategory(int id) {
         categoryService.delete(id);
         return "redirect:/admin/listCategory";
     }
