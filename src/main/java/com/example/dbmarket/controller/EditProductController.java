@@ -33,9 +33,10 @@ public class EditProductController {
 
     @GetMapping("supplier/product/edit")
     public String showProductEdit(Model model, int id) {
-        List<CategoryProduct> categoryProducts = categoryProductService.findAll();
-        List<Brand> brands = brandService.findAll();
+
         Product product = productService.findById(id).orElse(null);
+        List<CategoryProduct> categoryProducts = product.getCategory().getCategoryProducts();
+        List<Brand> brands = product.getCategory().getBrands();
         List<Category> categories = categoryService.findAll();
         model.addAttribute("product", product);
         model.addAttribute("categories", categories);
@@ -45,8 +46,8 @@ public class EditProductController {
     }
 
     @PostMapping("supplier/product/edit")
-    public String editProductEdit(Product product, List<MultipartFile> photo1, int brandId, int categoryProductId) {
-
+    public String editProductEdit(Product product, List<MultipartFile> photo1, int categoryId, int brandId, int categoryProductId) {
+        Category category = categoryService.findById(categoryId).orElse(null);
         Supplier supplier = (Supplier) session.getAttribute("supplier");
         CategoryProduct categoryProduct = categoryProductService.findById(categoryProductId).orElse(null);
         Brand brand = brandService.findById(brandId).orElse(null);
@@ -57,6 +58,7 @@ public class EditProductController {
         product.setBrand(brand);
         product.setPhotos(photos);
         product.setSupplier(supplier);
+        product.setCategory(category);
         productService.save(product);
         int index = 0;
         for (MultipartFile x : photo1) {

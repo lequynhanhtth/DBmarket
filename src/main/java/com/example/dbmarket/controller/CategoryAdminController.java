@@ -58,13 +58,18 @@ public class CategoryAdminController {
 
     @PostMapping("/admin/editCategory")
     public String editCategory(Category category, MultipartFile photo1, MultipartFile photoSmall1) {
-        if (photo1 != null) {
+        Category categoryOld = categoryService.findById(category.getCategoryId()).orElse(null);
+        if (photo1 != null && photo1.isEmpty() != true) {
             fileService.save(photo1, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
             category.setPhoto(photo1.getOriginalFilename());
+        } else {
+            category.setPhoto(categoryOld.getPhoto());
         }
-        if (photoSmall1 != null) {
+        if (photoSmall1 != null && photoSmall1.isEmpty() != true) {
             fileService.save(photoSmall1, "/src/main/resources/static/assets/images/category/" + category.getCategoryId());
             category.setPhotoSmall(photoSmall1.getOriginalFilename());
+        } else {
+            category.setPhotoSmall(categoryOld.getPhotoSmall());
         }
         categoryService.save(category);
         return "redirect:/admin/editCategory?id=" + category.getCategoryId();
