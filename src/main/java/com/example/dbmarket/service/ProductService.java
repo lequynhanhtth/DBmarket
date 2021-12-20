@@ -35,4 +35,9 @@ public interface ProductService {
     void changeStatusFalseProductBySupplier(int supplierId);
 
     void changeStatusTrueProductBySupplier(int supplierId);
+
+    void changeStatusTrueProductByCategoryId(int categoryId);
+
+    void changeStatusFalseProductByCategoryId(int categoryId);
+
 }
