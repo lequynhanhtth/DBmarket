@@ -81,7 +81,7 @@ public class CategoryController {
             model.addAttribute("brandNull", true);
 
         }
-        Page<Product> productPage = productService.findManyOption(b, c, minPrice.orElse((long) 0), maxPrice.orElse((long) 10000000), categoryId, pageable, "%" + search.orElse("") + "%");
+        Page<Product> productPage = productService.findManyOption(b, c, minPrice.orElse((long) 0), maxPrice.orElse((long)999999999), categoryId, pageable, "%" + search.orElse("") + "%");
         model.addAttribute("productPage", productPage);
         model.addAttribute("brands", brandList);
         model.addAttribute("categoryProducts", categoryProductList);
