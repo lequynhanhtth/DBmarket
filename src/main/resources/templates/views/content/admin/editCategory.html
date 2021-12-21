@@ -34,7 +34,7 @@
 
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <form method="post" enctype="multipart/form-data">
+        <form id="addBrand" method="post" enctype="multipart/form-data">
             <div class="row product-adding">
                 <div class="col-xl-6">
                     <div class="card">
@@ -45,10 +45,12 @@
                             <input type="hidden" name="categoryId" th:value="${category.categoryId}">
                             <div class="digital-add needs-validation">
                                 <div class="form-group">
-                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Category
+                                    <label for="Name" class="col-form-label pt-0"><span>*</span> Category
                                         Name</label>
-                                    <input class="form-control" id="validationCustom01" name="name" type="text"
+                                    <input class="form-control" id="Name" name="name" type="text"
                                            required="" th:value="${category.name}">
+                                    </select> <div id="errorName" class="invalid-feedback">Category Name is required</div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -64,13 +66,14 @@
                                 <div style="margin-top: 10px">
                                     <label class="col-form-label pt-0"><span>*</span> Photo Category</label>
                                     <br>
-                                    <img id="previewImg" width="361px"
+                                    <img for="category" width="361px"
                                          th:src="@{'/assets/images/category/'+${category.categoryId}+'/'+${category.photo}}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo1"
+                                        <input id="" type="file" style="width: 300px; padding: 0;" name="photo1"
                                                th:value="${category.photo}"
                                                class="form-control-user" onchange="previewFile(this);">
+                                        <div class="invalid-feedback" style="margin-left: -180px;">File invalid form file feedback</div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px">
