@@ -874,7 +874,7 @@
                                                             </div>
                                                             <div class="product-back">
                                                                 <a th:href="@{'/DBmarket/productdetail/'+${product.productId}}">
-                                                                    <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos.size>0 ?product.photos[1].photoName : product.photos[0].photoName}}"
+                                                                    <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[1].photoName != null ?product.photos[1].photoName : product.photos[0].photoName}}"
                                                                          class="img-fluid" alt="product"/>
                                                                 </a>
                                                             </div>
@@ -898,11 +898,11 @@
                                                                     </a>
                                                                 </div>
                                                                 <div class="detail-right">
-                                                                    <div class="check-price" th:text="${product.price}">
+                                                                    <div class="check-price"th:if="${product.discount>0}" th:text="${'$'+#numbers.formatInteger(product.price * ( 100 - product.discount ) / 100,0,'POINT')}" >
 
                                                                     </div>
                                                                     <div class="price">
-                                                                        <div class="price" th:text="${product.price * ( 100 - product.discount ) / 100}">
+                                                                        <div class="price" th:text="${'$'+ #numbers.formatInteger(product.price,0,'POINT')}">
                                                                             $50.05
                                                                         </div>
                                                                     </div>
