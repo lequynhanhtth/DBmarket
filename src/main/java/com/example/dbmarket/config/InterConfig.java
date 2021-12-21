@@ -22,7 +22,7 @@ public class InterConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(global).addPathPatterns("/**").excludePathPatterns("/assets/**");
-        registry.addInterceptor(supplier).addPathPatterns("/supplier/**").excludePathPatterns("/assets/**");
+        registry.addInterceptor(supplier).addPathPatterns("/supplier/**","/suplier/**").excludePathPatterns("/assets/**");
         registry.addInterceptor(customer).addPathPatterns("/customer/**").excludePathPatterns("/assets/**");
         registry.addInterceptor(admin).addPathPatterns("/admin/**","/admin/**/**/**","/admin/**/**").excludePathPatterns("/assets/**");
     }

@@ -20,6 +20,7 @@ public class SupplierInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Supplier supplier = (Supplier) session.getAttribute("supplier");
         if(supplier==null) {
+            response.sendRedirect("/login");
             return false;
         }else{
             request.setAttribute("supplier",supplier);

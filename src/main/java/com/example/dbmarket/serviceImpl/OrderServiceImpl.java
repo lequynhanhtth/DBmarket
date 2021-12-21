@@ -51,4 +51,9 @@ public class OrderServiceImpl implements OrderService {
     public Page<Order> findAll(Pageable pageable) {
         return orderRepository.findAll(pageable);
     }
+
+    @Override
+    public Double getNumberOrderDoneBySupplierId(int supplierId) {
+        return orderRepository.getNumberOrderDoneBySupplierId(supplierId);
+    }
 }

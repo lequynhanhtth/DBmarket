@@ -99,4 +99,9 @@ public class ProductServiceImpl implements ProductService {
     public void changeStatusFalseProductByCategoryId(int categoryId) {
         productRepository.changeStatusFalseProductByCategoryId(categoryId);
     }
+
+    @Override
+    public Page<Product> findProductRelated(int brandId, int categoryProductId, Pageable pageable) {
+        return productRepository.findProductRelated(brandId,categoryProductId,pageable);
+    }
 }

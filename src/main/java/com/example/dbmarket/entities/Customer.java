@@ -23,6 +23,8 @@ public class Customer {
     private String address;
     @Column(name = "Avatar")
     private String avatar;
+    @Column(name = "Status")
+    private boolean status;
     @OneToMany(mappedBy = "customer")
     private List<Cart> cart;
     @OneToMany(mappedBy = "customer")
@@ -121,6 +123,14 @@ public class Customer {
     public void setOrders(List<Order> orders) {
 
         this.orders = orders;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public List<AccountBanned> getAccountBanneds() {

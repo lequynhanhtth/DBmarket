@@ -2,8 +2,10 @@ package com.example.dbmarket.controller;
 
 import com.example.dbmarket.entities.Customer;
 import com.example.dbmarket.entities.Order;
+import com.example.dbmarket.entities.Supplier;
 import com.example.dbmarket.service.CustomerService;
 import com.example.dbmarket.service.OrderService;
+import com.example.dbmarket.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,8 @@ public class ProfileController {
     OrderService orderService;
     @Autowired
     HttpSession session;
+    @Autowired
+    SupplierService supplierService;
 
     @RequestMapping("customer/profile")
     public String showProfile(Model model) {
@@ -74,11 +78,27 @@ public class ProfileController {
         orderService.save(order);
         return "redirect:/customer/listOrder";
     }
+
     @GetMapping("customer/listOrder/accept")
-    public String doAccept(int id){
+    public String doAccept(int id) {
         Order order = orderService.findById(id).orElse(null);
         order.setStatus("Waiting to ship");
         orderService.save(order);
         return "redirect:/customer/listOrder";
     }
+
+    @GetMapping("supplier/profile")
+    public String showSupplier(Model model) {
+        Supplier supplierold = (Supplier) session.getAttribute("supplier");
+        supplierold = supplierService.findById(supplierold.getSupplierId()).orElse(null);
+        model.addAttribute("supplier", supplierold);
+        return "views/content/supplier/editProfile";
+    }
+
+    @PostMapping("supplier/profile")
+    public String updateSupplier(Supplier suplier) {
+        supplierService.save(suplier);
+        return "redirect:/supplier/profile";
+    }
+
 }

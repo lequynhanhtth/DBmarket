@@ -28,6 +28,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT o FROM Product o WHERE o.accept = false")
     Page<Product> findProductNotAccept(Pageable pageable);
 
+    @Query("SELECT o FROM Product o WHERE o.brand.brandId = :brandId and o.categoryProduct.categoryProductId = :categoryProductId")
+    Page<Product> findProductRelated(int brandId,int categoryProductId ,Pageable pageable);
+
     @Modifying
     @Query("UPDATE Product p SET p.status='false' WHERE p.supplier.supplierId = :supplier")
     void changeStatusFalseProductBySupplier(int supplier);

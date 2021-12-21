@@ -23,4 +23,5 @@ public interface OrderService {
     List<Order> findOrderBySupplierId(int id);
 
     Page<Order> findAll(Pageable pageable);
+    Double getNumberOrderDoneBySupplierId(int supplierId);
 }

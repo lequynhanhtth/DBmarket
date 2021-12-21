@@ -40,4 +40,6 @@ public interface ProductService {
 
     void changeStatusFalseProductByCategoryId(int categoryId);
 
+    Page<Product> findProductRelated(int brandId,int categoryProductId ,Pageable pageable);
+
 }
