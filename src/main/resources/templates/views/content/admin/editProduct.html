@@ -34,7 +34,7 @@
 
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <form method="post" enctype="multipart/form-data">
+        <form id="addProduct" method="post" enctype="multipart/form-data">
             <div class="row product-adding">
                 <div class="col-xl-6">
                     <div class="card">
@@ -45,58 +45,72 @@
                             <div class="digital-add needs-validation">
                                 <input disabled type="hidden" name="productId" th:value="${product.productId}">
                                 <div class="form-group">
-                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Product
+                                    <label for="productName" class="col-form-label pt-0"><span>*</span> Product
                                         Name</label>
-                                    <input disabled class="form-control" id="validationCustom01" name="productName"
+                                    <input disabled class="form-control" id="productName" name="productName"
                                            type="text"
-                                           required="" th:value="${product.productName}">
+                                           th:value="${product.productName}">
+                                    <div id="errorproductName" class="invalid-feedback">productName is
+                                        required</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span> weight</label>
-                                    <input disabled class="form-control" id="validationCustomtitle" name="weight"
+                                    <label for="weight" class="col-form-label pt-0"><span>*</span> weight</label>
+                                    <input disabled class="form-control" id="weight" name="weight"
                                            type="text"
                                            th:value="${product.weight}">
+                                    <div id="errorweight" class="invalid-feedback">Weight is
+                                        required</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span>
+                                    <label for="categoryProduct" class="col-form-label pt-0"><span>*</span>
                                         Category</label>
-                                    <input disabled class="form-control" type="text"
+                                    <input disabled class="form-control" id="categoryProduct" type="text"
                                            th:value="${product.category.name}">
+                                    <div id="errorcategoryProduct" class="invalid-feedback">Category Product is
+                                        required</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span>
+                                    <label for="Brands" class="col-form-label pt-0"><span>*</span>
                                         Brand</label>
-                                    <input disabled class="form-control" type="text"
+                                    <input disabled class="form-control" id="Brands" type="text"
                                            th:value="${product.brand.brandName}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustomtitle" class="col-form-label pt-0"><span>*</span>
+                                    <label for="Brands" class="col-form-label pt-0"><span>*</span>
                                         Brand</label>
-                                    <input disabled class="form-control" type="text"
+                                    <input disabled class="form-control" id="Brands" type="text"
                                            th:value="${product.categoryProduct.categoryProductName}">
+                                    <div id="errorBrands" class="invalid-feedback">Category Product is
+                                        required</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustom02" class="col-form-label"><span>*</span> Product Price</label>
-                                    <input disabled class="form-control" name="price" id="validationCustom02"
+                                    <label for="productPrice" class="col-form-label"><span>*</span> Product Price</label>
+                                    <input disabled class="form-control" name="price" id="productPrice"
                                            type="text"
                                            th:value="${product.price}"
-                                           required="">
+                                         >
+                                    <div id="errorproductPrice" class="invalid-feedback">productPrice is
+                                        required</div>
+
                                 </div>
                                 <div class="form-group">
-                                    <label for="validationCustom02" class="col-form-label"><span>*</span> In
+                                    <label for="inStock" class="col-form-label"><span>*</span> In
                                         Stock</label>
-                                    <input disabled class="form-control" name="inStock" id="validationCustom03"
+                                    <input disabled class="form-control" id="inStock" name="inStock"
                                            type="text"
-                                           th:value="${product.inStock}" required="">
+                                           th:value="${product.inStock}" >
+                                    <div id="errorinStock" class="invalid-feedback">in Stock is
+                                        required</div>
                                 </div>
                                 <div style="margin-top: 10px">
-                                    <img id="previewImg" width="300px"
+                                    <img for="image" width="300px"
                                          th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input disabled type="file" style="width: 300px; padding: 0;" name="photo1"
+                                        <input disabled type="file" id="image" style="width: 300px; padding: 0;" name="photo1"
                                                th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[0].photoName}}"
                                                class="form-control-user" onchange="previewFile(this);">
+                                        <div class="invalid-feedback" style="margin-left: -180px;">File invalid form file feedback</div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px">

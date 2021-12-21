@@ -34,7 +34,7 @@
 
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <form id="" method="post" enctype="multipart/form-data">
+        <form id="addBrand" method="post" enctype="multipart/form-data">
             <div class="row product-adding">
                 <div class="col-xl-6">
                     <div class="card">
@@ -44,10 +44,11 @@
                         <div class="card-body">
                             <div class="digital-add needs-validation">
                                 <div class="form-group">
-                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Category
+                                    <label for="Name" class="col-form-label pt-0"><span>*</span> Category
                                         Name</label>
-                                    <input class="form-control" id="validationCustom01" name="name" type="text"
-                                           required="">
+                                    <input class="form-control" id="Name" name="name" type="text"
+                                          >
+                                    </select> <div id="errorName" class="invalid-feedback">Category Name is required</div>
                                 </div>
                             </div>
                         </div>
@@ -63,11 +64,12 @@
                                 <div style="margin-top: 10px">
                                     <label  class="col-form-label pt-0"><span>*</span> Photo Category</label>
                                     <br>
-                                    <img id="previewImg" width="361px"  th:src="@{'/assets/images/category/361x257.jpg'}"
+                                    <img for="category" width="361px"  th:src="@{'/assets/images/category/361x257.jpg'}"
                                          alt="Placeholder">
                                     <div class="row mt-4 ml-4 text-center ">
-                                        <input type="file" style="width: 300px; padding: 0;" name="photo"
+                                        <input id="category" type="file" style="width: 300px; padding: 0;" name="photo"
                                                class="form-control-user" onchange="previewFile(this);">
+                                        <div class="invalid-feedback" style="margin-left: -180px;">File invalid form file feedback</div>
                                     </div>
                                 </div>
                                 <div style="margin-top: 10px">

@@ -34,7 +34,7 @@
 
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <form method="post" enctype="multipart/form-data">
+        <form id="loginForm" method="post" enctype="multipart/form-data">
             <div class="row product-adding">
                 <div class="col-xl-6">
                     <div class="card">
@@ -45,7 +45,7 @@
                             <input type="hidden" name="customerId" th:value="${customer.customerId}">
                             <div class="digital-add needs-validation">
                                 <div class="form-group">
-                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Fullname</label>
+                                    <label for="" class="col-form-label pt-0"><span>*</span> Fullname</label>
                                     <input class="form-control" id="validationCustom01" name="fullname" type="text"
                                            required="" disabled th:value="${customer.fullname}">
                                 </div>
