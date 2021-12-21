@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-header-left">
-                        <h3>Add Category
+                        <h3>Edit Brands
                             <small>Bigdeal Admin panel</small>
                         </h3>
                     </div>
@@ -34,7 +34,7 @@
 
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-        <form method="post" enctype="multipart/form-data">
+        <form id="addBrand" method="post" enctype="multipart/form-data">
             <div class="row product-adding">
                 <input type="hidden" th:value="${brand.brandId}" name = "brandId">
                 <div class="col-xl-6">
@@ -45,9 +45,11 @@
                         <div class="card-body">
                             <div class="digital-add needs-validation">
                                 <div class="form-group">
-                                    <label for="validationCustom01" class="col-form-label pt-0"><span>*</span> Brand Name</label>
-                                    <input class="form-control" id="validationCustom01" name="brandName" th:value="${brand.brandName}" type="text"
-                                           required="">
+                                    <label for="Name" class="col-form-label pt-0"><span>*</span> Brand Name</label>
+                                    <input class="form-control" id="Name" name="brandName" th:value="${brand.brandName}" type="text"
+                                           >
+                                    <div id="errorName" class="invalid-feedback">Brand Name is
+                                        required</div>
                                 </div>
                             </div>
                         </div>
@@ -61,14 +63,16 @@
                         <div class="card-body">
                             <div class="digital-add needs-validation">
                                 <div class="form-group">
-                                    <label class="col-form-label"><span>*</span> Categories</label>
-                                    <select class="custom-select form-control"  name="categoryId" required="">
+                                    <label for="category" class="col-form-label"><span>*</span> Categories</label>
+                                    <select class="custom-select form-control" id="category"  name="categoryId">
                                         <option value="">--Select--</option>
                                         <th:block th:each="category : ${categories}">
                                             <option th:selected="${brand.category.categoryId == category.categoryId }" th:value="${category.categoryId}"
                                                     th:text="${category.name}"></option>
                                         </th:block>
-                                    </select>
+                                    </select> <div id="errorcategory" class="invalid-feedback">Categories is
+                                    required</div>
+
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="product-buttons text-center">

@@ -13,14 +13,20 @@
       <div class="col-xl-4 col-lg-6 col-md-8 offset-xl-4 offset-lg-3 offset-md-2">
         <div class="theme-card">
           <h3 class="text-center">Login</h3>
-          <form class="theme-form" th:action="@{/doLogin}"  method="get">
+          <form id="loginForm" class="theme-form" th:action="@{/doLogin}"  method="get">
             <div class="form-group">
+              <div th:if="${messageLogin!=null}" class="alert alert-danger text-center"
+                   style="font-size: 16px;padding: 5px 15px;border-radius: 99px" th:text="${messageLogin}"></div>
               <label >Email</label>
-              <input type="text" class="form-control" name="email"  placeholder="Email" required="">
+              <input type="text" class="form-control" name="email" id="email" placeholder="Email" th:name="email" th:value="${email}">
+              <div id="errorEmail" class="invalid-feedback">Email is
+                required</div>
             </div>
             <div class="form-group">
               <label >Password</label>
-              <input type="password" class="form-control" name="password" placeholder="Enter your password" required="">
+              <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your password" th:name="password" th:value="${password}">
+              <div id="errorPassword" class="invalid-feedback">Password is
+                required</div>
             </div>
             <div class="form-group">
               <div class="m-checkbox-inline mb-0  custom-radio-ml d-flex radio-animated">
@@ -44,5 +50,7 @@
     </div>
   </div>
 </section>
+<script src="/static/assets/js/login/login.js"></script>
 </body>
+
 </html>
