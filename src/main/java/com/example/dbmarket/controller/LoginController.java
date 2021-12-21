@@ -36,12 +36,12 @@ public class LoginController {
                     return "redirect:/DBmarket/Home";
                 }else{
                     model.addAttribute("messageLogin", "Sai mật khẩu");
-                    return "redirect:/login";
+                    return "views/content/login";
                 }
 
             }else{
                 model.addAttribute("messageLogin", "Tài khoản không tồn tại ");
-                return "redirect:/login";
+                return "views/content/login";
             }
 
         }else{
@@ -52,18 +52,30 @@ public class LoginController {
                     return "redirect:/supplier/dashboard";
                 }else{
                     model.addAttribute("messageLogin", "Sai mật khẩu");
-                    return "redirect:/login";
+                    return "views/content/login";
                 }
 
             }else{
                 model.addAttribute("messageLogin", "Tài khoản không tồn tại ");
-                return "redirect:/login";
+                return "views/content/login";
             }
         }
     }
     @RequestMapping("/customer/logout")
     public String logout(){
         session.removeAttribute("customer");
+        return "redirect:/DBmarket/Home";
+    }
+
+    @RequestMapping("/supplier/logout")
+    public String logoutSupplier(){
+        session.removeAttribute("supplier");
+        return "redirect:/DBmarket/Home";
+    }
+
+    @RequestMapping("/admin/logout")
+    public String logoutAdmin(){
+        session.removeAttribute("admin");
         return "redirect:/DBmarket/Home";
     }
 
