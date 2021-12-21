@@ -182,6 +182,8 @@
                                     <label class="col-form-label"><span>*</span> Discount decrease</label>
                                     <input type="text" name="discount" th:value="${product.discount}"/>
                                 </div>
+                                <input type="hidden" th:value="${product.status}" name = "status">
+                                <input type="hidden" th:value="${product.accept}" name = "accept">
                                 <div class="form-group mb-0">
                                     <div class="product-buttons text-center">
                                         <button type="submit" class="btn btn-light">Update</button>

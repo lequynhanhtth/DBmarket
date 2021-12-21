@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    @Query(value = "SELECT TOP 10 with ties * FROM Product  ORDER BY date  WHERE Accept = true AND status = true", nativeQuery = true)
+    @Query(value = "SELECT TOP 10 with ties * FROM Product  WHERE accept = 'true' AND status = 'true'  ORDER BY date ", nativeQuery = true)
     List<Product> findTop10OrderByDate();
 
     @Query("select o from Product o where o.category.categoryId like ?1 and o.accept = false and o.status = false")
@@ -22,11 +22,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("Select o FROM Product o WHERE o.category.categoryId =  ?1 and o.status = true and o.accept = true")
     Page<Product> findByCategoryId(int id, Pageable pageable);
 
-    @Query("SELECT o FROM Product o WHERE o.brand.brandId in (:brands) and o.categoryProduct.categoryProductId in (:categoryProducts) and o.price > :minPrice and o.price < :maxPrice and o.category.categoryId = :categoryId and o.productName = :productName and o.status = true and o.accept = true")
+    @Query("SELECT o FROM Product o WHERE o.brand.brandId in (:brands) and o.categoryProduct.categoryProductId in (:categoryProducts) and o.price > :minPrice and o.price < :maxPrice and o.category.categoryId = :categoryId and o.productName like :productName and o.status = true and o.accept = true")
     Page<Product> findManyOption(List<Integer> brands, List<Integer> categoryProducts, long minPrice, long maxPrice, int categoryId, Pageable pageable, String productName);
 
     @Query("SELECT o FROM Product o WHERE o.accept = false")
     Page<Product> findProductNotAccept(Pageable pageable);
+
+    @Query("SELECT o FROM Product o WHERE o.brand.brandId = :brandId and o.categoryProduct.categoryProductId = :categoryProductId")
+    Page<Product> findProductRelated(int brandId,int categoryProductId ,Pageable pageable);
 
     @Modifying
     @Query("UPDATE Product p SET p.status='false' WHERE p.supplier.supplierId = :supplier")

@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface OrderRepository  extends JpaRepository<Order,Integer> {
     @Query("SELECT o FROM Order o WHERE o.supplier.supplierId = ?1")
     public List<Order> findOrderBySupplierId(int id);
+    @Query(value = "SELECT COUNT(o.orderId) FROM Order o WHERE o.status like 'Done' and o.supplier.supplierId = :supplierId")
+    Double getNumberOrderDoneBySupplierId(int supplierId);
 }

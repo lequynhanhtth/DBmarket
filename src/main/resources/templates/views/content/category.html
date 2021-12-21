@@ -63,7 +63,7 @@
                                             <div th:each="brand : ${brands}"
                                                  class=" custom-control custom-checkbox form-check collection-filter-checkbox">
                                                 <input type="checkbox" class="custom-control-input form-check-input"
-                                                       name="brands" th:checked="${brandsArray != null ? #lists.contains(brandsArray,brand.brandId) : false }" th:value="${brand.brandId}"/>
+                                                       name="brands" th:checked="${brandsArray != null ? (brandNull  ?   #lists.contains(brandsArray,brand.brandId) :false) : false }" th:value="${brand.brandId}"/>
                                                 <label class="custom-control-label form-check-label"
                                                        th:text="${brand.brandName}"></label>
                                             </div>
@@ -78,7 +78,7 @@
                                             <div th:each="categoryProduct : ${categoryProducts}"
                                                  class=" custom-control custom-checkbox form-check collection-filter-checkbox">
                                                 <input type="checkbox" class="custom-control-input form-check-input"
-                                                       name="categoryProducts" th:checked="${categoryProductsArray != null ?  #lists.contains(categoryProductsArray,categoryProduct.categoryProductId) : false}"
+                                                       name="categoryProducts" th:checked="${categoryProductsArray != null ? (categoryProductNull ? #lists.contains(categoryProductsArray,categoryProduct.categoryProductId) :false ): false}"
                                                        th:value="${categoryProduct.categoryProductId}"/>
                                                 <label class="custom-control-label form-check-label"
                                                        th:text="${categoryProduct.categoryProductName}"></label>
@@ -874,7 +874,7 @@
                                                             </div>
                                                             <div class="product-back">
                                                                 <a th:href="@{'/DBmarket/productdetail/'+${product.productId}}">
-                                                                    <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos.size>0 ?product.photos[1].photoName : product.photos[0].photoName}}"
+                                                                    <img th:src="@{'/assets/images/product/'+${product.productId}+'/'+${product.photos[1].photoName != null ?product.photos[1].photoName : product.photos[0].photoName}}"
                                                                          class="img-fluid" alt="product"/>
                                                                 </a>
                                                             </div>
@@ -898,11 +898,11 @@
                                                                     </a>
                                                                 </div>
                                                                 <div class="detail-right">
-                                                                    <div class="check-price" th:text="${product.price}">
+                                                                    <div class="check-price"th:if="${product.discount>0}" th:text="${'$'+#numbers.formatInteger(product.price * ( 100 - product.discount ) / 100,0,'POINT')}" >
 
                                                                     </div>
                                                                     <div class="price">
-                                                                        <div class="price" th:text="${product.price * ( 100 - product.discount ) / 100}">
+                                                                        <div class="price" th:text="${'$'+ #numbers.formatInteger(product.price,0,'POINT')}">
                                                                             $50.05
                                                                         </div>
                                                                     </div>

@@ -6,6 +6,7 @@ import com.example.dbmarket.entities.Rate;
 import com.example.dbmarket.service.ProductService;
 import com.example.dbmarket.service.RateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -47,6 +48,10 @@ public class ProductDetailController {
         model.addAttribute("productDetail", product);
         pageable = PageRequest.of(0, 4);
         List<Product> products = productService.findByCategoryOrderByRate(product.getCategory().getCategoryId(), pageable).getContent();
+        //product related
+        pageable = PageRequest.of(0, 6);
+        Page<Product> productRelated = productService.findProductRelated(product.getBrand().getBrandId(), product.getCategoryProduct().getCategoryProductId(), pageable);
+        model.addAttribute("productRelated",productRelated);
         model.addAttribute("productdetails", products);
         model.addAttribute("newProducts", newProducts);
         return "views/content/productdetail";

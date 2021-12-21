@@ -22,6 +22,8 @@ public class Supplier implements Serializable {
     private String email;
     @Column(name = "Address")
     private String address;
+    @Column(name = "Status")
+    private boolean status;
     @OneToMany(mappedBy = "supplier")
     private List<Product> products;
     @OneToMany(mappedBy = "supplier")
@@ -98,6 +100,14 @@ public class Supplier implements Serializable {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public List<AccountBanned> getAccountBanneds() {

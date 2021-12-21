@@ -106,7 +106,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="jsgrid-pager-container" style="display: none;">
+                                <div class="jsgrid-pager-container" style="display: block;">
                                     <div class="jsgrid-pager">Pages:
                                         <span class="jsgrid-pager-nav-button jsgrid-pager-nav-active-button">
                                             <a th:href="@{'/admin/manage/product?page=0'}">First</a>
@@ -129,12 +129,6 @@
                                             <a th:href="@{'/admin/manage/product?page='+${productPage.totalPages - 1}}">Last</a>
                                         </span> &nbsp;&nbsp; [[${productPage.number + 1}]] of [[${productPage.totalPages}]]
                                     </div>
-                                </div>
-                                <div class="jsgrid-load-shader"
-                                     style="display: none; position: absolute; inset: 0px; z-index: 1000;"></div>
-                                <div class="jsgrid-load-panel"
-                                     style="display: none; position: absolute; top: 50%; left: 50%; z-index: 1000;">
-                                    Please, wait...
                                 </div>
                             </div>
                         </div>

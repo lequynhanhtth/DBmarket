@@ -25,7 +25,9 @@ public class LoginController {
         return "views/content/login";
     }
     @GetMapping("doLogin")
+
     public String doLogin(Model model, String email, String password, String isUser) {
+
         if (isUser.equals("User")) {
             Customer customer = customerService.findByEmail(email).orElse(null);
             if (customer != null) {
