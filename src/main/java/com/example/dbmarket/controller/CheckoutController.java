@@ -85,7 +85,7 @@ public class CheckoutController {
                     orderDetail.setProduct(cartDetail.getProduct());
                     orderDetail.setQuantity(cartDetail.getQuantity());
                     orderDetail.setTotalPrice(cartDetail.getProduct().getPrice() * cartDetail.getQuantity());
-                    orderDetailService.save(orderDetail);
+                        orderDetailService.save(orderDetail);
                 }
             }
         }

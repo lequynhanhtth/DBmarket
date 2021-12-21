@@ -84,7 +84,7 @@
                                     </button>
                                 </td>
                                 <td>
-                                    <h2 class="td-color" th:text="${carts.product.price} * ${carts.quantity}"></h2></td>
+                                    <h2 class="td-color" th:text="${'$'+#numbers.formatInteger(carts.product.price * carts.quantity ,0,'POINT')}"></h2></td>
                             </form>
                         </tr>
                         </tbody>
