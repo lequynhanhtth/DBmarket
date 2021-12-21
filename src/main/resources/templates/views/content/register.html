@@ -13,7 +13,7 @@
             <div class="col-xl-4 col-lg-6 col-md-8 offset-xl-4 offset-lg-3 offset-md-2">
                 <div class="theme-card">
                     <h3 class="text-center">Register</h3>
-                    <form id="loginForm" class="theme-form" th:action="@{/doLogin}"  method="get">
+                    <form id="loginForm" class="theme-form"  method="post">
                         <div class="form-group">
                             <div th:if="${messageLogin!=null}" class="alert alert-danger text-center"
                                  style="font-size: 16px;padding: 5px 15px;border-radius: 99px" th:text="${messageLogin}"></div>
@@ -24,13 +24,13 @@
                         </div>
                         <div class="form-group">
                             <label >Fullname</label>
-                            <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Fullname" th:name="password" th:value="${password}">
+                            <input type="password" class="form-control" name="fullname" placeholder="Enter your Fullname" th:name="password" th:value="${password}">
                             <div id="errorPassword" class="invalid-feedback">Password is
                                 required</div>
                         </div>
                         <div class="form-group">
                             <label >Username</label>
-                            <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Username" th:name="password" th:value="${password}">
+                            <input type="password" class="form-control" name="username" id="password"  placeholder="Enter your Username" th:name="password" th:value="${password}">
                             <div id="errorPassword" class="invalid-feedback">Password is
                                 required</div>
                         </div>
