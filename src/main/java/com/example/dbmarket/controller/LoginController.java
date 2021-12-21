@@ -25,7 +25,7 @@ public class LoginController {
     }
 
     @GetMapping("doLogin")
-    public String doLogin(String email, String password, String isUser) {
+    public String doLogin(String email, String password,String isUser) {
         if (isUser.equals("User")) {
             Customer customer = customerService.findByEmail(email).orElse(null);
             if (customer != null) {
